@@ -21,10 +21,9 @@ export const profileAllStyles = css`
         display: flex;
         position: relative;
         justify-content: center;
-        align-items: center;
+        align-items: start;
         inline-size: 3.51563rem;
-        block-size: 3.51563rem;
-        padding: 0.26044rem;
+        aspect-ratio: 1/1;
         border: 0.1875rem solid #fff;
         border-radius: 5000px;
 
@@ -32,6 +31,8 @@ export const profileAllStyles = css`
           color: var(--white);
           text-align: center;
           font-size: 0.78144rem;
+          inline-size: 100%;
+          block-size: 100%;
           font-weight: 600;
           font-family: var(--font--pretendard);
           line-height: 1.5;
@@ -124,7 +125,7 @@ export const profileAllStyles = css`
       display: flex;
       gap: 0.31rem;
 
-      & button {
+      & a {
         display: flex;
         justify-content: center;
         align-items: center;

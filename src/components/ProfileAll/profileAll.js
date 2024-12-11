@@ -53,8 +53,8 @@ class ProfileAll extends LitElement {
             </div>
           </div>
           <div class="profile-container__bottom">
-            <button type="button">피드작성</button>
-            <button type="button">리뷰작성</button>
+            <a href="/">피드작성</a>
+            <a href="/">리뷰작성</a>
           </div>
         </div>
         <div class="coupon">
