@@ -1,0 +1,236 @@
+@layer Reset, Variable, Components;
+
+@layer Reset {
+  /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+  html,
+  body,
+  div,
+  span,
+  applet,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
+  body {
+    line-height: 1;
+  }
+  ol,
+  ul {
+    list-style: none;
+  }
+  blockquote,
+  q {
+    quotes: none;
+  }
+  blockquote:before,
+  blockquote:after,
+  q:before,
+  q:after {
+    content: '';
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+  }
+
+  html {
+    /* font-size: 62.5%; */
+    -webkit-text-size-adjust: none;
+  }
+
+  body {
+    /* font-size: 1rem; */
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+  }
+
+  caption,
+  legend,
+  .a11y-hidden {
+    overflow: hidden;
+    position: absolute;
+    border: 0;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+}
+
+@layer Variable {
+  :root {
+    --white: #fff;
+    --primary: #171f31;
+    --secondary: ##8db0f9;
+    --negative: #e11900;
+    --contentPrimary: #000000;
+    --contentSecondary: #6b6b6b;
+    --contentTertiary: #a6a6a6;
+    --gray--50: #f9f9f9;
+    --gray--100: #e1e1e1;
+    --gray--200: #c4c4c4;
+    --gray--300: #a6a6a6;
+    --gray--400: #898989;
+    --gray--500: #6b6b6b;
+    --gray--600: #565656;
+    --gray--700: #404040;
+    --gray--800: #2b2b2b;
+    --gray--900: #151515;
+    --blue--100: #cce0ff;
+    --blue--200: #99c2ff;
+    --blue--300: #66a3ff;
+    --blue--400: #3385ff;
+    --blue--500: #0066ff;
+    --blue--600: #0052cc;
+    --blue--700: #003d99;
+    --blue--800: #002966;
+    --blue--900: #001433;
+    --lightblue--100: #e3ebfd;
+    --lightblue--200: #c6d7fc;
+    --lightblue--300: #aac4fa;
+    --lightblue--400: #8db0f9;
+    --lightblue--500: #719cf7;
+    --lightblue--600: #5a7dc6;
+    --lightblue--700: #445e94;
+    --lightblue--800: #2d3e63;
+    --lightblue--900: #171f31;
+    --error: #f03f40;
+  }
+}
+
+@layer Components {
+  @layer Button {
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      border: none;
+      cursor: pointer;
+
+      /* 크기 정의 */
+      &.base {
+        inline-size: 6.25rem;
+        block-size: 1.875rem;
+      }
+      &.lg {
+        /* 여기에 입력 */
+      }
+      &.sm {
+        /* 여기에 입력 */
+      }
+      /* 색상 정의 */
+      &.skyblue {
+        /* 여기에 입력 */
+        background-color: var(--blue--500);
+        color: var(--white);
+      }
+      /* 아이콘 정의 */
+      &.ico1 {
+        /* 여기에 입력 */
+      }
+    }
+  }
+}
