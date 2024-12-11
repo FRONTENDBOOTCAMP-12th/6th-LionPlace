@@ -111,6 +111,10 @@
   body {
     line-height: 1;
   }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   ol,
   ul {
     list-style: none;
@@ -197,6 +201,8 @@
     --lightblue--800: #2d3e63;
     --lightblue--900: #171f31;
     --error: #f03f40;
+    --font--pretendard: font-family: 'Pretendard Variable', Pretendard,
+      sans-serif;
   }
 }
 
