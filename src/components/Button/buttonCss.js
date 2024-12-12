@@ -22,7 +22,7 @@ export const buttonStyles = css`
       content: '';
       inline-size: 1.1875rem;
       block-size: 1.125rem;
-      background: url(/images/ico_wirte.png);
+      background: url(/images/ico_write.png);
     }
     &.rounded {
       border-radius: 0.5rem;
