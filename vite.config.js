@@ -10,7 +10,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        profile: resolve(__dirname, 'src/components/profileAll/index.html'),
+        profile: resolve(__dirname, 'src/components/ProfileAll/index.html'),
+        navigation: resolve(__dirname, 'src/components/Navigation/index.html'),
       },
     },
   },

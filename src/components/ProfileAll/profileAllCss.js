@@ -101,6 +101,7 @@ export const profileAllStyles = css`
               & > a {
                 display: flex;
                 flex-flow: column wrap;
+                inline-size: 100%;
 
                 & span {
                   font-size: 0.75019rem;

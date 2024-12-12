@@ -1,4 +1,3 @@
-import '@/assets/font/pretendard/pretendard.css';
 import { LitElement, html } from 'lit';
 import { profileAllStyles } from './profileAllCss';
 import resetStyles from '@/styles/reset.js';
