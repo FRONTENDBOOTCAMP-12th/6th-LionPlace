@@ -89,7 +89,9 @@ export default css`
   }
   button {
     cursor: pointer;
+    outline: none;
     background-color: transparent;
+    padding: 0;
   }
 
   /* Normalize */
