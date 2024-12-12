@@ -1,8 +1,9 @@
 import { LitElement, html } from 'lit';
 import { buttonStyles } from './buttonCss';
+import resetStyles from '@/styles/reset.js';
 
 class Button extends LitElement {
-  static styles = buttonStyles;
+  static styles = [resetStyles, buttonStyles];
 
   render() {
     return html`
