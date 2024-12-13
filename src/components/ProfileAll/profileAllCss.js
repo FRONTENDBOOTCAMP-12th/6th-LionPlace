@@ -5,6 +5,7 @@ export const profileAllStyles = css`
     position: relative;
     background-color: var(--primary);
     padding: 2.25rem 1.375rem 1.375rem 1.375rem;
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
   }
 
   .profile-container {
@@ -34,7 +35,6 @@ export const profileAllStyles = css`
           inline-size: 100%;
           block-size: 100%;
           font-weight: 600;
-          font-family: var(--font--pretendard);
           line-height: 1.5;
           background-color: inherit;
         }
@@ -138,7 +138,6 @@ export const profileAllStyles = css`
         color: var(--white);
         font-size: 0.75019rem;
         font-weight: 600;
-        font-family: var(--font--pretendard);
         line-height: 1.5;
 
         &::before {
