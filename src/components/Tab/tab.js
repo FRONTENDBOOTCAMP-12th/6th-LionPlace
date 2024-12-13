@@ -1,4 +1,4 @@
-import { css, html, LitElement } from 'lit';
+import { html, LitElement } from 'lit';
 import resetStyles from '/src/styles/reset';
 import { tabStyles } from './tabCss';
 
@@ -14,34 +14,7 @@ class Tab extends LitElement {
     this.activeCtn = 'tab-reserved';
   }
 
-  static styles = [
-    resetStyles,
-    tabStyles,
-    css`
-      .tab-buttons {
-        button {
-          &.is--active {
-            background-color: var(--primary);
-            color: var(--white);
-            z-index: 2;
-            border-radius: 1rem;
-
-            &::before {
-              background-color: var(--white);
-            }
-          }
-        }
-      }
-
-      .tab-content {
-        display: none;
-
-        &.is--active {
-          display: block;
-        }
-      }
-    `,
-  ];
+  static styles = [resetStyles, tabStyles];
 
   handleTabBtn(e) {
     const targetTab = e.target.dataset.tab;
