@@ -149,7 +149,7 @@ export const profileAllStyles = css`
 
         &:nth-of-type(1) {
           &::before {
-            background: url(/images/ico_wirte.png);
+            background: url(/images/ico_write.png);
           }
         }
 
