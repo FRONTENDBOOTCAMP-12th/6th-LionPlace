@@ -24,6 +24,7 @@ class Tab extends LitElement {
             background-color: var(--primary);
             color: var(--white);
             z-index: 2;
+            border-radius: 1rem;
 
             &::before {
               background-color: var(--white);

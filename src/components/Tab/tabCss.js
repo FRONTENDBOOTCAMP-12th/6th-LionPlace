@@ -28,7 +28,6 @@ export const tabStyles = css`
         justify-content: center;
         align-items: center;
         gap: 0.25rem;
-        border-radius: 1rem;
         background-color: var(--gray--100);
         color: var(--primary);
         white-space: nowrap;
@@ -37,19 +36,24 @@ export const tabStyles = css`
         z-index: 1;
         font-family: 'Pretendard Variable', Pretendard, sans-serif;
 
+        &:nth-of-type(1) {
+          border-radius: 1rem 0 0 1rem;
+        }
+
         &::before {
           content: '';
           display: inline-block;
           inline-size: 1.125rem;
           aspect-ratio: 1/1;
           background-color: var(--primary);
-          mask: url(/public/images/ico_reserved.svg) center/contain no-repeat;
+          mask: url(/images/ico_reserved.svg) center/contain no-repeat;
         }
 
         &.is--active {
           background-color: var(--primary);
           color: var(--white);
           z-index: 2;
+          border-radius: 1rem;
 
           &::before {
             background-color: var(--white);
@@ -57,6 +61,11 @@ export const tabStyles = css`
         }
 
         &:not([data-tab='tab-reserved']) {
+          border-radius: 0 1rem 1rem 0;
+
+          &.is--active {
+            border-radius: 1rem;
+          }
           &::before {
             mask-image: url(/images/ico_order.svg);
           }
