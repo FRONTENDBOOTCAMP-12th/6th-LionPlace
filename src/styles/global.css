@@ -145,6 +145,8 @@
   body {
     /* font-size: 1rem; */
     font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    background-color: var(--background-color);
+    color: var(--color);
   }
 
   caption,
@@ -197,6 +199,8 @@
     --lightblue--800: #2d3e63;
     --lightblue--900: #171f31;
     --error: #f03f40;
+    --background-color: #fff;
+    --color: #000;
   }
 }
 
