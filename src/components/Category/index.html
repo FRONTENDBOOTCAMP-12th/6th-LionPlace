@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <title>Category | 6th-LionPlace</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="preload" as="style" href="/src/assets/font/pretendard/pretendard.css" />
+    <link rel="stylesheet" href="/src/assets/font/pretendard/pretendard.css" />
+    <script type="module" src="/src/components/Category/index.js"></script>
+  </head>
+  <body>
+    <time-element></time-element>
+    <profileall-element></profileall-element>
+    <navigation-element></navigation-element>
+    <order-tab></order-tab>
+
+    <nav class="category-tab">
+      <ul>
+        <li>
+          <button type="button" class="entire tab-btn is--active" data-category="all">전체</button>
+        </li>
+        <li>
+          <button type="button" class="beauty tab-btn" data-category="beauty">뷰티</button>
+        </li>
+        <li>
+          <button type="button" class="hospital tab-btn" data-category="hospital">병의원</button>
+        </li>
+        <li>
+          <button type="button" class="performance tab-btn" data-category="performance">
+            공연
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="summary">
+      <p>
+        <strong id="user-id"></strong>님은 <span id="reservation-count">0회</span> 예약하셨고,
+        <span id="payment-amount">0원</span> 결제하셨어요.
+      </p>
+    </div>
+
+    <div class="data-container">
+      <!-- 여기에 데이터 리스트 랜더링 -->
+    </div>
+
+    <div class="btn-container">
+      <button class="more-btn" type="button">
+        <span>더보기</span>
+        <img src="/public/images/ico_arrow.svg" alt="아래방향 화살표" />
+      </button>
+    </div>
+  </body>
+</html>
