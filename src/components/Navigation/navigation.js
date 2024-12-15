@@ -17,11 +17,7 @@ class Navigation extends LitElement {
     resetStyle,
     css`
       &.is--active {
-        background-image: linear-gradient(
-          to bottom,
-          var(--lightblue--300),
-          var(--lightblue--300)
-        );
+        background-image: linear-gradient(to bottom, var(--lightblue--300), var(--lightblue--300));
         opacity: 1;
       }
     `,

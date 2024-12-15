@@ -6,6 +6,7 @@ export const timeStyles = css`
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     padding: 0.44rem 1.12rem;
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
 
     & .time-wrap__left {
       display: flex;
@@ -14,7 +15,6 @@ export const timeStyles = css`
 
       p {
         color: var(--contentPrimary);
-        font-family: 'Pretendard Variable', Pretendard, sans-serif;
         font-size: 1rem;
         font-weight: 600;
         line-height: 1.5;
@@ -27,7 +27,6 @@ export const timeStyles = css`
 
       p {
         color: var(--contentPrimary);
-        font-family: 'Pretendard Variable', Pretendard, sans-serif;
         font-size: 0.75019rem;
         font-weight: 600;
         line-height: 1.5;

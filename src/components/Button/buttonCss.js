@@ -9,6 +9,7 @@ export const buttonStyles = css`
     outline: none;
     border: none;
     cursor: pointer;
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
 
     &.base {
       inline-size: 17.875rem;
