@@ -1,101 +1,150 @@
-const tabs = document.querySelectorAll('button');
-const reservationCount = document.getElementById('reservation-count');
-const paymentAmount = document.getElementById('payment-amount');
-const dataContainer = document.querySelector('.data-container');
-const PRICE_PER_RESERVATION = 5000;
+import { css } from 'lit';
 
-const userData = {
-  id: '이우빈',
-};
+export const categoryStyles = css`
+  .category-tab {
+    & > ul {
+      display: flex;
+      gap: 0.38rem;
+      overflow: auto;
+      padding: 1rem 0 1rem 1.16rem;
+      scrollbar-width: none;
 
-const dummyData = {
-  all: [
-    { name: '미랑컬헤어 상동점', count: 12 },
-    { name: '리움미술관', count: 8 },
-    { name: '미랑컬헤어 상동점', count: 4 },
-    { name: '범이 빛나는 밤에 사가정점', count: 10 },
-    { name: '범이 빛나는 밤에 명동점', count: 4 },
-    { name: '범이 빛나는 밤에 혜화점', count: 7 },
-  ],
-  beauty: [
-    { name: '미랑컬헤어 상동점', count: 12 },
-    { name: '미랑컬헤어 상동점', count: 4 },
-  ],
-  hospital: [{ name: '리움미술관', count: 8 }],
-  performance: [
-    { name: '범이 빛나는 밤에 사가정점', count: 10 },
-    { name: '범이 빛나는 밤에 명동점', count: 4 },
-    { name: '범이 빛나는 밤에 혜화점', count: 7 },
-  ],
-};
+      & > li {
+        & > button {
+          display: flex;
+          flex-flow: column wrap;
+          justify-content: center;
+          align-items: center;
+          gap: 0.3rem;
+          inline-size: 26.25vw;
+          aspect-ratio: 1/1;
+          background-color: transparent;
+          border-radius: 0.75rem;
+          color: var(--contentPrimary);
+          font-family: 'Pretendard Variable', Pretendard, sans-serif;
+          font-size: 0.75019rem;
+          line-height: 1;
+          white-space: nowrap;
 
-// 더미데이터 랜더링 함수
-function renderData(category) {
-  const data = dummyData[category] || [];
+          &::before {
+            content: '';
+            inline-size: 1.125rem;
+            aspect-ratio: 1/1;
+            mask: url('/images/ico_entire.svg') center/contain no-repeat;
+            background-color: var(--primary);
+          }
 
-  // 데이터 목록 렌더링
-  dataContainer.innerHTML = data
-    .map(
-      (item, index) => `
-       <div class="data-item">
-        <div class="data-item__wrap">
-          <div class="data-item__inner">
-            <span class="rank">${index + 1}</span>
-            <span class="name">${item.name}</span>
-          </div>
-          <span class="count">${item.count}회</span>
-        </div>
-        <div class="progress-bar">
-          <div class="progress-fill"></div>
-        </div>
-      </div>
-    `
-    )
-    .join('');
+          &.is--active {
+            background-color: var(--primary);
+            color: var(--white);
 
-  updateSummary(data);
-}
-
-// 유저 업데이트 함수
-function updateUser() {
-  const userElement = document.getElementById('user-id');
-
-  if (userData && userData.id) {
-    userElement.textContent = userData.id;
-  } else {
-    userElement.textContent = '알 수 없음';
+            &::before {
+              background-color: var(--white);
+            }
+          }
+        }
+        .beauty {
+          &::before {
+            mask: url('/images/ico_beauty.svg');
+          }
+        }
+        .hospital {
+          &::before {
+            mask: url('/images/ico_hospital.svg');
+          }
+        }
+        .performance {
+          &::before {
+            mask: url('/images/ico_ticket.svg');
+          }
+        }
+      }
+    }
   }
-}
 
-// 예약 횟수와 결제 금액 업데이트
-function updateSummary(data) {
-  const totalReservations = data.reduce((acc, cur) => acc + cur.count, 0);
-  const totalAmount = totalReservations * PRICE_PER_RESERVATION;
+  .summary {
+    padding: 1rem 2.25rem;
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
 
-  reservationCount.textContent = `${totalReservations}회`;
-  paymentAmount.textContent = `${totalAmount.toLocaleString()}원`;
-}
+    & p {
+      color: var(--contentPrimary);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.6;
 
-// active 스타일
-function activeTab(target) {
-  tabs.forEach((tab) => tab.classList.remove('is--active'));
-  target.classList.add('is--active');
-}
+      & span {
+        color: var(--lightblue--400);
+      }
+    }
+  }
 
-// 탭 클릭 이벤트 핸들러
-function handleTabClick(e) {
-  const target = e.target;
-  const category = target.dataset.category;
+  .data-container {
+    display: flex;
+    flex-flow: column wrap;
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
 
-  activeTab(target);
-  renderData(category);
-}
+    .data-item {
+      display: flex;
+      flex-flow: column;
+      gap: 0.75rem;
+      padding: 0.75rem 1.4375rem 0;
 
-function ininTab() {
-  tabs.forEach((tab) => tab.addEventListener('click', handleTabClick));
-}
+      .data-item__wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-// 초기 렌더링
-ininTab();
-updateUser();
-renderData('all');
+      .data-item__inner {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      & span {
+        font-size: 0.75019rem;
+        font-weight: 600;
+        line-height: 1.5;
+        white-space: nowrap;
+        text-align: center;
+      }
+
+      & .rank {
+        border-radius: 0.5rem;
+        border: 0.5px solid var(--gray-100, #e1e1e1);
+        color: var(--contentSecondary);
+        padding: 0.125rem 0.5rem;
+      }
+
+      & .name {
+        display: flex;
+        align-items: center;
+        color: var(--contentPrimary);
+
+        &::after {
+          content: '';
+          display: inline-flex;
+          inline-size: 1.125rem;
+          aspect-ratio: 1/1;
+          background: url(/public/images/ico_calendar.svg) center/contain no-repeat;
+        }
+      }
+
+      & .count {
+        color: var(--contentSecondary);
+      }
+    }
+  }
+
+  .progress-bar {
+    inline-size: 100%;
+    block-size: 0.125rem;
+    background-color: var(--lightblue--300);
+
+    /* 진행 바 채워지는 부분 */
+    .progress-fill {
+      height: 100%;
+      background-color: var(--lightblue--900);
+    }
+  }
+`;

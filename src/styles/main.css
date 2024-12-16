@@ -150,22 +150,6 @@
     height: 100%;
     background-color: var(--lightblue--900);
   }
-
-  [data-count='all'] .progress-fill {
-    width: 100%;
-  }
-
-  [data-count='beauty'] .progress-fill {
-    width: 66%;
-  }
-
-  [data-count='hospital'] .progress-fill {
-    width: 40%;
-  }
-
-  [data-count='performance'] .progress-fill {
-    width: 80%;
-  }
 }
 
 .btn-container {
