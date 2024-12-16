@@ -1,1 +1,2 @@
-import '@/components/Button/Button';
+import '@/components/Time/time';
+import '@/layout/Footer/footer';
