@@ -144,7 +144,6 @@
 
   body {
     /* font-size: 1rem; */
-    font-family: 'Pretendard Variable', Pretendard, sans-serif;
     background-color: var(--background-color);
     color: var(--color);
   }
