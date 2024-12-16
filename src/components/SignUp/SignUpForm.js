@@ -109,6 +109,11 @@ class SignUpForm extends LitElement {
   }
 
   _validateField(id, value) {
+    if (value.trim() === '') {
+      this.errors[id] = '';
+      return;
+    }
+
     switch (id) {
       case 'id':
         this.errors.id =
