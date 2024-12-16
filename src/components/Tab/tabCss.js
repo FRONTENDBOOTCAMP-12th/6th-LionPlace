@@ -75,12 +75,6 @@ export const tabStyles = css`
   }
 
   .tab-contents {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 4rem;
-    background-color: var(--lightblue--200);
-
     .tab-content {
       display: none;
 

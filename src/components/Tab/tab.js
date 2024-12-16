@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
-import resetStyles from '/src/styles/reset';
 import { tabStyles } from './tabCss';
+import resetStyles from '@/styles/reset';
 
 class Tab extends LitElement {
   static properties = {
@@ -57,8 +57,7 @@ class Tab extends LitElement {
               class="tab-content ${this.activeCtn === 'tab-reserved' ? 'is--active' : ''}"
               id="tab-reserved"
             >
-              탭 1의 내용입니다.
-              <my-custom-element></my-custom-element>
+              <category-tab></category-tab>
             </article>
             <article
               class="tab-content ${this.activeCtn === 'tab-order' ? 'is--active' : ''}"
