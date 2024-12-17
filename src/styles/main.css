@@ -3,29 +3,3 @@
 #app {
   background: orange;
 }
-
-.btn-container {
-  .more-btn {
-    display: flex;
-    justify-content: center;
-    inline-size: 100%;
-    padding: 0.9375rem 8.4375rem;
-
-    background-color: transparent;
-
-    & span {
-      color: var(--contentPrimary);
-      font-family: 'Pretendard Variable', Pretendard, sans-serif;
-      font-size: 0.75019rem;
-      line-height: 1.6;
-    }
-
-    & img {
-      transition: transform 0.3s ease;
-
-      &.is--active {
-        transform: rotate(180deg);
-      }
-    }
-  }
-}

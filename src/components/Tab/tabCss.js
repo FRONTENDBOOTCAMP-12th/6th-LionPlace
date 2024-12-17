@@ -35,6 +35,10 @@ export const tabStyles = css`
         margin-right: -1.12rem;
         z-index: 1;
         font-family: 'Pretendard Variable', Pretendard, sans-serif;
+        &:focus-visible {
+          outline: 1px solid var(--blue--800);
+          outline-offset: 1px;
+        }
 
         &:nth-of-type(1) {
           border-radius: 1rem 0 0 1rem;

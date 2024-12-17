@@ -43,6 +43,10 @@ export const categoryStyles = css`
             }
           }
         }
+        .tab-btn:focus-visible {
+          outline: 2px solid var(--blue--800);
+          outline-offset: 2px;
+        }
         .beauty {
           &::before {
             mask: url('/images/ico_beauty.svg');
@@ -78,6 +82,7 @@ export const categoryStyles = css`
     }
   }
 
+  /* 데이터 랜더링되는 영역 */
   .data-container {
     display: flex;
     flex-flow: column wrap;
@@ -126,7 +131,7 @@ export const categoryStyles = css`
           display: inline-flex;
           inline-size: 1.125rem;
           aspect-ratio: 1/1;
-          background: url(/public/images/ico_calendar.svg) center/contain no-repeat;
+          background: url(/images/ico_calendar.svg) center/contain no-repeat;
         }
       }
 
@@ -145,6 +150,80 @@ export const categoryStyles = css`
     .progress-fill {
       height: 100%;
       background-color: var(--lightblue--900);
+    }
+  }
+
+  /* 더보기 버튼 영역 */
+  .btn-container {
+    .more-btn {
+      display: flex;
+      justify-content: center;
+      inline-size: 100%;
+      padding: 0.9375rem 8.4375rem;
+      background-color: transparent;
+      &:focus-visible {
+        outline: 1px solid var(--blue--800);
+        outline-offset: 1px;
+      }
+
+      & span {
+        color: var(--contentPrimary);
+        font-family: 'Pretendard Variable', Pretendard, sans-serif;
+        font-size: 0.75019rem;
+        line-height: 1.6;
+      }
+
+      & img {
+        transition: transform 0.3s ease;
+
+        &.is--active {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .content {
+      overflow: hidden;
+      transition: height 0.5s ease;
+      height: 0;
+    }
+
+    .content-inner {
+      padding: 1rem;
+    }
+  }
+
+  /* 하단 카테고리 뱃지 영역 */
+  .category-bedge {
+    padding: 0.75rem 3.8125rem 2.3125rem 1.25rem;
+    background-color: var(--gray--100);
+
+    & > ul {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      & > li {
+        & > button {
+          background-color: var(--white);
+          border-radius: 1rem;
+          color: var(--contentSecondary);
+          padding: 0.25rem 0.5rem;
+          text-align: center;
+          font-family: 'Pretendard Variable', Pretendard, sans-serif;
+          font-size: 0.75019rem;
+          font-weight: 600;
+          line-height: 1.5;
+          &:focus-visible {
+            outline: 1px solid var(--blue--800);
+            outline-offset: 1px;
+          }
+
+          & > strong {
+            color: var(--contentPrimary);
+          }
+        }
+      }
     }
   }
 `;
