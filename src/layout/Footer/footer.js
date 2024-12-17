@@ -36,7 +36,7 @@ class Footer extends LitElement {
               <li><a href="#">로그아웃</a></li>
             </ul>
             <ul class="footer-nav__bottom">
-              <li><a href="#">네이버 예약 고객센터</a></li>
+              <li><a href="#">라이언 예약 고객센터</a></li>
               <li><a href="#">이용약관</a></li>
               <li>
                 <a href="#"><strong>개인정보처리방침</strong></a>
@@ -44,10 +44,10 @@ class Footer extends LitElement {
             </ul>
           </nav>
           <p>
-            네이버 &#40;주&#41;는 통신판매의 당사자가 아니며, 상품의 정보 및 쿠폰 사용 등과
+            &#40;주&#41; 라이언은 통신판매의 당사자가 아니며, 상품의 정보 및 쿠폰 사용 등과
             관련한의무와 책임은 각 판매자에게 있습니다.
           </p>
-          <p>&#40;주&#41; 네이버 사업자정보</p>
+          <p>&#40;주&#41; 라이언 사업자정보</p>
         </div>
       </footer>
     `;
