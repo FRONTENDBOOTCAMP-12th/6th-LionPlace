@@ -1,14 +1,13 @@
 import { html, LitElement } from 'lit';
 import { categoryStyles } from './categoryCss';
 import resetStyle from '@/styles/reset';
+import pb from '@/api/pocketbase';
 
 class TabCategory extends LitElement {
   static properties = {
-    userData: { type: Object },
     category: { type: String, state: true },
-    pricePerReservation: { type: Number },
-    dummyData: { type: Object },
     isOpen: { type: Boolean },
+    data: { type: Array },
   };
 
   static styles = [resetStyle, categoryStyles];
@@ -16,37 +15,38 @@ class TabCategory extends LitElement {
   constructor() {
     super();
     this.category = 'all';
-    this.userData = { id: 'Lion' };
-    this.pricePerReservation = 5000;
     this.isOpen = false;
-    this.dummyData = {
-      all: [
-        { name: '범승철 헤어 잠실점', count: 12, cancle: 4 },
-        { name: '범승철 헤어 상동점', count: 4, cancle: 2 },
-        { name: '범승철 헤어 양주점', count: 8, cancle: 5 },
-        { name: '범세브란스 대학병원', count: 8, cancle: 0 },
-        { name: '데레사카톨릭 대학병원', count: 5, cancle: 2 },
-        { name: '야무 대학병원', count: 6, cancle: 2 },
-        { name: '범이 빛나는 밤에 사가정점', count: 7, cancle: 1 },
-        { name: '범이 빛나는 밤에 명동점', count: 4, cancle: 2 },
-        { name: '범이 빛나는 밤에 혜화점', count: 6, cancle: 3 },
-      ],
-      beauty: [
-        { name: '범승철 헤어 잠실점', count: 12, cancle: 4 },
-        { name: '범승철 헤어 상동점', count: 4, cancle: 2 },
-        { name: '범승철 헤어 양주점', count: 8, cancle: 5 },
-      ],
-      hospital: [
-        { name: '범세브란스 대학병원', count: 8, cancle: 0 },
-        { name: '데레사카톨릭 대학병원', count: 5, cancle: 2 },
-        { name: '야무 대학병원', count: 6, cancle: 2 },
-      ],
-      performance: [
-        { name: '범이 빛나는 밤에 사가정점', count: 7, cancle: 1 },
-        { name: '범이 빛나는 밤에 명동점', count: 4, cancle: 2 },
-        { name: '범이 빛나는 밤에 혜화점', count: 6, cancle: 3 },
-      ],
+    this.data = {
+      all: [],
+      beauty: [],
+      hospital: [],
+      performance: [],
     };
+  }
+
+  async connectedCallback() {
+    super.connectedCallback();
+    await this.fetchData();
+  }
+
+  async fetchData() {
+    try {
+      const response = await pb.collection('transactions').getFullList();
+      this.getFetchData(response);
+    } catch (error) {
+      console.error('PocketBase 데이터 알 수 없음');
+    }
+  }
+
+  getFetchData(items) {
+    const filterData = {
+      all: items,
+      beauty: items.filter((item) => item.field === 'beauty'),
+      hospital: items.filter((item) => item.field === 'hospital'),
+      performance: items.filter((item) => item.field === 'performance'),
+    };
+
+    this.data = filterData;
   }
 
   handleClickTab(e) {
@@ -68,16 +68,17 @@ class TabCategory extends LitElement {
   }
 
   renderData() {
-    const data = this.dummyData[this.category] || [];
+    const data = this.data[this.category] || [];
     const totalReservations = data.reduce((acc, cur) => acc + cur.count, 0);
     const totalCancle = data.reduce((acc, cur) => acc + cur.cancle, 0);
-    const totalAmount = totalReservations * this.pricePerReservation;
-    const maxCount = Math.max(...data.map((item) => item.count));
+    const totalAmount = data.reduce((acc, cur) => acc + cur.total_price, 0);
+    const maxCount = Math.max(...data.map((item) => item.count)); // 최대값
+    const userId = [...new Set(data.map((item) => item.user_id))][0] || '알 수 없음'; // new Set 중복 제거
 
     return html`
       <div class="summary">
         <p>
-          <strong>${this.userData.id}</strong>님은 <span>${totalReservations}회</span> 예약하셨고,
+          <strong>${userId}</strong>님은 <span>${totalReservations}회</span> 예약하셨고,
           <span>${totalAmount.toLocaleString()}원</span> 결제하셨어요.
         </p>
       </div>
@@ -89,7 +90,7 @@ class TabCategory extends LitElement {
               <div class="data-item__wrap">
                 <div class="data-item__inner">
                   <span class="rank">${index + 1}</span>
-                  <span class="name">${item.name}</span>
+                  <span class="name">${item.store_id}</span>
                 </div>
                 <span class="count">${item.count}회</span>
               </div>
@@ -154,8 +155,6 @@ class TabCategory extends LitElement {
               type="button"
               class="entire tab-btn ${this.category === 'all' ? 'is--active' : ''}"
               data-category="all"
-              tabindex="0"
-              aria-label="전체 예약 보기"
             >
               전체
             </button>
@@ -166,8 +165,6 @@ class TabCategory extends LitElement {
               type="button"
               class="beauty tab-btn ${this.category === 'beauty' ? 'is--active' : ''}"
               data-category="beauty"
-              tabindex="0"
-              aria-label="뷰티 예약 보기"
             >
               뷰티
             </button>
@@ -178,8 +175,6 @@ class TabCategory extends LitElement {
               type="button"
               class="hospital tab-btn ${this.category === 'hospital' ? 'is--active' : ''}"
               data-category="hospital"
-              tabindex="0"
-              aria-label="병의원 예약 보기"
             >
               병의원
             </button>
@@ -190,8 +185,6 @@ class TabCategory extends LitElement {
               type="button"
               class="performance tab-btn ${this.category === 'performance' ? 'is--active' : ''}"
               data-category="performance"
-              tabindex="0"
-              aria-label="공연 예약 보기"
             >
               공연
             </button>
