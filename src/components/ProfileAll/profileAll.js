@@ -3,8 +3,15 @@ import { profileAllStyles } from './profileAllCss';
 import resetStyles from '@/styles/reset.js';
 
 class ProfileAll extends LitElement {
+  static properties = {
+    userId: { type: Object },
+  };
+
   constructor() {
     super();
+    this.userId = {
+      name: '멋쟁이사자',
+    };
   }
 
   static styles = [resetStyles, profileAllStyles];
@@ -20,7 +27,7 @@ class ProfileAll extends LitElement {
               <img src="/images/ico_write_sm.png" alt="프로필 수정 이미지" />
             </div>
             <div class="user-info">
-              <p class="nickname">유저닉네임</p>
+              <p class="nickname">${this.userId.name}</p>
               <div class="review">
                 <ul>
                   <li>
