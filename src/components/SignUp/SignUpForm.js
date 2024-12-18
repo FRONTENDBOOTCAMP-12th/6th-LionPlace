@@ -1,8 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import pb from '@/api/pocketbase';
-import './FormInput';
-import './SubmitButton';
-import './Logo';
+import './formInput';
+import './submitButton';
+import './logo';
 
 class SignUpForm extends LitElement {
   static properties = {
@@ -134,9 +134,7 @@ class SignUpForm extends LitElement {
         break;
       case 'passwordConfirm':
         this.errors.passwordConfirm =
-          value !== this.formData.password
-            ? '비밀번호가 일치하지 않습니다.'
-            : '';
+          value !== this.formData.password ? '비밀번호가 일치하지 않습니다.' : '';
         break;
     }
     this.requestUpdate();
@@ -144,9 +142,7 @@ class SignUpForm extends LitElement {
   }
 
   _updateSubmitButton() {
-    const allFieldsFilled = Object.values(this.formData).every(
-      (value) => value.length > 0
-    );
+    const allFieldsFilled = Object.values(this.formData).every((value) => value.length > 0);
     const noErrors = Object.values(this.errors).every((error) => error === '');
     this.isSubmitEnabled = allFieldsFilled && noErrors;
     this.requestUpdate();

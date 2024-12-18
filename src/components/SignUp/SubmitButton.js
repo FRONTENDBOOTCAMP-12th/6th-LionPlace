@@ -30,11 +30,7 @@ class SubmitButton extends LitElement {
 
   render() {
     return html`
-      <button
-        type="submit"
-        ?disabled="${this.disabled}"
-        @click="${this._handleClick}"
-      >
+      <button type="submit" ?disabled="${this.disabled}" @click="${this._handleClick}">
         ${this.text}
       </button>
     `;

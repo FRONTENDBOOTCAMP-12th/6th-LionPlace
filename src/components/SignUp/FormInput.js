@@ -59,9 +59,7 @@ class FormInput extends LitElement {
           aria-required="true"
           aria-describedby="${this.id}Error"
         />
-        ${this.error
-          ? html`<span id="${this.id}Error" class="error">${this.error}</span>`
-          : ''}
+        ${this.error ? html`<span id="${this.id}Error" class="error">${this.error}</span>` : ''}
       </div>
     `;
   }
