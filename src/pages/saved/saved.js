@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import '@/components/SavedPlaces/placeList.js';
-import '@/components/SavedPlaces/savedPlace.js';
+import '@/components/SavedPlaces/savedPlaces.js';
 import '@/components/SavedPlaces/listIcons.js';
 
 export class SavedPage extends LitElement {
@@ -272,4 +272,4 @@ export class SavedPage extends LitElement {
   }
 }
 
-customElements.define('saved-page', SavedPage);
+customElements.define('saved-element', SavedPage);

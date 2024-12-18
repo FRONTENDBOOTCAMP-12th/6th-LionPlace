@@ -1,4 +1,11 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css } from 'lit';
+import { savedStyles } from './savedPlacesCss';
+
+import './app';
+import './listIcons';
+import './navBar';
+import './placeList';
+import './saved';
 
 export class SavedPlace extends LitElement {
   static properties = {
@@ -53,4 +60,4 @@ export class SavedPlace extends LitElement {
   }
 }
 
-customElements.define("saved-place", SavedPlace);
+customElements.define('saved-element', SavedPlace);
