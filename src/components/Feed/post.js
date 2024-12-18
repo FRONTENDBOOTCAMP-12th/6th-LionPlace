@@ -12,29 +12,29 @@ class PostComponent extends LitElement {
   static styles = css`
     .post-container {
       background: white;
-      margin-bottom: 20px;
-      border-radius: 15px;
+      margin-bottom: 1.25rem;
+      border-radius: 0.9375rem;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      padding: 16px 16px 12px 16px;
+      padding: 1rem 1rem 0.75rem 1rem;
     }
 
     .post-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 0.75rem;
     }
 
     .user-info {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 0.75rem;
     }
 
     .profile-image {
-      width: 40px;
-      height: 40px;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 50%;
       background-color: #f0f0f0;
     }
@@ -46,29 +46,29 @@ class PostComponent extends LitElement {
 
     .username {
       font-weight: 600;
-      font-size: 16px;
+      font-size: 1rem;
       color: #262626;
     }
 
     .date {
-      font-size: 12px;
+      font-size: 0.75rem;
       color: #737373;
     }
 
     .heart-icon {
-      font-size: 24px;
+      font-size: 1.5rem;
       color: #262626;
       cursor: pointer;
     }
 
     .post-image {
       width: 100%;
-      border-radius: 8px;
-      margin-bottom: 12px;
+      border-radius: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
     .post-content {
-      font-size: 14px;
+      font-size: 0.875rem;
       line-height: 1.5;
       color: #262626;
       white-space: pre-wrap;
@@ -76,8 +76,8 @@ class PostComponent extends LitElement {
 
     .more-button {
       color: #737373;
-      font-size: 14px;
-      margin-top: 8px;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
       cursor: pointer;
     }
 

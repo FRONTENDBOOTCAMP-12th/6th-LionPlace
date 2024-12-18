@@ -14,16 +14,14 @@ class NavBar extends LitElement {
       left: 0;
       right: 0;
       background: white;
-      border-top: 1px solid #eee;
-      max-width: 480px;
-      margin: 0 auto;
+      border-top: 0.0625rem solid #eee;
     }
 
     .tab-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 8px 0;
+      padding: 0.5rem 0;
       text-decoration: none;
       color: #666;
       flex: 1;
@@ -34,20 +32,20 @@ class NavBar extends LitElement {
       content: '';
       position: absolute;
       top: 0;
-      left: 10px;
-      right: 10px;
-      height: 3px;
+      left: 0.625rem;
+      right: 0.625rem;
+      height: 0.1875rem;
       background-color: #171f31;
     }
 
     .tab-icon {
-      width: 24px;
-      height: 24px;
-      margin-bottom: 4px;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-bottom: 0.25rem;
     }
 
     .tab-label {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
   `;
 
