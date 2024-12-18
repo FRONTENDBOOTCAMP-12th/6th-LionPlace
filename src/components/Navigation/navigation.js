@@ -15,7 +15,7 @@ class Navigation extends LitElement {
   static styles = [navgationStyles, resetStyle];
 
   // 페이지 이동 함수
-  navigationTo(page) {
+  _navigationTo(page) {
     const pageInfo = {
       feed: '/src/pages/feed',
       visit: '/src/pages/visit',
@@ -30,7 +30,7 @@ class Navigation extends LitElement {
   handleClickBtn(e) {
     const pageData = e.target.dataset.page;
     this.activePage = pageData;
-    this.navigationTo(pageData);
+    this._navigationTo(pageData);
   }
 
   render() {

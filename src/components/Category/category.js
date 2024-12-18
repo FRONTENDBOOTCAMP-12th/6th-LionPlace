@@ -27,21 +27,21 @@ class TabCategory extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
-    await this.fetchData();
+    await this._fetchData();
   }
 
   // get 통신 함수
-  async fetchData() {
+  async _fetchData() {
     try {
       const response = await pb.collection('transactions').getFullList();
-      this.getFetchData(response);
+      this._getFetchData(response);
     } catch (error) {
       console.error('PocketBase 데이터 알 수 없음');
     }
   }
 
   // 설정한 field 필터링 함수
-  getFetchData(items) {
+  _getFetchData(items) {
     const filterData = {
       all: items,
       beauty: items.filter((item) => item.field === 'beauty'),
@@ -58,7 +58,7 @@ class TabCategory extends LitElement {
   }
 
   // 토글 함수
-  handleToggle() {
+  _handleToggle() {
     const content = document.querySelector('.content');
     const currentHeight = content.scrollHeight;
 
@@ -107,7 +107,7 @@ class TabCategory extends LitElement {
       </div>
 
       <div class="btn-container">
-        <button @click="${this.handleToggle}" class="more-btn" type="button">
+        <button @click="${this._handleToggle}" class="more-btn" type="button">
           <span>더보기</span>
           <img
             src="/images/ico_arrow.svg"
