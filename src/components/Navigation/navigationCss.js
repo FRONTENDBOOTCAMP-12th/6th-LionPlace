@@ -27,6 +27,11 @@ export const navgationStyles = css`
           background-position: bottom;
           white-space: nowrap;
 
+          &:focus-visible {
+            outline: 2px solid var(--white);
+            outline-offset: 2px;
+          }
+
           &.is--active {
             background-image: linear-gradient(
               to bottom,
