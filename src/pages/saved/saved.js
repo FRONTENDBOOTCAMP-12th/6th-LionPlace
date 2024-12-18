@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
-import '@/components/SavedPlaces/place-list.js';
-import '@/components/SavedPlaces/saved-place.js';
-import '@/components/SavedPlaces/list-icons.js';
+import '@/components/SavedPlaces/placeList.js';
+import '@/components/SavedPlaces/savedPlace.js';
+import '@/components/SavedPlaces/listIcons.js';
 
 export class SavedPage extends LitElement {
   static properties = {
@@ -18,22 +18,22 @@ export class SavedPage extends LitElement {
       background-color: white;
     }
     .header {
-      padding: 16px;
-      border-bottom: 1px solid #f0f0f0;
+      padding: 1rem;
+      border-bottom: 0.0625rem solid #f0f0f0;
     }
     .title {
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
-      margin-bottom: 16px;
+      margin-bottom: 1rem;
     }
     .tabs {
       display: flex;
-      gap: 16px;
-      padding: 0 16px;
-      border-bottom: 1px solid #f0f0f0;
+      gap: 1rem;
+      padding: 0 1rem;
+      border-bottom: 0.0625rem solid #f0f0f0;
     }
     .tab {
-      padding: 12px 16px;
+      padding: 0.75rem 1rem;
       cursor: pointer;
       color: #8e8e8e;
       position: relative;
@@ -45,38 +45,38 @@ export class SavedPage extends LitElement {
     .tab.active::after {
       content: '';
       position: absolute;
-      bottom: -1px;
+      bottom: -0.0625rem;
       left: 0;
       right: 0;
-      height: 2px;
+      height: 0.125rem;
       background-color: #0068c3;
     }
     .new-list-button {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 16px;
+      gap: 0.5rem;
+      padding: 1rem;
       cursor: pointer;
       color: #666;
     }
     .create-list-form {
-      padding: 16px;
+      padding: 1rem;
       background-color: #f8f9fa;
     }
     .input-field {
-      width: 360px;
-      padding: 8px 12px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      margin-bottom: 12px;
+      width: 22.5rem;
+      padding: 0.5rem 0.75rem;
+      border: 0.0625rem solid #ddd;
+      border-radius: 0.25rem;
+      margin-bottom: 0.75rem;
     }
     .button-group {
       display: flex;
-      gap: 8px;
+      gap: 0.5rem;
     }
     .button {
-      padding: 8px 16px;
-      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
       cursor: pointer;
       border: none;
     }
@@ -90,22 +90,22 @@ export class SavedPage extends LitElement {
     .back-button {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 16px;
+      gap: 0.5rem;
+      padding: 1rem;
       cursor: pointer;
       color: #333;
     }
     .list-detail-header {
-      padding: 16px;
-      border-bottom: 1px solid #f0f0f0;
+      padding: 1rem;
+      border-bottom: 0.0625rem solid #f0f0f0;
     }
     .list-detail-title {
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
-      margin-bottom: 8px;
+      margin-bottom: 0.5rem;
     }
     .list-detail-count {
-      font-size: 14px;
+      font-size: 0.875rem;
       color: #666;
     }
   `;
@@ -189,7 +189,7 @@ export class SavedPage extends LitElement {
         `
       )}
       <div class="new-list-button" @click="${this._toggleCreateForm}">
-        <img src="/src/assets/plus.svg" />
+        <img src="/images/ico_plus.svg" />
         <span>새 리스트 만들기</span>
       </div>
     `;

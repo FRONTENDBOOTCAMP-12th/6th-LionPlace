@@ -1,5 +1,5 @@
-import { LitElement, html, css } from "lit";
-import "./list-icons.js";
+import { LitElement, html, css } from 'lit';
+import './listIcons.js';
 
 export class PlaceList extends LitElement {
   static properties = {
@@ -15,30 +15,30 @@ export class PlaceList extends LitElement {
   static styles = css`
     .list-item {
       display: flex;
-      padding: 16px;
-      border-bottom: 1px solid #f0f0f0;
+      padding: 1rem;
+      border-bottom: 0.0625rem solid #f0f0f0;
       cursor: pointer;
     }
     .icon {
-      width: 40px;
-      height: 40px;
+      width: 2.5rem;
+      height: 2.5rem;
       background-color: #f8f9fa;
-      border-radius: 8px;
+      border-radius: 0.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 12px;
+      margin-right: 0.75rem;
     }
     .content {
       flex: 1;
     }
     .title {
-      font-size: 16px;
+      font-size: 1rem;
       font-weight: 500;
-      margin-bottom: 4px;
+      margin-bottom: 0.25rem;
     }
     .info {
-      font-size: 14px;
+      font-size: 0.875rem;
       color: #8e8e8e;
     }
   `;
@@ -51,7 +51,10 @@ export class PlaceList extends LitElement {
         </div>
         <div class="content">
           <div class="title">${this.title}</div>
-          <div class="info">저장된 장소 ${this.places}개 ${this.isPrivate ? "· 비공개" : `· 팔로워 ${this.followers}명 · 조회 ${this.views}회`}</div>
+          <div class="info">
+            저장된 장소 ${this.places}개
+            ${this.isPrivate ? '· 비공개' : `· 팔로워 ${this.followers}명 · 조회 ${this.views}회`}
+          </div>
         </div>
       </div>
     `;
@@ -59,7 +62,7 @@ export class PlaceList extends LitElement {
 
   _handleClick() {
     this.dispatchEvent(
-      new CustomEvent("list-click", {
+      new CustomEvent('list-click', {
         detail: { id: this.id },
         bubbles: true,
         composed: true,
@@ -68,4 +71,4 @@ export class PlaceList extends LitElement {
   }
 }
 
-customElements.define("place-list", PlaceList);
+customElements.define('place-list', PlaceList);
