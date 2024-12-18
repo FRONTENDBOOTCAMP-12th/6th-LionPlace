@@ -51,7 +51,10 @@
     margin: 0;
     padding: 0;
   }
-  body,
+  body {
+    background-color: var(--background-color);
+    color: var(--color);
+  }
   textarea,
   button,
   img,

@@ -12,7 +12,7 @@ class FormInput extends LitElement {
 
   static styles = css`
     .form-group {
-      width: 100%;
+      width: 30rem;
       margin-bottom: 1rem;
     }
 
