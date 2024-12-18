@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css } from 'lit';
 
 class PostComponent extends LitElement {
   static properties = {
@@ -91,11 +91,11 @@ class PostComponent extends LitElement {
 
   constructor() {
     super();
-    this.profileImage = "";
-    this.username = "";
-    this.date = "";
-    this.postImage = "";
-    this.content = "";
+    this.profileImage = '';
+    this.username = '';
+    this.date = '';
+    this.postImage = '';
+    this.content = '';
   }
 
   render() {
@@ -111,7 +111,7 @@ class PostComponent extends LitElement {
           </div>
           <div class="like-icon">
             <button id="like-button">
-              <img src="/src/assets/like.svg" alt="좋아요" />
+              <img src="/images/ico_like.svg" alt="좋아요" />
             </button>
           </div>
         </div>
@@ -125,4 +125,4 @@ class PostComponent extends LitElement {
   }
 }
 
-customElements.define("post-component", PostComponent);
+customElements.define('post-component', PostComponent);

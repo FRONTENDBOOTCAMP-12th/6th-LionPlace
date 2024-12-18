@@ -18,18 +18,18 @@ export class FeedPage extends LitElement {
     super();
     this.posts = [
       {
-        profileImage: '/src/assets/profile.jpg',
+        profileImage: '/images/ico_profile.jpg',
         username: '멋쟁이사자처럼',
         date: '사자리뷰 2 ・ 3.1.수',
-        postImage: '/src/assets/pizza.jpg',
+        postImage: '/images/pizza.jpg',
         content:
           '주말엔 매일 줄 서 있어서 먹을 수가 없었는데 평일에 다행히 갈 수 있어서 너무 좋았어요! 좀 안기다리고 먹었는데 와 너무 맛있었습니다!! 괜히 또간집에서 나온 곳이 아니구나...',
       },
       {
-        profileImage: '/src/assets/profile.jpg',
+        profileImage: '/images/ico_profile.jpg',
         username: '멋쟁이사자처럼',
         date: '사자리뷰 2 ・ 3.1.수',
-        postImage: '/src/assets/pizza.jpg',
+        postImage: '/images/pizza.jpg',
         content:
           '주말엔 매일 줄 서 있어서 먹을 수가 없었는데 평일에 다행히 갈 수 있어서 너무 좋았어요! 좀 안기다리고 먹었는데 와 너무 맛있었습니다!! 괜히 또간집에서 나온 곳이 아니구나...',
       },

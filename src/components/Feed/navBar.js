@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css } from 'lit';
 
 class NavBar extends LitElement {
   static properties = {
@@ -31,7 +31,7 @@ class NavBar extends LitElement {
     }
 
     .tab-item.active::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 10px;
@@ -53,26 +53,42 @@ class NavBar extends LitElement {
 
   constructor() {
     super();
-    this.activePage = "map"; // 기본값 설정
+    this.activePage = 'map'; // 기본값 설정
   }
 
   render() {
     return html`
       <nav class="tab-menu">
-        <a href="#" class="tab-item ${this.activePage === "map" ? "active" : ""}" @click="${(e) => this.handleClick(e, "map")}">
-          <img src="/src/assets/map.svg" alt="지도" class="tab-icon" />
+        <a
+          href="#"
+          class="tab-item ${this.activePage === 'map' ? 'active' : ''}"
+          @click="${(e) => this.handleClick(e, 'map')}"
+        >
+          <img src="/images/ico_map.svg" alt="지도" class="tab-icon" />
           <span class="tab-label">지도</span>
         </a>
-        <a href="#" class="tab-item ${this.activePage === "saved" ? "active" : ""}" @click="${(e) => this.handleClick(e, "saved")}">
-          <img src="/src/assets/save.svg" alt="저장" class="tab-icon" />
+        <a
+          href="#"
+          class="tab-item ${this.activePage === 'saved' ? 'active' : ''}"
+          @click="${(e) => this.handleClick(e, 'saved')}"
+        >
+          <img src="/images/ico_save.svg" alt="저장" class="tab-icon" />
           <span class="tab-label">저장</span>
         </a>
-        <a href="#" class="tab-item ${this.activePage === "feed" ? "active" : ""}" @click="${(e) => this.handleClick(e, "feed")}">
-          <img src="/src/assets/feed.svg" alt="피드" class="tab-icon" />
+        <a
+          href="#"
+          class="tab-item ${this.activePage === 'feed' ? 'active' : ''}"
+          @click="${(e) => this.handleClick(e, 'feed')}"
+        >
+          <img src="/images/ico_feed.svg" alt="피드" class="tab-icon" />
           <span class="tab-label">피드</span>
         </a>
-        <a href="#" class="tab-item ${this.activePage === "my" ? "active" : ""}" @click="${(e) => this.handleClick(e, "my")}">
-          <img src="/src/assets/my.svg" alt="MY" class="tab-icon" />
+        <a
+          href="#"
+          class="tab-item ${this.activePage === 'my' ? 'active' : ''}"
+          @click="${(e) => this.handleClick(e, 'my')}"
+        >
+          <img src="/images/ico_my.svg" alt="MY" class="tab-icon" />
           <span class="tab-label">MY</span>
         </a>
       </nav>
@@ -83,7 +99,7 @@ class NavBar extends LitElement {
     e.preventDefault();
     this.activePage = tab;
     this.dispatchEvent(
-      new CustomEvent("nav-change", {
+      new CustomEvent('nav-change', {
         detail: tab,
         bubbles: true,
         composed: true,
@@ -92,4 +108,4 @@ class NavBar extends LitElement {
   }
 }
 
-customElements.define("nav-bar", NavBar);
+customElements.define('nav-bar', NavBar);

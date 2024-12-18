@@ -1,7 +1,7 @@
 import '@/components/Button/Button';
 import { LitElement, html, css } from 'lit';
-import '@/components/Feed/nav-bar.js';
-import '@/pages/feed-page/feed-page.js';
+import '@/components/Feed/navBar.js';
+import '@/pages/feed/feed.js';
 
 class App extends LitElement {
   static properties = {
