@@ -1,4 +1,4 @@
-import { css, html, LitElement } from 'lit';
+import { html, LitElement } from 'lit';
 import { navgationStyles } from './navigationCss';
 import resetStyle from '@/styles/reset';
 
@@ -9,20 +9,12 @@ class Navigation extends LitElement {
 
   constructor() {
     super();
-    this.activePage = 'feed';
+    this.activePage = 'feed'; // 초기 acitve 페이지 설정
   }
 
-  static styles = [
-    navgationStyles,
-    resetStyle,
-    css`
-      &.is--active {
-        background-image: linear-gradient(to bottom, var(--lightblue--300), var(--lightblue--300));
-        opacity: 1;
-      }
-    `,
-  ];
+  static styles = [navgationStyles, resetStyle];
 
+  // 페이지 이동 함수
   navigationTo(page) {
     const pageInfo = {
       feed: '/src/pages/feed',
@@ -31,9 +23,10 @@ class Navigation extends LitElement {
       reservation: '/src/pages/reservation',
     };
 
-    window.location.href = pageInfo[page];
+    window.location.href = pageInfo[page]; // 객체 값에 접근
   }
 
+  // 클릭 이벤트 함수
   handleClickBtn(e) {
     const pageData = e.target.dataset.page;
     this.activePage = pageData;
