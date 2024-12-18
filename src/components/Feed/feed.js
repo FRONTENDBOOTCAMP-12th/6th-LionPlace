@@ -1,11 +1,13 @@
 import { LitElement, html, css } from 'lit';
+import '@/components/Feed/navBar.js';
 import '@/components/Feed/post.js';
 
-export class FeedPage extends LitElement {
+export class Feed extends LitElement {
   static styles = css`
     :host {
       display: block;
       padding: 1rem;
+      padding-bottom: 4rem;
       background-color: white;
     }
   `;
@@ -47,8 +49,9 @@ export class FeedPage extends LitElement {
           `
         )}
       </div>
+      <nav-bar></nav-bar>
     `;
   }
 }
 
-customElements.define('feed-page', FeedPage);
+customElements.define('feed-page', Feed);
