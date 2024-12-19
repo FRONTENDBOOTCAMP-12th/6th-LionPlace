@@ -122,7 +122,7 @@ class SignUpForm extends LitElement {
       case 'id':
         this.errors.id =
           value.length < 3 || !/^[a-zA-Z0-9]+$/.test(value)
-            ? '아이디는 영문 3자 이상이어야 합니다.'
+            ? '아이디는 영문 3자 이상이어야 하며, 특수문자를 포함할 수 없습니다.'
             : '';
         break;
       case 'email':
