@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import resetStyles from '@/styles/reset.js';
 
 class NavBar extends LitElement {
   static properties = {
@@ -8,6 +9,7 @@ class NavBar extends LitElement {
   static styles = css`
     .tab-menu {
       position: fixed;
+      z-index: 100;
       bottom: 0;
       left: 0;
       right: 0;
