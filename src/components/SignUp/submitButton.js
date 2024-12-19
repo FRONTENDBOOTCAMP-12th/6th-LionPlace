@@ -11,9 +11,9 @@ class SubmitButton extends LitElement {
     resetStyles,
     css`
       button {
-        box-sizing: border-box;
         width: 100%;
-        margin-top: 4rem;
+        height: 5vh;
+        margin-top: 3rem;
         padding: 1rem;
         background-color: white;
         border: none;

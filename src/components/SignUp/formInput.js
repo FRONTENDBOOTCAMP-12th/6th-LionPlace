@@ -15,7 +15,7 @@ class FormInput extends LitElement {
     resetStyles,
     css`
       .form-group {
-        width: 30rem;
+        max-width: 30rem;
         margin-bottom: 1rem;
       }
 
@@ -57,7 +57,7 @@ class FormInput extends LitElement {
         <input
           type="${this.type}"
           id="${this.id}"
-          placeholder="${this.placeholder}"
+          placeholder="${this.placeholder || ''}"
           .value="${this.value}"
           @input="${this._handleInput}"
           aria-required="true"
