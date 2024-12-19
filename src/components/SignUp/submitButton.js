@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import resetStyles from '@/styles/reset.js';
 
 class SubmitButton extends LitElement {
   static properties = {
@@ -6,27 +7,30 @@ class SubmitButton extends LitElement {
     text: { type: String },
   };
 
-  static styles = css`
-    button {
-      box-sizing: border-box;
-      width: 100%;
-      margin-top: 4rem;
-      padding: 1rem;
-      background-color: white;
-      border: none;
-      border-radius: 6px;
-      color: #1a1f2e;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  static styles = [
+    resetStyles,
+    css`
+      button {
+        box-sizing: border-box;
+        width: 100%;
+        margin-top: 4rem;
+        padding: 1rem;
+        background-color: white;
+        border: none;
+        border-radius: 6px;
+        color: #1a1f2e;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+      }
 
-    button[disabled] {
-      background-color: #f0f0f0;
-      color: gray;
-      cursor: not-allowed;
-    }
-  `;
+      button[disabled] {
+        background-color: #f0f0f0;
+        color: gray;
+        cursor: not-allowed;
+      }
+    `,
+  ];
 
   render() {
     return html`

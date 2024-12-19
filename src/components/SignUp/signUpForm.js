@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import resetStyles from '@/styles/reset.js';
 import pb from '@/api/pocketbase';
 import './formInput';
 import './submitButton';
@@ -28,20 +29,23 @@ class SignUpForm extends LitElement {
     this.isSubmitEnabled = false;
   }
 
-  static styles = css`
-    .container {
-      max-width: 30rem;
-      margin: 0 auto;
-      padding: 4rem;
-    }
+  static styles = [
+    resetStyles,
+    css`
+      .container {
+        max-width: 30rem;
+        margin: 0 auto;
+        padding: 4rem;
+      }
 
-    h1 {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      color: white;
-    }
-  `;
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        color: white;
+      }
+    `,
+  ];
 
   render() {
     return html`
