@@ -1,2 +1,3 @@
-import '@/components/Time/';
-import '@/layout/Footer/footer.js';
+
+import '@/components/Time/time';
+import '@/layout/Footer/footer';
