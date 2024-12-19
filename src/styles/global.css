@@ -54,6 +54,7 @@
   body {
     background-color: var(--background-color);
     color: var(--color);
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
   }
   textarea,
   button,
@@ -95,6 +96,19 @@
     outline: none;
     background-color: transparent;
     padding: 0;
+  }
+
+  input,
+  button,
+  select,
+  textara,
+  optgrop,
+  option,
+  fieldst,
+  legend,
+  progres,
+  meter {
+    font-family: inherit;
   }
 
   /* Normalize */

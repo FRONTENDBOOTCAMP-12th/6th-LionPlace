@@ -5,7 +5,6 @@ export const profileAllStyles = css`
     position: relative;
     background-color: var(--primary);
     padding: 2.25rem 1.375rem 1.375rem 1.375rem;
-    font-family: 'Pretendard Variable', Pretendard, sans-serif;
   }
 
   .profile-container {
@@ -168,8 +167,8 @@ export const profileAllStyles = css`
 
       & .coupon-text {
         position: absolute;
-        top: 0.72rem;
-        right: 1.25rem;
+        inset-block-start: 0.72rem;
+        inset-inline-end: 1.25rem;
         font-size: 0.75019rem;
         line-height: 1.6;
         border: 0.0625rem solid var(--white);
@@ -182,11 +181,11 @@ export const profileAllStyles = css`
       & .coupon-count {
         display: flex;
         position: absolute;
-        top: 0.53rem;
-        right: 1rem;
+        inset-block-start: 0.53rem;
+        inset-inline-end: 1rem;
         justify-content: center;
         align-items: center;
-        width: 0.75rem;
+        inline-size: 0.75rem;
         aspect-ratio: 1 / 1;
         font-size: 0.75019rem;
         padding: 0.15rem;

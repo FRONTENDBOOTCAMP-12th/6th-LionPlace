@@ -21,7 +21,6 @@ export const categoryStyles = css`
           background-color: transparent;
           border-radius: 0.75rem;
           color: var(--contentPrimary);
-          font-family: 'Pretendard Variable', Pretendard, sans-serif;
           font-size: 0.75019rem;
           line-height: 1;
           white-space: nowrap;
@@ -68,7 +67,6 @@ export const categoryStyles = css`
 
   .summary {
     padding: 1rem 2.25rem;
-    font-family: 'Pretendard Variable', Pretendard, sans-serif;
 
     & p {
       color: var(--contentPrimary);
@@ -86,7 +84,6 @@ export const categoryStyles = css`
   .data-container {
     display: flex;
     flex-flow: column wrap;
-    font-family: 'Pretendard Variable', Pretendard, sans-serif;
 
     .data-item {
       display: flex;
@@ -168,7 +165,7 @@ export const categoryStyles = css`
 
       & span {
         color: var(--contentPrimary);
-        font-family: 'Pretendard Variable', Pretendard, sans-serif;
+
         font-size: 0.75019rem;
         line-height: 1.6;
       }
@@ -210,7 +207,7 @@ export const categoryStyles = css`
           color: var(--contentSecondary);
           padding: 0.25rem 0.5rem;
           text-align: center;
-          font-family: 'Pretendard Variable', Pretendard, sans-serif;
+
           font-size: 0.75019rem;
           font-weight: 600;
           line-height: 1.5;
