@@ -60,7 +60,6 @@ class LoginForm extends LitElement {
         alert('아이디와 비밀번호를 입력해주세요.');
         return;
       }
-      console.log('ID:', id, 'Password:', pw);
       await pb.collection('users').authWithPassword(id, pw);
 
       const authData = localStorage.getItem('pocketbase_auth');
