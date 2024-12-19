@@ -50,6 +50,16 @@ class FormInput extends LitElement {
     `,
   ];
 
+  _handleInput(e) {
+    this.dispatchEvent(
+      new CustomEvent('input-change', {
+        detail: { id: this.id, value: e.target.value },
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
+
   render() {
     return html`
       <div class="form-group">
@@ -66,16 +76,6 @@ class FormInput extends LitElement {
         ${this.error ? html`<span id="${this.id}Error" class="error">${this.error}</span>` : ''}
       </div>
     `;
-  }
-
-  _handleInput(e) {
-    this.dispatchEvent(
-      new CustomEvent('input-change', {
-        detail: { id: this.id, value: e.target.value },
-        bubbles: true,
-        composed: true,
-      })
-    );
   }
 }
 

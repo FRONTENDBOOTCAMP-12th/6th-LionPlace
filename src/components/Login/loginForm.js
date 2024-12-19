@@ -1,10 +1,10 @@
 import { LitElement, html, css } from 'lit';
 import resetStyles from '@/styles/reset.js';
 import pb from '@/api/pocketbase';
-import '../SignUp/logo';
-import '../SignUp/formInput';
-import '../SignUp/submitButton';
-import './actionButton';
+import '../SignUp/logo.js';
+import '../SignUp/formInput.js';
+import '../SignUp/submitButton.js';
+import './actionButton.js';
 
 class LoginForm extends LitElement {
   static properties = {
@@ -42,41 +42,13 @@ class LoginForm extends LitElement {
     `,
   ];
 
-  _goToSignUp() {
-    window.location.href = '/src/components/SignUp/index.html';
+  firstUpdated() {
+    document.documentElement.style.setProperty('--background-color', '#171f31');
+    document.documentElement.style.setProperty('--color', '#fff');
   }
 
-  render() {
-    return html`
-      <div class="container">
-        <app-logo></app-logo>
-
-        <h1>로그인</h1>
-
-        <form-input
-          label="아이디"
-          type="text"
-          id="id"
-          placeholder="아이디를 입력해주세요"
-          .value="${this.idValue}"
-          @input-change="${this._handleInputChange}"
-        ></form-input>
-        <form-input
-          label="비밀번호"
-          type="password"
-          id="password"
-          placeholder="비밀번호를 입력해주세요"
-          .value="${this.pwValue}"
-          @input-change="${this._handleInputChange}"
-        ></form-input>
-
-        <a class="find" href="/findId">아이디 찾기</a>
-        <a class="find" href="/findPw">비밀번호 찾기</a>
-
-        <submit-button @click=${this._handleLogin} text="로그인"></submit-button>
-        <action-button @click=${this._goToSignUp} text="회원가입"></action-button>
-      </div>
-    `;
+  _goToSignUp() {
+    window.location.href = '/src/components/SignUp/index.html';
   }
 
   async _fetchData() {
@@ -121,9 +93,37 @@ class LoginForm extends LitElement {
     this._fetchData();
   }
 
-  firstUpdated() {
-    document.documentElement.style.setProperty('--background-color', '#171f31');
-    document.documentElement.style.setProperty('--color', '#fff');
+  render() {
+    return html`
+      <div class="container">
+        <app-logo></app-logo>
+
+        <h1>로그인</h1>
+
+        <form-input
+          label="아이디"
+          type="text"
+          id="id"
+          placeholder="아이디를 입력해주세요"
+          .value="${this.idValue}"
+          @input-change="${this._handleInputChange}"
+        ></form-input>
+        <form-input
+          label="비밀번호"
+          type="password"
+          id="password"
+          placeholder="비밀번호를 입력해주세요"
+          .value="${this.pwValue}"
+          @input-change="${this._handleInputChange}"
+        ></form-input>
+
+        <a class="find" href="/findId">아이디 찾기</a>
+        <a class="find" href="/findPw">비밀번호 찾기</a>
+
+        <submit-button @click=${this._handleLogin} text="로그인"></submit-button>
+        <action-button @click=${this._goToSignUp} text="회원가입"></action-button>
+      </div>
+    `;
   }
 }
 
