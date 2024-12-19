@@ -6,9 +6,7 @@ class Button extends LitElement {
   static styles = [resetStyles, buttonStyles];
 
   render() {
-    return html`
-      <button type="button" class="btn base black ico1 rounded">button</button>
-    `;
+    return html` <button type="button" class="btn base black ico1 rounded">button</button> `;
   }
 }
 
