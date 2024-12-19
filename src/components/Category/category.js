@@ -34,14 +34,14 @@ class TabCategory extends LitElement {
   async _fetchData() {
     try {
       const response = await pb.collection('transactions').getFullList();
-      this._getFetchData(response);
+      this.getFetchData(response);
     } catch (error) {
       console.error('PocketBase 데이터 알 수 없음');
     }
   }
 
   // 설정한 field 필터링 함수
-  _getFetchData(items) {
+  getFetchData(items) {
     const filterData = {
       all: items,
       beauty: items.filter((item) => item.field === 'beauty'),
@@ -59,11 +59,9 @@ class TabCategory extends LitElement {
 
   // 토글 함수
   _handleToggle() {
-    const content = document.querySelector('.content');
+    const content = this.shadowRoot.querySelector('.content');
     const currentHeight = content.scrollHeight;
-
-    this.isOpen = !this.isOpen; // true 변경
-
+    this.isOpen = !this.isOpen; // 상태 토글
     if (this.isOpen) {
       content.style.height = `${currentHeight}px`;
     } else {
@@ -87,10 +85,10 @@ class TabCategory extends LitElement {
         </p>
       </div>
 
-      <div class="data-container">
+      <ul class="data-container">
         ${data.map(
           (item, index) => html`
-            <div class="data-item">
+            <li class="data-item">
               <div class="data-item__wrap">
                 <div class="data-item__inner">
                   <span class="rank">${index + 1}</span>
@@ -101,10 +99,10 @@ class TabCategory extends LitElement {
               <div class="progress-bar">
                 <div class="progress-fill" style="width:${(item.count / maxCount) * 100}%"></div>
               </div>
-            </div>
+            </li>
           `
         )}
-      </div>
+      </ul>
 
       <div class="btn-container">
         <button @click="${this._handleToggle}" class="more-btn" type="button">

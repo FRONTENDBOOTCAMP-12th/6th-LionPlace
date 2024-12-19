@@ -1,153 +1,154 @@
 @layer Reset, Variable, Components;
 
 @layer Reset {
-  /* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
+  /* Reset */
   html,
   body,
-  div,
-  span,
-  applet,
-  object,
-  iframe,
   h1,
   h2,
   h3,
   h4,
   h5,
   h6,
+  div,
   p,
   blockquote,
   pre,
-  a,
-  abbr,
-  acronym,
-  address,
-  big,
-  cite,
   code,
-  del,
-  dfn,
-  em,
-  img,
-  ins,
-  kbd,
-  q,
-  s,
-  samp,
-  small,
-  strike,
-  strong,
-  sub,
-  sup,
-  tt,
-  var,
-  b,
-  u,
-  i,
-  center,
+  address,
+  ul,
+  ol,
+  li,
+  nav,
+  section,
+  article,
+  header,
+  footer,
+  main,
+  aside,
   dl,
   dt,
   dd,
-  ol,
-  ul,
-  li,
-  fieldset,
-  form,
-  label,
-  legend,
   table,
-  caption,
+  thead,
   tbody,
   tfoot,
-  thead,
-  tr,
+  label,
+  caption,
   th,
   td,
-  article,
-  aside,
-  canvas,
-  details,
-  embed,
+  form,
+  fieldset,
+  legend,
+  hr,
+  input,
+  button,
+  textarea,
+  object,
   figure,
   figcaption,
-  footer,
-  header,
-  hgroup,
-  menu,
-  nav,
-  output,
-  ruby,
-  section,
-  summary,
-  time,
-  mark,
-  audio,
-  video {
+  dialog {
     margin: 0;
     padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-  }
-  /* HTML5 display-role reset for older browsers */
-  article,
-  aside,
-  details,
-  figcaption,
-  figure,
-  footer,
-  header,
-  hgroup,
-  menu,
-  nav,
-  section {
-    display: block;
   }
   body {
-    line-height: 1;
+    background-color: var(--background-color);
+    color: var(--color);
   }
+  textarea,
+  button,
+  img,
+  fieldset,
+  dialog {
+    border: none;
+  }
+  textarea {
+    resize: none;
+  }
+  ul,
+  ol,
+  li {
+    list-style: none;
+  }
+  table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  address,
+  cite,
+  code,
+  em,
+  i {
+    font-style: normal;
+    font-weight: normal;
+  }
+  u,
+  ins,
   a {
     text-decoration: none;
     color: inherit;
   }
-  ol,
-  ul {
-    list-style: none;
-  }
-  blockquote,
-  q {
-    quotes: none;
-  }
-  blockquote:before,
-  blockquote:after,
-  q:before,
-  q:after {
-    content: '';
-    content: none;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-
   button {
     cursor: pointer;
     outline: none;
-    border: none;
+    background-color: transparent;
+    padding: 0;
   }
 
-  html {
-    /* font-size: 62.5%; */
-    -webkit-text-size-adjust: none;
+  /* Normalize */
+  input[type='number'],
+  input[type='text'],
+  input[type='password'],
+  input[type='url'],
+  input[type='email'],
+  input[type='tel'],
+  input[type='date'],
+  textarea {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: none;
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+    appearance: textfield;
   }
 
-  body {
-    /* font-size: 1rem; */
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+
+  input[type='date'] {
+    position: relative;
+  }
+  input[type='date']::-webkit-clear-button,
+  input[type='date']::-webkit-inner-spin-button {
+    display: none;
+  }
+  input[type='date']::-webkit-calendar-picker-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: transparent;
+    color: transparent;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+  input[type='date']::before {
+    content: attr(data-placeholder);
+    width: 100%;
+  }
+  input[type='date']:valid::before {
+    display: none;
   }
 
   caption,
@@ -200,8 +201,8 @@
     --lightblue--800: #2d3e63;
     --lightblue--900: #171f31;
     --error: #f03f40;
-    --font--pretendard: font-family: 'Pretendard Variable', Pretendard,
-      sans-serif;
+    --background-color: #fff;
+    --color: #000;
   }
 }
 
@@ -220,21 +221,11 @@
         inline-size: 6.25rem;
         block-size: 1.875rem;
       }
-      &.lg {
-        /* 여기에 입력 */
-      }
-      &.sm {
-        /* 여기에 입력 */
-      }
-      /* 색상 정의 */
+
       &.skyblue {
         /* 여기에 입력 */
         background-color: var(--blue--500);
         color: var(--white);
-      }
-      /* 아이콘 정의 */
-      &.ico1 {
-        /* 여기에 입력 */
       }
     }
   }
