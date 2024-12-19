@@ -6,7 +6,6 @@ export const timeStyles = css`
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     padding: 0.44rem 1.12rem;
-    font-family: 'Pretendard Variable', Pretendard, sans-serif;
 
     & .time-wrap__left {
       display: flex;

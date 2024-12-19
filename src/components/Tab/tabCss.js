@@ -2,7 +2,6 @@ import { css } from 'lit';
 
 export const tabStyles = css`
   .tabs {
-    font-family: 'Pretendard Variable', Pretendard, sans-serif;
     & nav {
       display: flex;
       justify-content: center;
@@ -34,7 +33,6 @@ export const tabStyles = css`
         position: relative;
         margin-right: -1.12rem;
         z-index: 1;
-        font-family: 'Pretendard Variable', Pretendard, sans-serif;
         &:focus-visible {
           outline: 1px solid var(--blue--800);
           outline-offset: 1px;

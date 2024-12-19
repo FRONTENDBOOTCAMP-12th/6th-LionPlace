@@ -94,6 +94,19 @@ export default css`
     padding: 0;
   }
 
+  input,
+  button,
+  select,
+  textara,
+  optgrop,
+  option,
+  fieldst,
+  legend,
+  progres,
+  meter {
+    font-family: inherit;
+  }
+
   /* Normalize */
   input[type='number'],
   input[type='text'],
