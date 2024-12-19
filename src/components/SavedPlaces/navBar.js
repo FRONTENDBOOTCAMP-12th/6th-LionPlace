@@ -1,13 +1,15 @@
 import { LitElement, html, css } from 'lit';
+import resetStyles from '@/styles/reset.js';
 
 class NavBar extends LitElement {
   static properties = {
-    activePage: { type: String }, // 활성 페이지를 추적하기 위한 속성 추가
+    activePage: { type: String },
   };
 
   static styles = css`
     .tab-menu {
       position: fixed;
+      z-index: 100;
       bottom: 0;
       left: 0;
       right: 0;
@@ -56,6 +58,7 @@ class NavBar extends LitElement {
 
     .tab-label {
       font-size: 0.75rem;
+      font-family: 'Pretendard Variable', Pretendard, sans-serif;
     }
   `;
 
