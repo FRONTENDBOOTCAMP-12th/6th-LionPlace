@@ -5,11 +5,19 @@ import resetStyle from '@/styles/reset';
 class Navigation extends LitElement {
   static properties = {
     activePage: { type: String },
+    loading: { type: Boolean },
   };
 
   constructor() {
     super();
-    this.activePage = 'feed'; // 초기 acitve 페이지 설정
+    this.loading = false;
+    const path = window.location.pathname;
+
+    if (path.includes('/feed/')) this.activePage = 'feed';
+    else if (path.includes('/visit/')) this.activePage = 'visit';
+    else if (path.includes('/review/')) this.activePage = 'review';
+    else if (path.includes('/reserved/')) this.activePage = 'reserved';
+    else this.activePage = 'feed'; // 기본값
   }
 
   static styles = [navgationStyles, resetStyle];
@@ -17,20 +25,32 @@ class Navigation extends LitElement {
   // 페이지 이동 함수
   _navigationTo(page) {
     const pageInfo = {
-      feed: '/src/pages/feed',
-      visit: '/src/pages/visit',
-      review: '/src/pages/review',
-      reservation: '/src/pages/reservation',
+      feed: '/src/pages/feed/',
+      visit: '/src/pages/visit/',
+      review: '/src/pages/review/',
+      reserved: '/src/pages/reserved/',
     };
 
-    window.location.href = pageInfo[page]; // 객체 값에 접근
+    this.loading = true;
+    this.requestUpdate();
+
+    setTimeout(() => (window.location.href = pageInfo[page]), 1000);
   }
 
   // 클릭 이벤트 함수
   handleClickBtn(e) {
     const pageData = e.target.dataset.page;
+    if (pageData === this.activePage) return;
     this.activePage = pageData;
     this._navigationTo(pageData);
+  }
+
+  _renderLoading() {
+    return html`
+      <div class="loading">
+        <img src="/images/loading_spinner.gif" alt="로딩중" />
+      </div>
+    `;
   }
 
   render() {
@@ -70,15 +90,16 @@ class Navigation extends LitElement {
           <li>
             <button
               @click="${this.handleClickBtn}"
-              class="${this.activePage === 'reservation' ? 'is--active' : ''}"
+              class="${this.activePage === 'reserved' ? 'is--active' : ''}"
               type="button"
-              data-page="reservation"
+              data-page="reserved"
             >
               예약•주문
             </button>
           </li>
         </ul>
       </div>
+      ${this.loading ? this._renderLoading() : ''}
     `;
   }
 }

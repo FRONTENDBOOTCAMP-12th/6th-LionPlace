@@ -1,4 +1,5 @@
 import '@/components/Navigation/navigation';
+import '@/components/ReservedPage/reservedPage';
 
 // const activeBtn = document.querySelectorAll('button');
 

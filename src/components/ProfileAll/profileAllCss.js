@@ -66,7 +66,7 @@ export const profileAllStyles = css`
 
           & > ul {
             display: flex;
-            padding: 0.25rem 0.38rem;
+            padding: 0.25rem 0;
             width: 100%;
 
             & :not(li ~ li) {
@@ -78,23 +78,16 @@ export const profileAllStyles = css`
 
             & > li {
               display: flex;
+              gap: 0.5rem;
               width: 100%;
 
               &::before {
                 content: '';
                 display: inline-block;
-                margin-inline: 0.5rem;
                 width: 0.0625rem;
                 height: 1.75rem;
                 margin-block: 0.28rem;
                 background-color: #ddd;
-              }
-
-              &:nth-of-type(2) {
-                &::before {
-                  margin-inline: 0;
-                  margin-inline-end: 0.5rem;
-                }
               }
 
               & > a {
