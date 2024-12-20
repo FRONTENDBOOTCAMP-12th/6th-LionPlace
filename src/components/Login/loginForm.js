@@ -71,7 +71,7 @@ class LoginForm extends LitElement {
       );
 
       alert('로그인 성공');
-      location.href = './index.html';
+      location.href = '/src/pages/reserved/index.html';
     } catch (error) {
       alert('로그인 실패 ' + error.message);
     }
@@ -95,7 +95,7 @@ class LoginForm extends LitElement {
   render() {
     return html`
       <div class="container">
-        <app-logo></app-logo>
+        <app-logo link="./index.html"></app-logo>
 
         <h1>로그인</h1>
 
