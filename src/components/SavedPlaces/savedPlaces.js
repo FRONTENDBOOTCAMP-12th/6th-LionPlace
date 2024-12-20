@@ -47,6 +47,10 @@ export class SavedPlaces extends LitElement {
       font-size: 1rem;
       box-sizing: border-box;
     }
+    .input-field:focus {
+      border: 0.125rem solid #171f31;
+      outline: none;
+    }
     .button-group {
       display: flex;
       gap: 0.5rem;
@@ -157,6 +161,28 @@ export class SavedPlaces extends LitElement {
         @new-group="${this._handleNewGroup}"
         @group-delete="${this._handleGroupDelete}"
       ></group-list>
+    `;
+  }
+
+  _renderPlaces() {
+    return html`
+      <div>
+        <div class="back-button" @click="${this._handleBack}"><span>&larr;</span> 뒤로가기</div>
+        ${this.places.map(
+          (place) => html`
+            <div class="place-item">
+              <div class="place-image" style="background-image: url(${place.imageUrl})"></div>
+              <div class="place-content">
+                <div class="place-name">${place.name}</div>
+                <div class="place-info">
+                  ${place.address}<br />
+                  ${place.category}
+                </div>
+              </div>
+            </div>
+          `
+        )}
+      </div>
     `;
   }
 

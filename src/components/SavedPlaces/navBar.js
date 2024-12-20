@@ -83,7 +83,7 @@ class NavBar extends LitElement {
           </li>
           <li class="tab-list-item">
             <a
-              href="#"
+              href="/src/components/SavedPlaces/index.html"
               class="tab-item ${this.activePage === 'saved' ? 'active' : ''}"
               @click="${(e) => this.handleClick(e, 'saved')}"
             >
@@ -93,7 +93,7 @@ class NavBar extends LitElement {
           </li>
           <li class="tab-list-item">
             <a
-              href="#"
+              href="/src/components/Feed/index.html"
               class="tab-item ${this.activePage === 'feed' ? 'active' : ''}"
               @click="${(e) => this.handleClick(e, 'feed')}"
             >
