@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import resetStyles from '@/styles/reset.js';
 
 class PostComponent extends LitElement {
   static properties = {
@@ -7,6 +8,8 @@ class PostComponent extends LitElement {
     date: { type: String },
     postImage: { type: String },
     content: { type: String },
+    liked: { type: Boolean }, // 좋아요 상태를 나타내는 속성
+    expanded: { type: Boolean }, // 게시글 내용 확장 상태
   };
 
   static styles = css`
@@ -48,6 +51,7 @@ class PostComponent extends LitElement {
       font-weight: 600;
       font-size: 1rem;
       color: #262626;
+      margin-bottom: 0.1875rem;
     }
 
     .date {
@@ -55,10 +59,11 @@ class PostComponent extends LitElement {
       color: #737373;
     }
 
-    .heart-icon {
-      font-size: 1.5rem;
-      color: #262626;
+    .like-icon img {
+      width: 1.5rem;
+      height: 1.5rem;
       cursor: pointer;
+      transition: transform 0.2s ease-in-out;
     }
 
     .post-image {
@@ -72,6 +77,17 @@ class PostComponent extends LitElement {
       line-height: 1.5;
       color: #262626;
       white-space: pre-wrap;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2; /* 기본 2줄 표시 */
+      max-height: 3rem;
+      transition: max-height 0.3s ease;
+    }
+
+    .post-content.expanded {
+      -webkit-line-clamp: unset; /* 줄 제한 해제 */
+      max-height: none;
     }
 
     .more-button {
@@ -79,6 +95,7 @@ class PostComponent extends LitElement {
       font-size: 0.875rem;
       margin-top: 0.5rem;
       cursor: pointer;
+      display: inline-block;
     }
 
     button {
@@ -96,6 +113,16 @@ class PostComponent extends LitElement {
     this.date = '';
     this.postImage = '';
     this.content = '';
+    this.liked = false; // 초기 좋아요 상태
+    this.expanded = false; // 게시글 확장 상태
+  }
+
+  toggleLike() {
+    this.liked = !this.liked; // 좋아요 상태를 토글
+  }
+
+  toggleExpand() {
+    this.expanded = !this.expanded; // 게시글 확장 상태를 토글
   }
 
   render() {
@@ -110,16 +137,26 @@ class PostComponent extends LitElement {
             </div>
           </div>
           <div class="like-icon">
-            <button id="like-button">
-              <img src="/images/ico_like.svg" alt="좋아요" />
+            <button id="like-button" @click="${this.toggleLike}">
+              <img
+                src="${this.liked ? '/images/ico_like_filled.svg' : '/images/ico_like.svg'}"
+                alt="좋아요"
+                class="${this.liked ? 'liked' : ''}"
+              />
             </button>
           </div>
         </div>
 
         <img class="post-image" src="${this.postImage}" alt="게시글 이미지" />
 
-        <div class="post-content">${this.content}</div>
-        <div class="more-button">더보기</div>
+        <div class="post-content ${this.expanded ? 'expanded' : ''}">${this.content}</div>
+        ${this.content.length > 100
+          ? html`
+              <div class="more-button" @click="${this.toggleExpand}">
+                ${this.expanded ? '접기' : '더보기'}
+              </div>
+            `
+          : ''}
       </div>
     `;
   }

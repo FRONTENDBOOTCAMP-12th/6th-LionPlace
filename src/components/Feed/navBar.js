@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import resetStyles from '@/styles/reset.js';
 
 class NavBar extends LitElement {
   static properties = {
@@ -8,6 +9,7 @@ class NavBar extends LitElement {
   static styles = css`
     .tab-menu {
       position: fixed;
+      z-index: 100;
       bottom: 0;
       left: 0;
       right: 0;
@@ -80,7 +82,7 @@ class NavBar extends LitElement {
           </li>
           <li class="tab-list-item">
             <a
-              href="#"
+              href="/src/components/SavedPlaces/index.html"
               class="tab-item ${this.activePage === 'saved' ? 'active' : ''}"
               @click="${(e) => this.handleClick(e, 'saved')}"
             >
@@ -90,7 +92,7 @@ class NavBar extends LitElement {
           </li>
           <li class="tab-list-item">
             <a
-              href="#"
+              href="/src/components/Feed/index.html"
               class="tab-item ${this.activePage === 'feed' ? 'active' : ''}"
               @click="${(e) => this.handleClick(e, 'feed')}"
             >
