@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss';
-import './writeKeywordItem';
+import { reviewStyles } from './reviewCss.js';
+import './writeKeywordItem.js';
 
 class ReviewWriteKeywordList extends LitElement {
   static styles = [
@@ -33,6 +33,7 @@ class ReviewWriteKeywordList extends LitElement {
   }
 
   // TODO 더보기 버튼 클릭
+  // TODO 색깔 변경 작업
   _handleMoreClick(e) {
     alert('작업 예정');
   }

@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss';
+import { reviewStyles } from './reviewCss.js';
 
 class ReviewWriteKeywordItem extends LitElement {
   static styles = [

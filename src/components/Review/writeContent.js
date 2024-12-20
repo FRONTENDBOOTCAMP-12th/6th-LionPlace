@@ -1,8 +1,6 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss';
+import { reviewStyles } from './reviewCss.js';
 
-// TODO 사진 첨부 및 표시
-// TODO 리뷰 작성 시 높이 변경
 class ReviewWriteContent extends LitElement {
   static styles = [
     ...reviewStyles,
@@ -81,6 +79,7 @@ class ReviewWriteContent extends LitElement {
   }
 
   // 리뷰 내용 입력 이벤트
+  // TODO 리뷰 작성 시 높이 변경
   _handleInput(e) {
     const input = e.target.value;
 

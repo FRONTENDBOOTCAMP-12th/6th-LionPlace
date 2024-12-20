@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss';
+import { reviewStyles } from './reviewCss.js';
 
 import './header.js';
 import './visitInfo.js';
@@ -123,7 +123,7 @@ class ReviewWrite extends LitElement {
     this.selectedKeywords = [];
   }
 
-  // 등록
+  // TODO 수정 - 등록
   _handleSubmit(e) {
     console.log(
       '좋아요 상태: ',

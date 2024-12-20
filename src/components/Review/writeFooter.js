@@ -1,8 +1,6 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss';
+import { reviewStyles } from './reviewCss.js';
 
-// TODO 리뷰 작성 유의사항 클릭 시 어디로? 뭘 띄울건가?
-// TODO 등록 버튼 눌렀을 때 동작
 class ReviewWriteFooter extends LitElement {
   static styles = [
     ...reviewStyles,
@@ -33,7 +31,7 @@ class ReviewWriteFooter extends LitElement {
     super();
   }
 
-  // TODO 유의사항항 버튼 클릭
+  // TODO 유의사항 버튼 클릭 시 모달창 띄우기
   _handleGuideClick(e) {
     alert('작업 예정');
   }

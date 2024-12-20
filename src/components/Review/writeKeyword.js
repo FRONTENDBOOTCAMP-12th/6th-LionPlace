@@ -1,10 +1,8 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss';
-import './writeKeywordCategory';
+import { reviewStyles } from './reviewCss.js';
+import './writeKeywordCategory.js';
 
 // TODO 수정 - 드래그 기능(현재: 모바일 버전 안됨)
-// TODO 키워드 화살표 함수
-// TODO 키워드 5개 초과 선택 시 얼럿
 class ReviewWriteKeyword extends LitElement {
   static styles = [
     ...reviewStyles,

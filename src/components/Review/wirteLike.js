@@ -1,7 +1,6 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss';
+import { reviewStyles } from './reviewCss.js';
 
-// TODO 좋아요 버튼 활성화/비활성화
 class ReviewWriteLike extends LitElement {
   static styles = [
     ...reviewStyles,
