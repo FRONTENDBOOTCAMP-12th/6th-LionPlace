@@ -113,40 +113,54 @@ class SignUpForm extends LitElement {
     return Object.values(this.errors).every((error) => error === '');
   }
 
-  _handleRegister() {
-    pb.collection('users')
-      .getFullList({ filter: `userID = "${this.formData.id}"` })
-      .then((users) => {
-        if (users.length > 0) {
-          alert('이미 존재하는 아이디입니다.');
+  async _handleRegister() {
+    let exsitingUser = false;
+
+    try {
+      const usersById = await pb.collection('users').getFullList({
+        filter: `userID = "${this.formData.id}"`,
+      });
+
+      if (usersById.length > 0) {
+        alert('이미 존재하는 아이디입니다.');
+        exsitingUser = true;
+        return;
+      }
+
+      if (!exsitingUser) {
+        const usersByEmail = await pb.collection('users').getFullList({
+          filter: `email = "${this.formData.email}"`,
+        });
+
+        if (usersByEmail.length > 0) {
+          console.log('이메일 중복 체크 결과:', usersByEmail);
+          alert('이미 존재하는 이메일입니다.');
+          exsitingUser = true;
           return;
         }
+      }
 
-        pb.collection('users')
-          .create({
-            userID: this.formData.id,
-            password: this.formData.password,
-            passwordConfirm: this.formData.passwordConfirm,
-            email: this.formData.email,
-          })
-          .then(() => {
-            alert('회원가입 완료');
-            location.reload();
-          })
-          .catch(() => {
-            alert('잘못된 정보를 입력하였습니다.');
-          });
-      })
-      .catch((error) => {
-        console.error(error);
-        alert('서버 에러가 발생했습니다.');
-      });
+      if (!exsitingUser) {
+        await pb.collection('users').create({
+          userID: this.formData.id,
+          password: this.formData.password,
+          passwordConfirm: this.formData.passwordConfirm,
+          email: this.formData.email,
+        });
+
+        alert('회원가입 완료');
+        location.reload();
+      }
+    } catch (error) {
+      console.error('에러 발생:', error);
+      alert('오류 발생 : ' + error.message);
+    }
   }
 
   render() {
     return html`
       <div class="container">
-        <app-logo></app-logo>
+        <app-logo link="/src/pages/login/index.html"></app-logo>
 
         <h1>회원가입</h1>
 
