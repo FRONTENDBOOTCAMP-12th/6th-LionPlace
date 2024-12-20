@@ -61,7 +61,6 @@ class Tab extends LitElement {
               id="tab-order"
             >
               탭 2의 내용입니다.
-              <my-custom-element></my-custom-element>
             </article>
           </section>
         </div>
@@ -70,4 +69,4 @@ class Tab extends LitElement {
   }
 }
 
-customElements.define('order-tab', Tab);
+customElements.define('tab-element', Tab);
