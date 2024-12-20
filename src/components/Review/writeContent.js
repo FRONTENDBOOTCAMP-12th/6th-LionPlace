@@ -1,8 +1,6 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss';
+import { reviewStyles } from './reviewCss.js';
 
-// TODO 사진 첨부 및 표시
-// TODO 리뷰 작성 시 높이 변경
 class ReviewWriteContent extends LitElement {
   static styles = [
     ...reviewStyles,
@@ -64,17 +62,47 @@ class ReviewWriteContent extends LitElement {
     `,
   ];
 
-  static properties = {};
+  static properties = {
+    maxCount: { type: Number },
+    content: { type: String },
+  };
 
   constructor() {
     super();
+    this._count = 0;
+    this.content = '';
+  }
+
+  // TODO 사진추가 버튼 클릭
+  _handlePictureAddClick(e) {
+    alert('작업 예정');
+  }
+
+  // 리뷰 내용 입력 이벤트
+  // TODO 리뷰 작성 시 높이 변경
+  _handleInput(e) {
+    const input = e.target.value;
+
+    // maxCount를 초과하지 않도록 내용 제한
+    if (input.length <= this.maxCount) {
+      this.content = input;
+      this._count = this.content.length;
+      console.log(this.content, this._count);
+    } else {
+      // maxCount를 초과하는 경우 value를 수정하여 초과된 부분을 없애기
+      e.target.value = this.content;
+    }
   }
 
   render() {
     return html`
       <div class="content section">
         <h2 class="content__title">리뷰를 남겨주세요</h2>
-        <div class="content__photo btn base rounded">
+        <button
+          type="button"
+          class="content__photo btn base rounded"
+          @click="${this._handlePictureAddClick}"
+        >
           <svg
             width="16"
             height="14"
@@ -87,14 +115,22 @@ class ReviewWriteContent extends LitElement {
             />
           </svg>
           <p class="">사진추가 <span class="gray">최대 20장</span></p>
-        </div>
+        </button>
 
         <div class="content__text">
-          <textarea placeholder="리뷰 작성하기" name="" id=""></textarea>
+          <textarea
+            id="content"
+            name="content"
+            placeholder="리뷰 작성하기"
+            .value=${this.content}
+            @input=${this._handleInput}
+          >
+></textarea
+          >
 
           <div class="content__text__count">
-            <span class="count__now" id="currentCount">0</span> /
-            <span class="count__max" id="maxCount">400</span>
+            <span class="count__now" id="currentCount">${this._count}</span> /
+            <span class="count__max" id="maxCount">${this.maxCount}</span>
           </div>
         </div>
       </div>

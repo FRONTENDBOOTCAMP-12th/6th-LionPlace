@@ -7,7 +7,6 @@ export const footerStyle = css`
     gap: 0.62rem;
     background-color: var(--gray--100);
     padding: 1.12rem 1.06rem 6.94rem;
-    font-family: 'Pretendard Variable', Pretendard, sans-serif;
   }
 
   .footer__top {
@@ -40,7 +39,6 @@ export const footerStyle = css`
         border: 0;
         background-color: var(--white);
         color: var(--contentSecondary);
-        font-family: 'Pretendard Variable', Pretendard, sans-serif;
         font-size: 0.75019rem;
         line-height: 1.6;
       }

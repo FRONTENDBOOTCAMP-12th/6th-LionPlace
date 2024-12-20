@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit';
+import resetStyles from '@/styles/reset.js';
 import './navBar.js';
 import './groupList.js';
 import './listIcons.js';
@@ -45,6 +46,10 @@ export class SavedPlaces extends LitElement {
       margin-bottom: 0.75rem;
       font-size: 1rem;
       box-sizing: border-box;
+    }
+    .input-field:focus {
+      border: 0.125rem solid #171f31;
+      outline: none;
     }
     .button-group {
       display: flex;
@@ -126,42 +131,6 @@ export class SavedPlaces extends LitElement {
     `;
   }
 
-  _renderGroups() {
-    return html`
-      <div class="header">
-        <div class="title">전체 리스트 ${this.groups.length}</div>
-      </div>
-      ${this.isCreatingGroup ? this._renderCreateGroupForm() : ''}
-      <group-list
-        .groups="${this.groups}"
-        @group-select="${this._handleGroupSelect}"
-        @new-group="${this._handleNewGroup}"
-      ></group-list>
-    `;
-  }
-
-  _renderPlaces() {
-    return html`
-      <div class="back-button" @click="${this._handleBack}">← 리스트로 돌아가기</div>
-      <div class="header">
-        <div class="title">${this.selectedGroup.title}</div>
-        <div class="subtitle">저장된 장소 ${this.places.length}개</div>
-      </div>
-      ${this.places.map(
-        (place) => html`
-          <div class="place-item">
-            <div class="place-image" style="background-image: url(${place.imageUrl})"></div>
-            <div class="place-content">
-              <div class="place-name">${place.name}</div>
-              <div class="place-info">${place.category}</div>
-              <div class="place-info">${place.address}</div>
-            </div>
-          </div>
-        `
-      )}
-    `;
-  }
-
   _renderCreateGroupForm() {
     return html`
       <div class="create-group-form">
@@ -180,9 +149,50 @@ export class SavedPlaces extends LitElement {
     `;
   }
 
+  _renderGroups() {
+    return html`
+      <div class="header">
+        <div class="title">전체 리스트 ${this.groups.length}</div>
+      </div>
+      ${this.isCreatingGroup ? this._renderCreateGroupForm() : ''}
+      <group-list
+        .groups="${this.groups}"
+        @group-select="${this._handleGroupSelect}"
+        @new-group="${this._handleNewGroup}"
+        @group-delete="${this._handleGroupDelete}"
+      ></group-list>
+    `;
+  }
+
+  _renderPlaces() {
+    return html`
+      <div>
+        <div class="back-button" @click="${this._handleBack}"><span>&larr;</span> 뒤로가기</div>
+        ${this.places.map(
+          (place) => html`
+            <div class="place-item">
+              <div class="place-image" style="background-image: url(${place.imageUrl})"></div>
+              <div class="place-content">
+                <div class="place-name">${place.name}</div>
+                <div class="place-info">
+                  ${place.address}<br />
+                  ${place.category}
+                </div>
+              </div>
+            </div>
+          `
+        )}
+      </div>
+    `;
+  }
+
+  _handleGroupDelete(e) {
+    const deletedGroup = e.detail; // 삭제된 그룹 정보
+    this.groups = this.groups.filter((group) => group.id !== deletedGroup.id); // 그룹 리스트 업데이트
+  }
+
   _handleGroupSelect(e) {
     this.selectedGroup = e.detail;
-    // 실제 구현에서는 선택된 그룹의 장소 데이터를 불러와야 함
     this.places = [
       {
         name: '멋진 피자가게',

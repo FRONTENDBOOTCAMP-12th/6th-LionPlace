@@ -1,1 +1,1 @@
-import '@/components/Category/category';
+import '@/components/Category/category.js';

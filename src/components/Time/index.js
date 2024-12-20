@@ -1,1 +1,1 @@
-import '@/components/Time/time';
+import '@/components/Time/time.js';
