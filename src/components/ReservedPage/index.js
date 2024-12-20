@@ -1,1 +1,1 @@
-import '@/components/ReservedPage/reservedPage';
+import '@/components/ReservedPage/reservedPage.js';

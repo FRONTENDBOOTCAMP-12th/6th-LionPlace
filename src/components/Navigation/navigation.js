@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
-import { navgationStyles } from './navigationCss';
-import resetStyle from '@/styles/reset';
+import { navgationStyles } from './navigationCss.js';
+import resetStyle from '@/styles/reset.js';
 
 class Navigation extends LitElement {
   static properties = {
@@ -22,6 +22,12 @@ class Navigation extends LitElement {
 
   static styles = [navgationStyles, resetStyle];
 
+  connectedCallback() {
+    super.connectedCallback();
+    // 빌드 시 페이지 이동 후에도 로딩 gif 유지가 지속되어 로딩 상태 초기화
+    this.loading = false;
+  }
+
   // 페이지 이동 함수
   _navigationTo(page) {
     const pageInfo = {
@@ -34,7 +40,11 @@ class Navigation extends LitElement {
     this.loading = true;
     this.requestUpdate();
 
-    setTimeout(() => (window.location.href = pageInfo[page]), 1000);
+    setTimeout(() => {
+      window.location.href = pageInfo[page];
+      // 1초 뒤 로딩 상태 초기화
+      this.loading = false;
+    }, 1000);
   }
 
   // 클릭 이벤트 함수

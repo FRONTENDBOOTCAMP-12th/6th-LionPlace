@@ -51,7 +51,7 @@ export const profileAllStyles = css`
       & .user-info {
         display: flex;
         flex-flow: column wrap;
-        color: #fff;
+        color: var(--white);
 
         & .nickname {
           font-size: 1rem;
@@ -87,7 +87,7 @@ export const profileAllStyles = css`
                 width: 0.0625rem;
                 height: 1.75rem;
                 margin-block: 0.28rem;
-                background-color: #ddd;
+                background-color: #d9d9d9;
               }
 
               & > a {

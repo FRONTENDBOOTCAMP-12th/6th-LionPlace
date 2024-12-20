@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
-import { categoryStyles } from './categoryCss';
-import resetStyle from '@/styles/reset';
+import { categoryStyles } from './categoryCss.js';
+import resetStyle from '@/styles/reset.js';
 import pb from '@/api/pocketbase';
 
 class TabCategory extends LitElement {

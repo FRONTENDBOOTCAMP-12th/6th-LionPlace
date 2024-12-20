@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
-import { tabStyles } from './tabCss';
-import resetStyles from '@/styles/reset';
+import { tabStyles } from './tabCss.js';
+import resetStyles from '@/styles/reset.js';
 
 class Tab extends LitElement {
   static properties = {

@@ -1,5 +1,5 @@
-import '@/components/Navigation/navigation';
-import '@/components/ReservedPage/reservedPage';
+import '@/components/Navigation/navigation.js';
+import '@/components/ReservedPage/reservedPage.js';
 
 // const activeBtn = document.querySelectorAll('button');
 

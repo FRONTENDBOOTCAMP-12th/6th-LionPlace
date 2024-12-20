@@ -1,1 +1,1 @@
-import '@/components/ProfileAll/profileAll';
+import '@/components/ProfileAll/profileAll.js';
