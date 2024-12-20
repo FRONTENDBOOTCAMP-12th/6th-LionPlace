@@ -1,8 +1,13 @@
 import { LitElement, html, css } from 'lit';
 
 class Logo extends LitElement {
+  static properties = {
+    link: { type: String },
+  };
+
   static styles = css`
     .logo {
+      display: block;
       text-align: center;
       margin-bottom: 3rem;
     }
@@ -15,9 +20,9 @@ class Logo extends LitElement {
 
   render() {
     return html`
-      <div class="logo">
+      <a href="${this.link}" class="logo">
         <img src="/images/img_logo.svg" alt="Lion Place 로고" />
-      </div>
+      </a>
     `;
   }
 }
