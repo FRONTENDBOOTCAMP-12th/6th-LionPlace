@@ -35,11 +35,16 @@ class ReviewHeader extends LitElement {
     super();
   }
 
+  // TODO 닫기 버튼 클릭
+  _handleClose(e) {
+    alert('작업 예정');
+  }
+
   render() {
     return html`
       <div class="header section">
         <h1 class="title">${this.title}</h1>
-        <button type="button" class="close-btn">
+        <button type="button" class="close-btn" @click="${this._handleClose}">
           <span class="a11y-hidden">닫기</span>
 
           <svg

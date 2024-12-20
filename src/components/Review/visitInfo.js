@@ -30,7 +30,9 @@ class ReviewVisitInfo extends LitElement {
     `,
   ];
 
-  static properties = {};
+  static properties = {
+    visitInfo: { type: Object },
+  };
 
   constructor() {
     super();
@@ -41,9 +43,11 @@ class ReviewVisitInfo extends LitElement {
       <div class="visit-info section">
         <h2 class="a11y-hidden">방문 정보</h2>
         <img class="visit-info__img" src="/" alt="상품명" onerror="this.style.display='none'" />
-        <strong class="visit-info__place-name">가게명</strong>
-        <p class="visit-info__visit-date">2023.1.18 (수) 9번째 방문</p>
-        <p class="visit-info__product-name">상품명</p>
+        <strong class="visit-info__place-name">${this.visitInfo.name}</strong>
+        <p class="visit-info__visit-date">
+          ${this.visitInfo.startDate} ${this.visitInfo.count}번째 방문
+        </p>
+        <p class="visit-info__product-name">${this.visitInfo.itemName}</p>
       </div>
     `;
   }

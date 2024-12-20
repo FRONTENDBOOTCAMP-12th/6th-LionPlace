@@ -44,6 +44,17 @@ class ReviewWriteLike extends LitElement {
     super();
   }
 
+  _likeChanged(e) {
+    if (!this.disabled) {
+      this.dispatchEvent(
+        new CustomEvent('like-change', {
+          bubbles: true,
+          composed: true,
+        })
+      );
+    }
+  }
+
   render() {
     return html`
       <div class="like section">
@@ -56,7 +67,12 @@ class ReviewWriteLike extends LitElement {
           </div>
         </div>
 
-        <input type="checkbox" class="like__checkbox a11y-hidden" id="like-check" />
+        <input
+          type="checkbox"
+          class="like__checkbox a11y-hidden"
+          id="like-check"
+          @change=${this._likeChanged}
+        />
         <label for="like-check" class="like__label btn base rounded">
           <svg
             role="img"

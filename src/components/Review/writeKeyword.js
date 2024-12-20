@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { reviewStyles } from './reviewCss';
 import './writeKeywordCategory';
 
+// TODO 수정 - 드래그 기능(현재: 모바일 버전 안됨)
 // TODO 키워드 화살표 함수
 // TODO 키워드 5개 초과 선택 시 얼럿
 class ReviewWriteKeyword extends LitElement {
@@ -43,6 +44,7 @@ class ReviewWriteKeyword extends LitElement {
           display: flex;
           position: relative;
           flex-direction: row;
+          justify-content: space-between;
 
           .keyword__category {
             padding-left: 1.25rem;
@@ -115,89 +117,106 @@ class ReviewWriteKeyword extends LitElement {
 
   static properties = {
     keywordCategories: { type: Array },
+    selectedKeywords: { type: Array },
   };
 
   constructor() {
     super();
-    this.isMouseDown = false;
-    this.startX = 0;
-    this.scrollStart = 0;
-    this.offset = 0;
-    this.keywordCategoryWrapper = null;
+    this._isMouseDown = false;
+    this._startX = 0;
+    this._scrollStart = 0;
+    this._offset = 0;
+    this._keywordCategoryWrapper = null;
   }
 
   firstUpdated() {
-    console.log('keywordCategories:', this.keywordCategories);
+    this._keywordCategoryWrapper = this.shadowRoot.querySelector('.keyword__category-wrapper');
 
-    this.keywordCategoryWrapper = this.shadowRoot.querySelector('.keyword__category-wrapper');
-
-    if (this.keywordCategoryWrapper) {
-      this.keywordCategoryWrapper.addEventListener('mousedown', this.mouseDownHandler.bind(this));
-      this.keywordCategoryWrapper.addEventListener('mouseup', this.mouseUpHandler.bind(this));
-      this.keywordCategoryWrapper.addEventListener('mouseleave', this.mouseLeaveHandler.bind(this));
-      this.keywordCategoryWrapper.addEventListener('mousemove', this.mouseMoveHandler.bind(this));
+    if (this._keywordCategoryWrapper) {
+      this._keywordCategoryWrapper.addEventListener('mousedown', this._mouseDownHandler.bind(this));
+      this._keywordCategoryWrapper.addEventListener('mouseup', this._mouseUpHandler.bind(this));
+      this._keywordCategoryWrapper.addEventListener(
+        'mouseleave',
+        this._mouseLeaveHandler.bind(this)
+      );
+      this._keywordCategoryWrapper.addEventListener('mousemove', this._mouseMoveHandler.bind(this));
     }
   }
 
   // 마우스 버튼을 누를 때 발생하는 이벤트 핸들러
-  mouseDownHandler(e) {
-    this.isMouseDown = true;
-    this.startX = e.pageX; // 마우스 시작 위치 기록
-    this.scrollStart = this.offset; // 스크롤 시작 위치 기록
-    this.keywordCategoryWrapper.classList.add('dragging'); // 드래그 중 클래스 추가
+  _mouseDownHandler(e) {
+    this._isMouseDown = true;
+    this._startX = e.pageX; // 마우스 시작 위치 기록
+    this._scrollStart = this._offset; // 스크롤 시작 위치 기록
+    this._keywordCategoryWrapper.classList.add('dragging'); // 드래그 중 클래스 추가
   }
 
   // 마우스를 놓을 때 발생하는 이벤트 핸들러
-  mouseUpHandler() {
-    this.isMouseDown = false;
-    this.keywordCategoryWrapper.classList.remove('dragging'); // 드래그 중 클래스 제거
-    this.resetPosition(); // 드래그 종료 후 부드럽게 이동
+  _mouseUpHandler() {
+    this._isMouseDown = false;
+    this._keywordCategoryWrapper.classList.remove('dragging'); // 드래그 중 클래스 제거
+    this._resetPosition(); // 드래그 종료 후 부드럽게 이동
   }
 
   // 마우스가 영역을 벗어날 때 발생하는 이벤트 핸들러
-  mouseLeaveHandler() {
-    this.isMouseDown = false;
-    this.keywordCategoryWrapper.classList.remove('dragging');
-    this.resetPosition(); // 드래그 종료 후 부드럽게 이동
+  _mouseLeaveHandler() {
+    this._isMouseDown = false;
+    this._keywordCategoryWrapper.classList.remove('dragging');
+    this._resetPosition(); // 드래그 종료 후 부드럽게 이동
   }
 
   // 마우스를 움직일 때 발생하는 이벤트 핸들러
-  mouseMoveHandler(e) {
-    if (!this.isMouseDown) return;
+  _mouseMoveHandler(e) {
+    if (!this._isMouseDown) return;
 
-    const moveX = e.pageX - this.startX; // 마우스를 드래그한 만큼의 거리 계산
-    this.offset = this.scrollStart - moveX; // 시작 위치에서 드래그한 만큼 빼기
+    const moveX = e.pageX - this._startX; // 마우스를 드래그한 만큼의 거리 계산
+    this._offset = this._scrollStart - moveX; // 시작 위치에서 드래그한 만큼 빼기
 
     // 이동 범위를 제한하는 로직
     const maxScroll =
-      this.keywordCategoryWrapper.scrollWidth - this.keywordCategoryWrapper.clientWidth;
+      this._keywordCategoryWrapper.scrollWidth - this._keywordCategoryWrapper.clientWidth;
     const minScroll = 0;
 
-    if (this.offset < minScroll) {
-      this.offset = minScroll; // 최소 위치 제한
-    } else if (this.offset > maxScroll) {
-      this.offset = maxScroll; // 최대 위치 제한
+    if (this._offset < minScroll) {
+      this._offset = minScroll; // 최소 위치 제한
+    } else if (this._offset > maxScroll) {
+      this._offset = maxScroll; // 최대 위치 제한
     }
 
     // `transform: translateX()`를 사용하여 이동
-    this.keywordCategoryWrapper.style.transform = `translateX(-${this.offset}px)`;
+    this._keywordCategoryWrapper.style.transform = `translateX(-${this._offset}px)`;
   }
 
   // 드래그 종료 후 위치를 부드럽게 되돌리는 함수
-  resetPosition() {
+  // TODO 수정(현재: min/max로 제한하기 때문에 '당겼다가 되돌아가는'거 없이 딱 그 위치까지만 당겨짐)
+  _resetPosition() {
     // 애니메이션을 통한 부드러운 되돌리기
     const maxScroll =
-      this.keywordCategoryWrapper.scrollWidth - this.keywordCategoryWrapper.clientWidth;
+      this._keywordCategoryWrapper.scrollWidth - this._keywordCategoryWrapper.clientWidth;
     const minScroll = 0;
 
-    if (this.offset < minScroll) {
-      this.offset = minScroll; // 최소 위치로 되돌리기
-    } else if (this.offset > maxScroll) {
-      this.offset = maxScroll; // 최대 위치로 되돌리기
+    if (this._offset < minScroll) {
+      this._offset = minScroll; // 최소 위치로 되돌리기
+    } else if (this._offset > maxScroll) {
+      this._offset = maxScroll; // 최대 위치로 되돌리기
     }
 
     // `transition`을 통해 부드럽게 원위치로 돌아가기
-    this.keywordCategoryWrapper.style.transform = `translateX(-${this.offset}px)`;
+    this._keywordCategoryWrapper.style.transform = `translateX(-${this._offset}px)`;
+  }
+
+  // 키워드 리셋 이벤트를 상위 컴포넌트로 전달
+  _handleResetKeyword(e) {
+    const isChecked = e.target.checked;
+
+    if (isChecked) {
+      this.dispatchEvent(
+        new CustomEvent('keyword-reset', {
+          bubbles: true,
+          composed: true,
+        })
+      );
+    }
   }
 
   render() {
@@ -213,13 +232,14 @@ class ReviewWriteKeyword extends LitElement {
         <div class="keyword__view">
           <div class="keyword__category-wrapper">
             ${this.keywordCategories.map(
-              (category) =>
-                html`<li>
-                  <review-write-keyword-category-element
-                    .name=${category.name}
-                    .keywords=${category.keywords}
-                  ></review-write-keyword-category-element>
-                </li>`
+              (category) => html`
+                <review-write-keyword-category-element
+                  .id=${category.id}
+                  .name=${category.name}
+                  .keywords=${category.keywords}
+                  .selectedKeywords=${this.selectedKeywords}
+                ></review-write-keyword-category-element>
+              `
             )}
 
             <div class="keyword__category keyword__category--nothing">
@@ -231,6 +251,8 @@ class ReviewWriteKeyword extends LitElement {
                       type="checkbox"
                       class="keyword__item__checkbox"
                       id="keyword-check-nothing"
+                      .checked="${this.selectedKeywords.length == 0}"
+                      @change="${this._handleResetKeyword}"
                     />
                     <label
                       for="keyword-check-nothing"

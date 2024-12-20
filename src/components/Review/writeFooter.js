@@ -33,18 +33,35 @@ class ReviewWriteFooter extends LitElement {
     super();
   }
 
+  // TODO 유의사항항 버튼 클릭
+  _handleGuideClick(e) {
+    alert('작업 예정');
+  }
+
+  // 등록 버튼 클릭 이벤트를 상위 컴포넌트로 전달
+  _handleSubmitClick(e) {
+    if (!this.disabled) {
+      this.dispatchEvent(
+        new CustomEvent('submit-click', {
+          bubbles: true,
+          composed: true,
+        })
+      );
+    }
+  }
+
   render() {
     return html`
       <div class="footer section">
-        <a
+        <button type="button"
           id="guideline-btn"
           class="guideline-btn"
-          href="/"
-          target="_blank"
-          rel="noopenner noreferrer"
-          >리뷰 작성 유의사항</a
+          @click="${this._handleGuideClick}"
+          >리뷰 작성 유의사항</
         >
-        <button type="button" class="submit-btn btn base black rounded">등록하기</button>
+        <button type="submit" class="submit-btn btn base black rounded" @click="${this._handleSubmitClick}">
+          등록하기
+        </button>
       </div>
     `;
   }
