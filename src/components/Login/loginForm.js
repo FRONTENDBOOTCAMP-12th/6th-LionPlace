@@ -48,7 +48,7 @@ class LoginForm extends LitElement {
   }
 
   _goToSignUp() {
-    window.location.href = '/src/components/SignUp/index.html';
+    window.location.href = '/src/pages/sign-up/index.html';
   }
 
   async _fetchData() {
