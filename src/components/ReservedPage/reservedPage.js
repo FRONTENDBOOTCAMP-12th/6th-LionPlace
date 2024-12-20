@@ -14,7 +14,7 @@ class ReservedPage extends LitElement {
       <time-element></time-element>
       <profileall-element></profileall-element>
       <navigation-element></navigation-element>
-      <order-tab></order-tab>
+      <tab-element></tab-element>
       <nav-bar></nav-bar>
       <c-footer></c-footer>
     `;

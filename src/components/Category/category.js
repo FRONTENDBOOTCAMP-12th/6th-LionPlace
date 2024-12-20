@@ -111,6 +111,7 @@ class TabCategory extends LitElement {
             src="/images/ico_arrow.svg"
             alt="아래방향 화살표"
             class="arrow-img ${this.isOpen ? 'is--active' : ''}"
+            aria-hidden="true"
           />
         </button>
         <section class="content">
@@ -132,16 +133,11 @@ class TabCategory extends LitElement {
       <div class="category-bedge">
         <ul>
           <li>
-            <button class="category-btn" type="button">
-              방문 <strong>${totalReservations}</strong>
-            </button>
+            <span class="category-btn">방문 <strong>${totalReservations}</strong></span>
           </li>
           <li>
-            <button class="category-btn" type="button">
-              예약취소 <strong>${totalCancle}</strong>
-            </button>
+            <span class="category-btn">예약취소 <strong>${totalCancle}</strong></span>
           </li>
-          <li><button class="category-btn" type="button">기간선택</button></li>
         </ul>
       </div>
     `;

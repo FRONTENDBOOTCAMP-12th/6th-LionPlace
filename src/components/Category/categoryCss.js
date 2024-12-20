@@ -122,14 +122,6 @@ export const categoryStyles = css`
         display: flex;
         align-items: center;
         color: var(--contentPrimary);
-
-        &::after {
-          content: '';
-          display: inline-flex;
-          inline-size: 1.125rem;
-          aspect-ratio: 1/1;
-          background: url(/images/ico_calendar.svg) center/contain no-repeat;
-        }
       }
 
       & .count {
@@ -201,20 +193,15 @@ export const categoryStyles = css`
       gap: 0.75rem;
 
       & > li {
-        & > button {
+        & > span {
           background-color: var(--white);
           border-radius: 1rem;
           color: var(--contentSecondary);
           padding: 0.25rem 0.5rem;
           text-align: center;
-
           font-size: 0.75019rem;
           font-weight: 600;
           line-height: 1.5;
-          &:focus-visible {
-            outline: 1px solid var(--blue--800);
-            outline-offset: 1px;
-          }
 
           & > strong {
             color: var(--contentPrimary);
