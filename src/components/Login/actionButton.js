@@ -12,7 +12,6 @@ class ActionButton extends LitElement {
     css`
       button {
         width: 100%;
-        height: 5vh;
         margin-top: 1rem;
         padding: 1rem;
         background-color: white;

@@ -1,1 +1,1 @@
-import '@/components/Login/LoginForm';
+import '@/components/Login/loginForm';
