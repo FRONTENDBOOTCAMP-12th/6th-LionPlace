@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
-import { timeStyles } from './timeCss';
-import resetStyle from '@/styles/reset';
+import { timeStyles } from './timeCss.js';
+import resetStyle from '@/styles/reset.js';
 
 class Time extends LitElement {
   static styles = [resetStyle, timeStyles];

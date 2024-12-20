@@ -14,7 +14,7 @@ class Footer extends LitElement {
       <footer>
         <div class="footer__top">
           <div class="global-list">
-            <img src="/public/images/ico_global.svg" alt="언어 선택 아이콘" class="language-icon" />
+            <img src="/images/ico_global.svg" alt="언어 선택 아이콘" class="language-icon" />
             <label for="language" class="a11y-hidden">언어 선택</label>
             <select id="language" name="language">
               <option value="ko" selected>한국어</option>
@@ -22,11 +22,7 @@ class Footer extends LitElement {
               <option value="ja">일본어</option>
               <option value="zh">중국어</option>
             </select>
-            <img
-              src="/public/images/ico_select_arrow.svg"
-              alt="화살표 아이콘"
-              class="select-arrow"
-            />
+            <img src="/images/ico_select_arrow.svg" alt="화살표 아이콘" class="select-arrow" />
           </div>
         </div>
         <div class="footer__bottom">

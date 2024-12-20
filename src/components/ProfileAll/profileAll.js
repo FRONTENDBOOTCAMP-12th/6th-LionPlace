@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { profileAllStyles } from './profileAllCss';
+import { profileAllStyles } from './profileAllCss.js';
 import resetStyles from '@/styles/reset.js';
 
 class ProfileAll extends LitElement {
