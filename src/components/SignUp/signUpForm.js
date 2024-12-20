@@ -1,8 +1,9 @@
 import { LitElement, html, css } from 'lit';
+import resetStyles from '@/styles/reset.js';
 import pb from '@/api/pocketbase';
-import './formInput';
-import './submitButton';
-import './logo';
+import './formInput.js';
+import './submitButton.js';
+import './logo.js';
 
 class SignUpForm extends LitElement {
   static properties = {
@@ -28,25 +29,138 @@ class SignUpForm extends LitElement {
     this.isSubmitEnabled = false;
   }
 
-  static styles = css`
-    .container {
-      max-width: 30rem;
-      margin: 0 auto;
-      padding: 4rem;
+  static styles = [
+    resetStyles,
+    css`
+      .container {
+        max-width: 30rem;
+        margin: 0 auto;
+        padding: 4rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        color: white;
+      }
+    `,
+  ];
+
+  // 회원가입 페이지 배경색, 글자색 변경
+  firstUpdated() {
+    document.documentElement.style.setProperty('--background-color', '#171f31');
+    document.documentElement.style.setProperty('--color', '#fff');
+  }
+
+  _handleInputChange(e) {
+    const { id, value } = e.detail;
+    this.formData = { ...this.formData, [id]: value };
+    this._validateField(id, value);
+    this._updateSubmitButton();
+  }
+
+  _validateField(id, value) {
+    if (value.trim() === '') {
+      this.errors[id] = '';
+      return;
     }
 
-    h1 {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      color: white;
+    switch (id) {
+      case 'id':
+        this.errors.id =
+          value.length < 3 || !/^[a-zA-Z0-9]+$/.test(value)
+            ? '아이디는 영문 3자 이상이어야 하며, 특수문자를 포함할 수 없습니다.'
+            : '';
+        break;
+      case 'email':
+        this.errors.email = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+          ? '유효한 이메일 주소를 입력해 주세요.'
+          : '';
+        break;
+      case 'password':
+        this.errors.password =
+          value.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(value)
+            ? '비밀번호는 8자 이상이어야 하며, 특수 문자를 포함해야 합니다.'
+            : '';
+        break;
+      case 'passwordConfirm':
+        this.errors.passwordConfirm =
+          value !== this.formData.password ? '비밀번호가 일치하지 않습니다.' : '';
+        break;
     }
-  `;
+    this.requestUpdate();
+    this._updateSubmitButton();
+  }
+
+  _updateSubmitButton() {
+    const allFieldsFilled = Object.values(this.formData).every((value) => value.length > 0);
+    const noErrors = Object.values(this.errors).every((error) => error === '');
+    this.isSubmitEnabled = allFieldsFilled && noErrors;
+    this.requestUpdate();
+  }
+
+  _handleSubmit(e) {
+    e.preventDefault();
+    if (this._validateInputs()) {
+      this._handleRegister();
+    } else {
+      console.log('Form validation failed');
+    }
+  }
+
+  _validateInputs() {
+    return Object.values(this.errors).every((error) => error === '');
+  }
+
+  async _handleRegister() {
+    let exsitingUser = false;
+
+    try {
+      const usersById = await pb.collection('users').getFullList({
+        filter: `userID = "${this.formData.id}"`,
+      });
+
+      if (usersById.length > 0) {
+        alert('이미 존재하는 아이디입니다.');
+        exsitingUser = true;
+        return;
+      }
+
+      if (!exsitingUser) {
+        const usersByEmail = await pb.collection('users').getFullList({
+          filter: `email = "${this.formData.email}"`,
+        });
+
+        if (usersByEmail.length > 0) {
+          console.log('이메일 중복 체크 결과:', usersByEmail);
+          alert('이미 존재하는 이메일입니다.');
+          exsitingUser = true;
+          return;
+        }
+      }
+
+      if (!exsitingUser) {
+        await pb.collection('users').create({
+          userID: this.formData.id,
+          password: this.formData.password,
+          passwordConfirm: this.formData.passwordConfirm,
+          email: this.formData.email,
+        });
+
+        alert('회원가입 완료');
+        location.reload();
+      }
+    } catch (error) {
+      console.error('에러 발생:', error);
+      alert('오류 발생 : ' + error.message);
+    }
+  }
 
   render() {
     return html`
       <div class="container">
-        <app-logo></app-logo>
+        <app-logo link="/src/pages/login/index.html"></app-logo>
 
         <h1>회원가입</h1>
 
@@ -99,102 +213,6 @@ class SignUpForm extends LitElement {
         </form>
       </div>
     `;
-  }
-
-  _handleInputChange(e) {
-    const { id, value } = e.detail;
-    this.formData = { ...this.formData, [id]: value };
-    this._validateField(id, value);
-    this._updateSubmitButton();
-  }
-
-  _validateField(id, value) {
-    if (value.trim() === '') {
-      this.errors[id] = '';
-      return;
-    }
-
-    switch (id) {
-      case 'id':
-        this.errors.id =
-          value.length < 3 || !/^[a-zA-Z0-9]+$/.test(value)
-            ? '아이디는 영문 3자 이상이어야 합니다.'
-            : '';
-        break;
-      case 'email':
-        this.errors.email = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-          ? '유효한 이메일 주소를 입력해 주세요.'
-          : '';
-        break;
-      case 'password':
-        this.errors.password =
-          value.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(value)
-            ? '비밀번호는 8자 이상이어야 하며, 특수 문자를 포함해야 합니다.'
-            : '';
-        break;
-      case 'passwordConfirm':
-        this.errors.passwordConfirm =
-          value !== this.formData.password ? '비밀번호가 일치하지 않습니다.' : '';
-        break;
-    }
-    this.requestUpdate();
-    this._updateSubmitButton();
-  }
-
-  _updateSubmitButton() {
-    const allFieldsFilled = Object.values(this.formData).every((value) => value.length > 0);
-    const noErrors = Object.values(this.errors).every((error) => error === '');
-    this.isSubmitEnabled = allFieldsFilled && noErrors;
-    this.requestUpdate();
-  }
-
-  _handleSubmit(e) {
-    e.preventDefault();
-    if (this._validateInputs()) {
-      this._handleRegister();
-    } else {
-      console.log('Form validation failed');
-    }
-  }
-
-  _validateInputs() {
-    return Object.values(this.errors).every((error) => error === '');
-  }
-
-  _handleRegister() {
-    pb.collection('users')
-      .getFullList({ filter: `userID = "${this.formData.id}"` })
-      .then((users) => {
-        if (users.length > 0) {
-          alert('이미 존재하는 아이디입니다.');
-          return;
-        }
-
-        pb.collection('users')
-          .create({
-            userID: this.formData.id,
-            password: this.formData.password,
-            passwordConfirm: this.formData.passwordConfirm,
-            email: this.formData.email,
-          })
-          .then(() => {
-            alert('회원가입 완료');
-            location.reload();
-          })
-          .catch(() => {
-            alert('잘못된 정보를 입력하였습니다.');
-          });
-      })
-      .catch((error) => {
-        console.error(error);
-        alert('서버 에러가 발생했습니다.');
-      });
-  }
-
-  // 회원가입 페이지 배경색, 글자색 변경
-  firstUpdated() {
-    document.documentElement.style.setProperty('--background-color', '#171f31');
-    document.documentElement.style.setProperty('--color', '#fff');
   }
 }
 
