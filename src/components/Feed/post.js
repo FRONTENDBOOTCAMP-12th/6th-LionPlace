@@ -8,9 +8,20 @@ class PostComponent extends LitElement {
     date: { type: String },
     postImage: { type: String },
     content: { type: String },
-    liked: { type: Boolean }, // 좋아요 상태를 나타내는 속성
-    expanded: { type: Boolean }, // 게시글 내용 확장 상태
+    liked: { type: Boolean },
+    expanded: { type: Boolean },
   };
+
+  constructor() {
+    super();
+    this.profileImage = '';
+    this.username = '';
+    this.date = '';
+    this.postImage = '';
+    this.content = '';
+    this.liked = false;
+    this.expanded = false;
+  }
 
   static styles = css`
     .post-container {
@@ -59,11 +70,22 @@ class PostComponent extends LitElement {
       color: #737373;
     }
 
-    .like-icon img {
+    .like-icon button {
       width: 1.5rem;
       height: 1.5rem;
       cursor: pointer;
-      transition: transform 0.2s ease-in-out;
+      background-color: #737373; /* 기본 색상 */
+      border: none;
+      outline: none;
+      transition:
+        transform 0.2s ease-in-out,
+        background-color 0.2s ease-in-out;
+      mask: url('/images/ico_like.svg') no-repeat center;
+      mask-size: contain;
+    }
+
+    .like-icon button.liked {
+      background-color: #ff6b6b;
     }
 
     .post-image {
@@ -106,23 +128,12 @@ class PostComponent extends LitElement {
     }
   `;
 
-  constructor() {
-    super();
-    this.profileImage = '';
-    this.username = '';
-    this.date = '';
-    this.postImage = '';
-    this.content = '';
-    this.liked = false; // 초기 좋아요 상태
-    this.expanded = false; // 게시글 확장 상태
-  }
-
   toggleLike() {
-    this.liked = !this.liked; // 좋아요 상태를 토글
+    this.liked = !this.liked;
   }
 
   toggleExpand() {
-    this.expanded = !this.expanded; // 게시글 확장 상태를 토글
+    this.expanded = !this.expanded;
   }
 
   render() {
@@ -137,24 +148,23 @@ class PostComponent extends LitElement {
             </div>
           </div>
           <div class="like-icon">
-            <button id="like-button" @click="${this.toggleLike}">
-              <img
-                src="${this.liked ? '/images/ico_like_filled.svg' : '/images/ico_like.svg'}"
-                alt="좋아요"
-                class="${this.liked ? 'liked' : ''}"
-              />
-            </button>
+            <button
+              type="button"
+              id="like-button"
+              class="${this.liked ? 'liked' : ''}"
+              @click="${this.toggleLike}"
+            ></button>
           </div>
         </div>
 
         <img class="post-image" src="${this.postImage}" alt="게시글 이미지" />
 
-        <div class="post-content ${this.expanded ? 'expanded' : ''}">${this.content}</div>
+        <p class="post-content ${this.expanded ? 'expanded' : ''}">${this.content}</p>
         ${this.content.length > 100
           ? html`
-              <div class="more-button" @click="${this.toggleExpand}">
+              <button type="button" class="more-button" @click="${this.toggleExpand}">
                 ${this.expanded ? '접기' : '더보기'}
-              </div>
+              </button>
             `
           : ''}
       </div>
