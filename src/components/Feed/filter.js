@@ -4,6 +4,23 @@ import resetStyles from '@/styles/reset.js';
 import '@/components/Feed/post.js';
 
 export class FilterFeed extends LitElement {
+  static properties = {
+    posts: { type: Array }, // 부모로부터 전달받을 게시글 데이터
+    selectedRegion: { type: String },
+    selectedCategory: { type: String },
+    regions: { type: Array },
+    categories: { type: Array },
+  };
+
+  constructor() {
+    super();
+    this.posts = []; // 기본값은 빈 배열
+    this.selectedRegion = '전체';
+    this.selectedCategory = '전체';
+    this.regions = ['전체', '신촌', '홍익대', '합정역', '망원'];
+    this.categories = ['전체', '한식', '중식', '양식', '카페', '일식'];
+  }
+
   static styles = css`
     :host {
       display: block;
@@ -53,23 +70,6 @@ export class FilterFeed extends LitElement {
     }
   `;
 
-  static properties = {
-    posts: { type: Array }, // 부모로부터 전달받을 게시글 데이터
-    selectedRegion: { type: String },
-    selectedCategory: { type: String },
-    regions: { type: Array },
-    categories: { type: Array },
-  };
-
-  constructor() {
-    super();
-    this.posts = []; // 기본값은 빈 배열
-    this.selectedRegion = '전체';
-    this.selectedCategory = '전체';
-    this.regions = ['전체', '신촌', '홍익대', '합정역', '망원'];
-    this.categories = ['전체', '한식', '중식', '양식', '카페', '일식'];
-  }
-
   filterPosts() {
     return this.posts.filter((post) => {
       const regionMatch = this.selectedRegion === '전체' || post.region === this.selectedRegion;
@@ -96,6 +96,7 @@ export class FilterFeed extends LitElement {
         ${this.regions.map(
           (region) => html`
             <button
+              type="button"
               class="filter-button ${this.selectedRegion === region ? 'selected' : ''}"
               @click="${() => this.selectRegion(region)}"
             >
@@ -110,6 +111,7 @@ export class FilterFeed extends LitElement {
         ${this.categories.map(
           (category) => html`
             <button
+              type="button"
               class="filter-button ${this.selectedCategory === category ? 'selected' : ''}"
               @click="${() => this.selectCategory(category)}"
             >
