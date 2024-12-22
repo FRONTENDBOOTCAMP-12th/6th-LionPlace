@@ -18,24 +18,23 @@ export const profileAllStyles = css`
       gap: 1.19rem;
 
       & .avatar {
-        display: flex;
         position: relative;
-        justify-content: center;
-        align-items: start;
         inline-size: 3.51563rem;
         aspect-ratio: 1/1;
         border: 0.1875rem solid #fff;
         border-radius: 5000px;
 
-        & button {
+        & a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           color: var(--white);
           text-align: center;
           font-size: 0.78144rem;
-          inline-size: 100%;
-          block-size: 100%;
           font-weight: 600;
           line-height: 1.5;
-          background-color: inherit;
+          inline-size: 100%;
+          block-size: 100%;
         }
 
         & img {
