@@ -55,36 +55,36 @@ class SignUpForm extends LitElement {
 
   _handleInputChange(e) {
     const { id, value } = e.detail;
-    this.formData = { ...this.formData, [id]: value };
+    this.formData = { ...this.formData, [id.replace('user-', '')]: value };
     this._validateField(id, value);
     this._updateSubmitButton();
   }
 
   _validateField(id, value) {
     if (value.trim() === '') {
-      this.errors[id] = '';
+      this.errors = { ...this.errors, [id.replace('user-', '')]: '' };
       return;
     }
 
     switch (id) {
-      case 'id':
+      case 'user-id':
         this.errors.id =
           value.length < 3 || !/^[a-zA-Z0-9]+$/.test(value)
             ? '아이디는 영문 3자 이상이어야 하며, 특수문자를 포함할 수 없습니다.'
             : '';
         break;
-      case 'email':
+      case 'user-email':
         this.errors.email = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
           ? '유효한 이메일 주소를 입력해 주세요.'
           : '';
         break;
-      case 'password':
+      case 'user-password':
         this.errors.password =
           value.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(value)
             ? '비밀번호는 8자 이상이어야 하며, 특수 문자를 포함해야 합니다.'
             : '';
         break;
-      case 'passwordConfirm':
+      case 'user-passwordConfirm':
         this.errors.passwordConfirm =
           value !== this.formData.password ? '비밀번호가 일치하지 않습니다.' : '';
         break;
@@ -169,7 +169,7 @@ class SignUpForm extends LitElement {
             <form-input
               label="아이디"
               type="text"
-              id="id"
+              id="user-id"
               placeholder="영문 3자 이상"
               .value="${this.formData.id}"
               .error="${this.errors.id}"
@@ -179,7 +179,7 @@ class SignUpForm extends LitElement {
             <form-input
               label="이메일"
               type="email"
-              id="email"
+              id="user-email"
               placeholder="인증 가능한 이메일 주소"
               .value="${this.formData.email}"
               .error="${this.errors.email}"
@@ -189,7 +189,7 @@ class SignUpForm extends LitElement {
             <form-input
               label="비밀번호"
               type="password"
-              id="password"
+              id="user-password"
               placeholder="8문자 이상, 특수 문자 포함"
               .value="${this.formData.password}"
               .error="${this.errors.password}"
@@ -199,7 +199,7 @@ class SignUpForm extends LitElement {
             <form-input
               label="비밀번호 확인"
               type="password"
-              id="passwordConfirm"
+              id="user-passwordConfirm"
               placeholder="8문자 이상, 특수 문자 포함"
               .value="${this.formData.passwordConfirm}"
               .error="${this.errors.passwordConfirm}"

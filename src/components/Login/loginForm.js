@@ -94,9 +94,9 @@ class LoginForm extends LitElement {
   _handleInputChange(e) {
     const { detail } = e;
 
-    if (detail.id === 'id') {
+    if (detail.id === 'user-id') {
       this.idValue = detail.value;
-    } else if (detail.id === 'password') {
+    } else if (detail.id === 'user-password') {
       this.pwValue = detail.value;
     }
   }
@@ -117,7 +117,7 @@ class LoginForm extends LitElement {
           <form-input
             label="아이디"
             type="text"
-            id="id"
+            id="user-id"
             placeholder="아이디를 입력해주세요"
             .value="${this.idValue}"
             @input-change="${this._handleInputChange}"
@@ -125,7 +125,7 @@ class LoginForm extends LitElement {
           <form-input
             label="비밀번호"
             type="password"
-            id="password"
+            id="user-password"
             placeholder="비밀번호를 입력해주세요"
             .value="${this.pwValue}"
             @input-change="${this._handleInputChange}"
