@@ -59,7 +59,7 @@ class FormInput extends LitElement {
       })
     );
   }
-
+  // aria-errormessage , aria-invalid 사용
   render() {
     return html`
       <div class="form-group">
@@ -71,7 +71,8 @@ class FormInput extends LitElement {
           .value="${this.value}"
           @input="${this._handleInput}"
           aria-required="true"
-          aria-describedby="${this.id}Error"
+          aria-invalid="${this.error ? 'true' : 'false'}"
+          aria-errormessage="${this.error ? `${this.id}Error` : ''}"
         />
         ${this.error ? html`<span id="${this.id}Error" class="error">${this.error}</span>` : ''}
       </div>
