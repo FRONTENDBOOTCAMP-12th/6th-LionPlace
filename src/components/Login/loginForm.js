@@ -94,34 +94,37 @@ class LoginForm extends LitElement {
 
   render() {
     return html`
-      <div class="container">
-        <app-logo link="./index.html"></app-logo>
+      <section class="login-section">
+        <div class="container">
+          <app-logo link="./index.html"></app-logo>
 
-        <h1>로그인</h1>
+          <h1>로그인</h1>
 
-        <form-input
-          label="아이디"
-          type="text"
-          id="id"
-          placeholder="아이디를 입력해주세요"
-          .value="${this.idValue}"
-          @input-change="${this._handleInputChange}"
-        ></form-input>
-        <form-input
-          label="비밀번호"
-          type="password"
-          id="password"
-          placeholder="비밀번호를 입력해주세요"
-          .value="${this.pwValue}"
-          @input-change="${this._handleInputChange}"
-        ></form-input>
+          <form-input
+            label="아이디"
+            type="text"
+            id="id"
+            placeholder="아이디를 입력해주세요"
+            .value="${this.idValue}"
+            @input-change="${this._handleInputChange}"
+          ></form-input>
+          <form-input
+            label="비밀번호"
+            type="password"
+            id="password"
+            placeholder="비밀번호를 입력해주세요"
+            .value="${this.pwValue}"
+            @input-change="${this._handleInputChange}"
+          ></form-input>
 
+          <submit-button @click=${this._handleLogin} text="로그인"></submit-button>
+        </div>
+      </section>
+      <section calss="help-links">
         <a class="find" href="/findId">아이디 찾기</a>
         <a class="find" href="/findPw">비밀번호 찾기</a>
-
-        <submit-button @click=${this._handleLogin} text="로그인"></submit-button>
         <action-button @click=${this._goToSignUp} text="회원가입"></action-button>
-      </div>
+      </section>
     `;
   }
 }

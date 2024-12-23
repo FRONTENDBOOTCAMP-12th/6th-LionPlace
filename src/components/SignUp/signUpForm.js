@@ -159,59 +159,61 @@ class SignUpForm extends LitElement {
 
   render() {
     return html`
-      <div class="container">
-        <app-logo link="/src/pages/login/index.html"></app-logo>
+      <section>
+        <div class="container">
+          <app-logo link="/src/pages/login/index.html"></app-logo>
 
-        <h1>회원가입</h1>
+          <h1>회원가입</h1>
 
-        <form class="register-form" @submit="${this._handleSubmit}">
-          <form-input
-            label="아이디"
-            type="text"
-            id="id"
-            placeholder="영문 3자 이상"
-            .value="${this.formData.id}"
-            .error="${this.errors.id}"
-            @input-change="${this._handleInputChange}"
-          ></form-input>
+          <form class="register-form" @submit="${this._handleSubmit}">
+            <form-input
+              label="아이디"
+              type="text"
+              id="id"
+              placeholder="영문 3자 이상"
+              .value="${this.formData.id}"
+              .error="${this.errors.id}"
+              @input-change="${this._handleInputChange}"
+            ></form-input>
 
-          <form-input
-            label="이메일"
-            type="email"
-            id="email"
-            placeholder="인증 가능한 이메일 주소"
-            .value="${this.formData.email}"
-            .error="${this.errors.email}"
-            @input-change="${this._handleInputChange}"
-          ></form-input>
+            <form-input
+              label="이메일"
+              type="email"
+              id="email"
+              placeholder="인증 가능한 이메일 주소"
+              .value="${this.formData.email}"
+              .error="${this.errors.email}"
+              @input-change="${this._handleInputChange}"
+            ></form-input>
 
-          <form-input
-            label="비밀번호"
-            type="password"
-            id="password"
-            placeholder="8문자 이상, 특수 문자 포함"
-            .value="${this.formData.password}"
-            .error="${this.errors.password}"
-            @input-change="${this._handleInputChange}"
-          ></form-input>
+            <form-input
+              label="비밀번호"
+              type="password"
+              id="password"
+              placeholder="8문자 이상, 특수 문자 포함"
+              .value="${this.formData.password}"
+              .error="${this.errors.password}"
+              @input-change="${this._handleInputChange}"
+            ></form-input>
 
-          <form-input
-            label="비밀번호 확인"
-            type="password"
-            id="passwordConfirm"
-            placeholder="8문자 이상, 특수 문자 포함"
-            .value="${this.formData.passwordConfirm}"
-            .error="${this.errors.passwordConfirm}"
-            @input-change="${this._handleInputChange}"
-          ></form-input>
+            <form-input
+              label="비밀번호 확인"
+              type="password"
+              id="passwordConfirm"
+              placeholder="8문자 이상, 특수 문자 포함"
+              .value="${this.formData.passwordConfirm}"
+              .error="${this.errors.passwordConfirm}"
+              @input-change="${this._handleInputChange}"
+            ></form-input>
 
-          <submit-button
-            .disabled="${!this.isSubmitEnabled}"
-            text="회원가입"
-            @submit-click="${this._handleSubmit}"
-          ></submit-button>
-        </form>
-      </div>
+            <submit-button
+              .disabled="${!this.isSubmitEnabled}"
+              text="회원가입"
+              @submit-click="${this._handleSubmit}"
+            ></submit-button>
+          </form>
+        </div>
+      </section>
     `;
   }
 }
