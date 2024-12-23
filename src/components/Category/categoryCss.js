@@ -157,9 +157,9 @@ export const categoryStyles = css`
 
       & span {
         color: var(--contentPrimary);
-
         font-size: 0.75019rem;
         line-height: 1.6;
+        white-space: nowrap;
       }
 
       & img {

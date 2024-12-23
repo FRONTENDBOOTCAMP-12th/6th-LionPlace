@@ -29,10 +29,6 @@ export const NoticeBookingStyle = css`
         border-radius: 5000px;
         width: 2.125rem;
         aspect-ratio: 1/1;
-
-        img {
-          background-color: var(--lightblue--400);
-        }
       }
 
       .notice-booking__text {
@@ -76,13 +72,13 @@ export const NoticeBookingStyle = css`
           & > div {
             inline-size: 1.125rem;
             aspect-ratio: 1/1;
-            mask-image: url('/public/images/ico_favorite.svg');
+            mask-image: url('/images/ico_favorite.svg');
             background-color: var(--gray--900);
           }
         }
 
         & .is--active {
-          mask-image: url('/public/images/ico_favorite.svg');
+          mask-image: url('/images/ico_favorite.svg');
           background-color: var(--error);
         }
       }
@@ -123,6 +119,8 @@ export const NoticeBookingStyle = css`
             position: absolute;
             inset-block-start: 0;
             inset-inline-end: 0;
+            inline-size: 3.6875rem;
+            block-size: 3.5625rem;
           }
         }
       }

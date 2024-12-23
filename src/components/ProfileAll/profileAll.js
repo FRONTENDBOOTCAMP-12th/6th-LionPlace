@@ -25,7 +25,7 @@ class ProfileAll extends LitElement {
             <div class="avatar">
               <a href="/" target="_blank" rel="noopener noreferrer">
                 <span>img</span>
-                <img src="/images/ico_write_sm.png" alt="프로필 수정 이미지" />
+                <img src="/images/ico_write_sm.svg" alt="프로필 수정 이미지" />
               </a>
             </div>
             <div class="user-info">

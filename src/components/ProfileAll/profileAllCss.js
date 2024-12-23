@@ -21,7 +21,7 @@ export const profileAllStyles = css`
         position: relative;
         inline-size: 3.51563rem;
         aspect-ratio: 1/1;
-        border: 0.1875rem solid #fff;
+        border: 0.1875rem solid var(--white);
         border-radius: 5000px;
 
         & a {
@@ -139,13 +139,13 @@ export const profileAllStyles = css`
 
         &:nth-of-type(1) {
           &::before {
-            background: url(/images/ico_write.png);
+            background: url(/images/ico_write.svg);
           }
         }
 
         &:nth-of-type(2) {
           &::before {
-            background: url(/images/ico_misson.png);
+            background: url(/images/ico_misson.svg);
           }
         }
       }
