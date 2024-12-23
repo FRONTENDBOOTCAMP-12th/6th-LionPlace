@@ -149,7 +149,7 @@ class SignUpForm extends LitElement {
         });
 
         alert('회원가입 완료');
-        location.reload();
+        window.location.href = '/src/pages/login/index.html';
       }
     } catch (error) {
       console.error('에러 발생:', error);
