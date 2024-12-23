@@ -33,6 +33,18 @@ class LoginForm extends LitElement {
       }
 
       .login-section {
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+      }
+
+      .login-section {
         max-width: 30rem;
         margin: 0 auto;
         padding: 2rem;
