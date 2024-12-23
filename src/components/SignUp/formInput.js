@@ -59,7 +59,7 @@ class FormInput extends LitElement {
       })
     );
   }
-  // aria-errormessage , aria-invalid 사용
+
   render() {
     return html`
       <div class="form-group">
