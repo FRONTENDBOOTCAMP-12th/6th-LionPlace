@@ -149,7 +149,7 @@ class SignUpForm extends LitElement {
         });
 
         alert('회원가입 완료');
-        window.location.href = '/src/pages/login/index.html';
+        window.location.href = '/src/pages/login/loginPage.html';
       }
     } catch (error) {
       console.error('에러 발생:', error);
@@ -161,7 +161,7 @@ class SignUpForm extends LitElement {
     return html`
       <section>
         <div class="container">
-          <app-logo link="/src/pages/login/index.html"></app-logo>
+          <app-logo link="/src/pages/login/loginPage.html"></app-logo>
 
           <h1>회원가입</h1>
 

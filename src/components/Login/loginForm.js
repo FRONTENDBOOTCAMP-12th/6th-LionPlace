@@ -4,7 +4,6 @@ import pb from '@/api/pocketbase';
 import '../SignUp/logo.js';
 import '../SignUp/formInput.js';
 import '../SignUp/submitButton.js';
-import './actionButton.js';
 
 class LoginForm extends LitElement {
   static properties = {
@@ -110,7 +109,7 @@ class LoginForm extends LitElement {
     return html`
       <section class="login-section">
         <div class="container">
-          <app-logo link="./index.html"></app-logo>
+          <app-logo link="./loginPage.html"></app-logo>
 
           <h1>로그인</h1>
 
