@@ -12,7 +12,7 @@ class SubmitButton extends LitElement {
     css`
       button {
         width: 100%;
-        margin-top: 3rem;
+        margin-top: 2rem;
         padding: 1rem;
         background-color: white;
         border: none;
