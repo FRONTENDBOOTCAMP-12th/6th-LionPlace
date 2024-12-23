@@ -21,10 +21,22 @@ class LoginForm extends LitElement {
   static styles = [
     resetStyles,
     css`
-      .container {
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+      }
+
+      .login-section {
         max-width: 30rem;
         margin: 0 auto;
-        padding: 4rem;
+        padding: 2rem;
+        margin-top: 2rem;
       }
 
       h1 {
@@ -34,10 +46,15 @@ class LoginForm extends LitElement {
         color: white;
       }
 
-      .find {
-        display: block;
-        margin-top: 1rem;
-        color: #fff;
+      .help-links {
+        display: flex;
+        justify-content: center;
+        padding-right: 2rem;
+        gap: 1rem;
+      }
+
+      .help-links a {
+        text-decoration: none;
       }
     `,
   ];
@@ -45,10 +62,6 @@ class LoginForm extends LitElement {
   firstUpdated() {
     document.documentElement.style.setProperty('--background-color', '#171f31');
     document.documentElement.style.setProperty('--color', '#fff');
-  }
-
-  _goToSignUp() {
-    window.location.href = '/src/pages/sign-up/index.html';
   }
 
   async _fetchData() {
@@ -120,10 +133,11 @@ class LoginForm extends LitElement {
           <submit-button @click=${this._handleLogin} text="로그인"></submit-button>
         </div>
       </section>
-      <section calss="help-links">
+      <section class="help-links">
+        <h2 class="sr-only">계정 관련 도움말</h2>
         <a class="find" href="/findId">아이디 찾기</a>
         <a class="find" href="/findPw">비밀번호 찾기</a>
-        <action-button @click=${this._goToSignUp} text="회원가입"></action-button>
+        <a class="sign-up" href="/src/pages/sign-up/index.html">회원가입</a>
       </section>
     `;
   }
