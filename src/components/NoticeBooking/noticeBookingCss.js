@@ -119,8 +119,9 @@ export const NoticeBookingStyle = css`
             position: absolute;
             inset-block-start: 0;
             inset-inline-end: 0;
-            inline-size: 3.6875rem;
-            block-size: 3.5625rem;
+            inline-size: 3.4375rem;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
           }
         }
       }
@@ -132,13 +133,20 @@ export const NoticeBookingStyle = css`
         color: var(--contentSecondary);
         font-size: 0.75019rem;
         line-height: 1.6;
-        width: 11rem;
+        width: 50vw;
 
         .description {
           overflow: hidden;
           inline-size: 100%;
           text-overflow: ellipsis;
           white-space: nowrap;
+
+          & span {
+            overflow: hidden;
+            display: block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
         }
 
         .feedback {

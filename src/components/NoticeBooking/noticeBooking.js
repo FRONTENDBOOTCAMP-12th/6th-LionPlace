@@ -35,9 +35,10 @@ class NoticeBooking extends LitElement {
     }
   }
 
-  async handleFavorite(index) {
+  async handleFavorite(e) {
+    const dataIndex = e.target.closest('button').dataset.index;
     const updateData = [...this.data];
-    const target = updateData[index];
+    const target = updateData[dataIndex];
 
     const favoriteStatus = !target.favorites;
 
@@ -48,7 +49,7 @@ class NoticeBooking extends LitElement {
       });
 
       // 로컬 상태 업데이트
-      updateData[index].favorites = favoriteStatus;
+      updateData[dataIndex].favorites = favoriteStatus;
       this.data = updateData;
     } catch (error) {
       console.error('즐겨찾기 업데이트 실패');
@@ -71,7 +72,7 @@ class NoticeBooking extends LitElement {
                     alt=""
                     role="presentation"
                   />
-                  <figcaption class="a11y-hidden">병의원</figcaption>
+                  <figcaption class="a11y-hidden">${item.field}</figcaption>
                 </figure>
                 <article class="notice-booking__text">
                   <h4>${item.store_id}</h4>
@@ -84,14 +85,14 @@ class NoticeBooking extends LitElement {
               <article class="notice-booking__button">
                 <h3 class="a11y-hidden">즐겨찾기, 더보기 버튼 클릭 영역</h3>
                 <figure class="favorites">
-                  <button @click="${() => this.handleFavorite(index)}" type="button">
+                  <button @click="${this.handleFavorite}" type="button" data-index="${index}">
                     <div class="${item.favorites ? 'is--active' : ''}"></div>
                   </button>
                   <figcaption class="a11y-hidden" aria-hidden="true">즐겨찾기 버튼</figcaption>
                 </figure>
                 <figure class="more">
                   <button type="button">
-                    <img src="/images/ico_more.svg" alt="" />
+                    <img src="/images/ico_more.svg" alt="" role="presentation" />
                   </button>
                   <figcaption class="a11y-hidden">더보기 버튼</figcaption>
                 </figure>
@@ -114,7 +115,9 @@ class NoticeBooking extends LitElement {
                 </header>
 
                 <div class="review">
-                  <p class="description">${item.description}</p>
+                  <p class="description">
+                    ${item.description.split('\n').map((text) => html`<span>${text}</span>`)}
+                  </p>
                   <div class="feedback">
                     <div class="feedback-info">
                       <span class="feedback-icon">${item.hashtag_description_icon}</span>
