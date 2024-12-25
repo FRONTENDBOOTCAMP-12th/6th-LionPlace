@@ -42,7 +42,7 @@ class SignUpForm extends LitElement {
         font-size: 2rem;
         font-weight: 600;
         margin-bottom: 2rem;
-        color: white;
+        color: var(--white);
       }
     `,
   ];

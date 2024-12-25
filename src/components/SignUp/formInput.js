@@ -23,7 +23,7 @@ class FormInput extends LitElement {
         display: block;
         margin-bottom: 0.5rem;
         font-size: 1rem;
-        color: white;
+        color: var(--white);
       }
 
       .form-group input {
@@ -33,17 +33,17 @@ class FormInput extends LitElement {
         border: 1px solid white;
         border-radius: 6px;
         background-color: transparent;
-        color: white;
+        color: var(--white);
         font-size: 1rem;
       }
 
       .form-group input::placeholder {
-        color: white;
+        color: var(--white);
       }
 
       .form-group .error {
         display: block;
-        color: red;
+        color: var(--error);
         font-size: 0.875rem;
         margin-top: 0.5rem;
       }
