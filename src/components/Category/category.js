@@ -57,18 +57,6 @@ class TabCategory extends LitElement {
     this.category = target.dataset.category;
   }
 
-  // 토글 함수
-  _handleToggle() {
-    const content = this.shadowRoot.querySelector('.content');
-    const currentHeight = content.scrollHeight;
-    this.isOpen = !this.isOpen; // 상태 토글
-    if (this.isOpen) {
-      content.style.height = `${currentHeight}px`;
-    } else {
-      content.style.height = '0';
-    }
-  }
-
   renderData() {
     const data = this.data[this.category];
     const totalReservations = data.reduce((acc, cur) => acc + cur.count, 0);
@@ -104,30 +92,11 @@ class TabCategory extends LitElement {
         )}
       </ul>
 
-      <div class="btn-container">
-        <button @click="${this._handleToggle}" class="more-btn" type="button">
+      <div class="link-container">
+        <a href="/src/pages/notice-booking/" class="more-link">
           <span>더보기</span>
-          <img
-            src="/images/ico_arrow.svg"
-            alt="아래방향 화살표"
-            class="arrow-img ${this.isOpen ? 'is--active' : ''}"
-            aria-hidden="true"
-          />
-        </button>
-        <section class="content">
-          <article class="content-inner">
-            <h2 class="a11y-hidden">더보기 컨텐츠</h2>
-            <p>
-              '함께 성장하는 바른 교육' 이듬&#40;EUID&#41;과 멋쟁이 사자처럼 태킷&#40;Techit&#41;
-              스쿨이 만났습니다. '이듬' 교육이 지향하는 비전은 동반 성장에 있습니다. 강사에서
-              수강생으로 한 방향으로 흘러가는 지식 전달이 아닌, 함께 공감하고 이해하며 경험하는 교육
-              가치를 통해 공동의 혁신을 이끌어내는 것을 목표로 합니다. 멋쟁이 사자처럼 태킷 스쿨은
-              '함께'의 가치를 중요하게 생각합니다. 5년이 지나도, 10년이 지나도 IT 업계에 필요한
-              인재를 육성하는 교육을 제공하고, 기업의 HRD 파트너로 존재할 것이며 국내 대표 IT 교육
-              회사인 만큼 더 좋은 교육이 무엇인지를 끊임없이 고민하는 회사로 자리매김할 것입니다.
-            </p>
-          </article>
-        </section>
+          <img src="/images/ico_right.svg" alt="우측방향 화살표" aria-hidden="true" />
+        </a>
       </div>
 
       <div class="category-bedge">

@@ -123,11 +123,7 @@ class NoticeBooking extends LitElement {
                       <span class="feedback-icon">${item.hashtag_description_icon}</span>
                       <span>${item.hashtag_description}</span>
                     </div>
-                    <div class="feedback-info">
-                      <button class="feedback-btn">
-                        +<span class="like-count">${item.count}</span>
-                      </button>
-                    </div>
+                    <div class="feedback-info">+<span class="like-count">${item.count}</span></div>
                   </div>
                 </div>
               </article>

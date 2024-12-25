@@ -156,17 +156,10 @@ export const NoticeBookingStyle = css`
         }
 
         .feedback-info {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.25rem;
           padding: 0.125rem 0.5rem;
           background-color: var(--gray--50);
           border-radius: 0.25rem;
           max-inline-size: fit-content;
-        }
-
-        .feedback-btn {
-          color: var(--contentSecondary);
         }
       }
     }

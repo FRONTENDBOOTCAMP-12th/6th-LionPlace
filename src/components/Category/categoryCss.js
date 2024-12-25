@@ -142,14 +142,13 @@ export const categoryStyles = css`
     }
   }
 
-  /* 더보기 버튼 영역 */
-  .btn-container {
-    .more-btn {
+  /* 더보기 링크 영역 */
+  .link-container {
+    .more-link {
       display: flex;
       justify-content: center;
-      inline-size: 100%;
       padding: 0.9375rem 8.4375rem;
-      background-color: transparent;
+
       &:focus-visible {
         outline: 1px solid var(--blue--800);
         outline-offset: 1px;
@@ -161,24 +160,6 @@ export const categoryStyles = css`
         line-height: 1.6;
         white-space: nowrap;
       }
-
-      & img {
-        transition: transform 0.3s ease;
-
-        &.is--active {
-          transform: rotate(180deg);
-        }
-      }
-    }
-
-    .content {
-      overflow: hidden;
-      transition: height 0.5s ease;
-      height: 0;
-    }
-
-    .content-inner {
-      padding: 1rem;
     }
   }
 
