@@ -1,9 +1,9 @@
 import { css } from 'lit';
-import resetStyles from '@/styles/reset.js';
+import commonStyles from '@/styles/common.js';
 import { buttonStyles } from '../Button/buttonCss.js';
 
 export const reviewStyles = [
-  resetStyles,
+  commonStyles,
   buttonStyles,
   css`
     .btn {
