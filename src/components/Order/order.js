@@ -1,9 +1,9 @@
 import { html, LitElement } from 'lit';
 import { orderStyles } from './orderCss';
-import resetStyle from '@/styles/reset.js';
+import commonStyles from '@/styles/common.js';
 
 class OrderPage extends LitElement {
-  static styles = [resetStyle, orderStyles];
+  static styles = [commonStyles, orderStyles];
 
   constructor() {
     super();

@@ -69,11 +69,17 @@ export const NoticeBookingStyle = css`
 
       .favorites {
         & button {
-          & > div {
+          & > span {
+            display: block;
             inline-size: 1.125rem;
             aspect-ratio: 1/1;
             mask-image: url('/images/ico_favorite.svg');
             background-color: var(--gray--900);
+          }
+
+          &:focus-visible {
+            outline: 1px solid var(--blue--800);
+            outline-offset: 1px;
           }
         }
 
@@ -87,6 +93,10 @@ export const NoticeBookingStyle = css`
           img {
             inline-size: 1.125rem;
             aspect-ratio: 1/1;
+          }
+          &:focus-visible {
+            outline: 1px solid var(--blue--800);
+            outline-offset: 1px;
           }
         }
       }

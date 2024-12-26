@@ -1,9 +1,9 @@
 import { LitElement, html } from 'lit';
-import { footerStyle } from './footerCss';
-import resetStyle from '@/styles/reset';
+import { footerStyle } from './footerCss.js';
+import commonStyles from '@/styles/common.js';
 
 class Footer extends LitElement {
-  static styles = [resetStyle, footerStyle];
+  static styles = [commonStyles, footerStyle];
 
   constructor() {
     super();

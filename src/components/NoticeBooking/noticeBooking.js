@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
 import { NoticeBookingStyle } from './noticeBookingCss';
-import resetStyle from '@/styles/reset.js';
+import commonStyles from '@/styles/common.js';
 import pb from '@/api/pocketbase';
 
 pb.autoCancellation(false);
@@ -10,7 +10,7 @@ class NoticeBooking extends LitElement {
     data: { type: Array },
   };
 
-  static styles = [resetStyle, NoticeBookingStyle];
+  static styles = [commonStyles, NoticeBookingStyle];
 
   constructor() {
     super();
@@ -86,7 +86,7 @@ class NoticeBooking extends LitElement {
                 <h3 class="a11y-hidden">즐겨찾기, 더보기 버튼 클릭 영역</h3>
                 <figure class="favorites">
                   <button @click="${this.handleFavorite}" type="button" data-index="${index}">
-                    <div class="${item.favorites ? 'is--active' : ''}"></div>
+                    <span class="${item.favorites ? 'is--active' : ''}"></span>
                   </button>
                   <figcaption class="a11y-hidden" aria-hidden="true">즐겨찾기 버튼</figcaption>
                 </figure>

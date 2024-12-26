@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
 import { tabStyles } from './tabCss.js';
-import resetStyles from '@/styles/reset.js';
+import commonStyles from '@/styles/common.js';
 
 class Tab extends LitElement {
   static properties = {
@@ -12,7 +12,7 @@ class Tab extends LitElement {
     this.active = 'tab-reserved'; // 초기 활성화 설정
   }
 
-  static styles = [resetStyles, tabStyles];
+  static styles = [commonStyles, tabStyles];
 
   handleTabBtn(e) {
     const targetTab = e.target.dataset.tab;
