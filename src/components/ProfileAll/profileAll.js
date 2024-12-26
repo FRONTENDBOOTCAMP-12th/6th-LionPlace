@@ -1,13 +1,13 @@
 import { LitElement, html } from 'lit';
 import { profileAllStyles } from './profileAllCss.js';
-import resetStyles from '@/styles/reset.js';
+import commonStyles from '@/styles/common.js';
 
 class ProfileAll extends LitElement {
   static properties = {
     userId: { type: Object },
   };
 
-  static styles = [resetStyles, profileAllStyles];
+  static styles = [commonStyles, profileAllStyles];
 
   constructor() {
     super();

@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
 import { categoryStyles } from './reservedCategoryCss.js';
-import resetStyle from '@/styles/reset.js';
+import commonStyles from '@/styles/common.js';
 import pb from '@/api/pocketbase';
 
 class TabCategory extends LitElement {
@@ -10,7 +10,7 @@ class TabCategory extends LitElement {
     data: { type: Array },
   };
 
-  static styles = [resetStyle, categoryStyles];
+  static styles = [commonStyles, categoryStyles];
 
   constructor() {
     super();

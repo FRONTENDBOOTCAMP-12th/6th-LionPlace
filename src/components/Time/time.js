@@ -1,9 +1,9 @@
 import { html, LitElement } from 'lit';
 import { timeStyles } from './timeCss.js';
-import resetStyle from '@/styles/reset.js';
+import commonStyles from '@/styles/common.js';
 
 class Time extends LitElement {
-  static styles = [resetStyle, timeStyles];
+  static styles = [commonStyles, timeStyles];
 
   render() {
     return html`

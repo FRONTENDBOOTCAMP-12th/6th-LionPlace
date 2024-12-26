@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
 import { navgationStyles } from './navigationCss.js';
-import resetStyle from '@/styles/reset.js';
+import commonStyles from '@/styles/common.js';
 
 class Navigation extends LitElement {
   static properties = {
@@ -8,7 +8,7 @@ class Navigation extends LitElement {
     loading: { type: Boolean },
   };
 
-  static styles = [navgationStyles, resetStyle];
+  static styles = [navgationStyles, commonStyles];
 
   constructor() {
     super();
