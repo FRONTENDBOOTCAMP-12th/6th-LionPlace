@@ -1,10 +1,8 @@
 import { css } from 'lit';
-import resetStyles from '@/styles/reset.js';
-import { buttonStyles } from '../Button/buttonCss.js';
+import commonStyles from '@/styles/common.js';
 
 export const reviewStyles = [
-  resetStyles,
-  buttonStyles,
+  commonStyles,
   css`
     .btn {
       padding: 0.625rem 1.125rem !important;
