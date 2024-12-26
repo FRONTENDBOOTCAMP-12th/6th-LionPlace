@@ -70,7 +70,7 @@ export class FilterFeed extends LitElement {
     }
   `;
 
-  filterPosts() {
+  _filterPosts() {
     return this.posts.filter((post) => {
       const regionMatch = this.selectedRegion === '전체' || post.region === this.selectedRegion;
       const categoryMatch =
@@ -79,62 +79,66 @@ export class FilterFeed extends LitElement {
     });
   }
 
-  selectRegion(region) {
+  _selectRegion(region) {
     this.selectedRegion = region;
   }
 
-  selectCategory(category) {
+  _selectCategory(category) {
     this.selectedCategory = category;
   }
 
   render() {
-    const filteredPosts = this.filterPosts();
+    const filteredPosts = this._filterPosts();
 
     return html`
       <!-- 지역 필터 -->
-      <div class="filter-container">
-        ${this.regions.map(
-          (region) => html`
-            <button
-              type="button"
-              class="filter-button ${this.selectedRegion === region ? 'selected' : ''}"
-              @click="${() => this.selectRegion(region)}"
-            >
-              ${region}
-            </button>
-          `
-        )}
-      </div>
+          <div class="filter-container">
+            ${this.regions.map(
+              (region) => html`
+                <button
+                  type="button"
+                  class="filter-button ${this.selectedRegion === region ? 'selected' : ''}"
+                  @click="${() => this._selectRegion(region)}"
+                >
+                  ${region}
+                </button>
+              `
+            )}
+          </div>
 
-      <!-- 음식 종류 필터 -->
-      <div class="filter-container">
-        ${this.categories.map(
-          (category) => html`
-            <button
-              type="button"
-              class="filter-button ${this.selectedCategory === category ? 'selected' : ''}"
-              @click="${() => this.selectCategory(category)}"
-            >
-              ${category}
-            </button>
-          `
-        )}
-      </div>
+          <!-- 음식 종류 필터 -->
+              <div class="filter-container">
+                ${this.categories.map(
+                  (category) => html`
+                    <button
+                      type="button"
+                      class="filter-button ${this.selectedCategory === category ? 'selected' : ''}"
+                      @click="${() => this._selectCategory(category)}"
+                    >
+                      ${category}
+                    </button>
+                  `
+                )}
+              </div>
 
-      <!-- 필터링된 게시글 -->
-      <div class="feed-container">
-        ${filteredPosts.map(
-          (post) => html`
-            <post-component
-              profileImage="${post.profileImage}"
-              username="${post.username}"
-              date="${post.date}"
-              postImage="${post.postImage}"
-              content="${post.content}"
-            ></post-component>
-          `
-        )}
-      </div>
+              <!-- 필터링된 게시글 -->
+              <div class="feed-container">
+                ${filteredPosts.map(
+                  (post) => html`
+                    <post-component
+                      profileImage="${post.profileImage}"
+                      username="${post.username}"
+                      date="${post.date}"
+                      postImage="${post.postImage}"
+                      content="${post.content}"
+                    ></post-component>
+                  `
+                )}
+              </div>
+            </h2>
+          </h2>
+        </h2>
+      </h2>
     `;
   }
 }

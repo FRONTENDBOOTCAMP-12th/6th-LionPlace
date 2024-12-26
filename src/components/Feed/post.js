@@ -157,7 +157,7 @@ class PostComponent extends LitElement {
           </div>
         </div>
 
-        <img class="post-image" src="${this.postImage}" alt="게시글 이미지" />
+        <img class="post-image" src="${this.postImage}" alt="방문자 리뷰 사진" />
 
         <p class="post-content ${this.expanded ? 'expanded' : ''}">${this.content}</p>
         ${this.content.length > 100

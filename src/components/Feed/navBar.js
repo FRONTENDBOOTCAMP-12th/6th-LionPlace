@@ -66,6 +66,18 @@ class NavBar extends LitElement {
     }
   `;
 
+  handleClick(e, tab) {
+    e.preventDefault();
+    this.activePage = tab;
+    this.dispatchEvent(
+      new CustomEvent('nav-change', {
+        detail: tab,
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
+
   render() {
     return html`
       <nav class="tab-menu">
@@ -113,18 +125,6 @@ class NavBar extends LitElement {
         </ul>
       </nav>
     `;
-  }
-
-  handleClick(e, tab) {
-    e.preventDefault();
-    this.activePage = tab;
-    this.dispatchEvent(
-      new CustomEvent('nav-change', {
-        detail: tab,
-        bubbles: true,
-        composed: true,
-      })
-    );
   }
 }
 
