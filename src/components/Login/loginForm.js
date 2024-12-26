@@ -1,5 +1,6 @@
-import { LitElement, html, css } from 'lit';
-import resetStyles from '@/styles/reset.js';
+import { LitElement, html } from 'lit';
+import { loginFormCss } from './loginFormCss.js';
+import commonStyles from '@/styles/common.js';
 import pb from '@/api/pocketbase';
 import '../SignUp/logo.js';
 import '../SignUp/formInput.js';
@@ -17,47 +18,7 @@ class LoginForm extends LitElement {
     this.pwValue = '';
   }
 
-  static styles = [
-    resetStyles,
-    css`
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        padding: 0;
-        border: 0;
-        clip: rect(0, 0, 0, 0);
-        overflow: hidden;
-      }
-
-      .login-section {
-        max-width: 30rem;
-        margin: 0 auto;
-        padding: 2rem;
-        margin-top: 2rem;
-      }
-
-      h1 {
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 2rem;
-        color: var(--white);
-      }
-
-      .help-links {
-        display: flex;
-        justify-content: center;
-        padding-right: 2rem;
-        padding-left: 2rem;
-        gap: 1rem;
-      }
-
-      .help-links a {
-        text-decoration: none;
-      }
-    `,
-  ];
+  static styles = [commonStyles, loginFormCss];
 
   firstUpdated() {
     document.documentElement.style.setProperty('--background-color', '#171f31');

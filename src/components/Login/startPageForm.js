@@ -1,40 +1,11 @@
-import { LitElement, html, css } from 'lit';
-import resetStyles from '../../styles/reset.js';
+import { LitElement, html } from 'lit';
+import { startPageFormCss } from './startPageFormCss.js';
+import commonStyles from '../../styles/common.js';
 import '../SignUp/logo.js';
 import './actionButton.js';
 
 class StartPageForm extends LitElement {
-  static styles = [
-    resetStyles,
-    css`
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        padding: 0;
-        border: 0;
-        clip: rect(0, 0, 0, 0);
-        overflow: hidden;
-      }
-
-      .start-section {
-        max-width: 30rem;
-        margin: 0 auto;
-        padding: 2rem;
-        margin-top: 2rem;
-      }
-
-      app-logo {
-        display: block;
-        margin-bottom: 20.5rem;
-      }
-
-      action-button {
-        display: block;
-      }
-    `,
-  ];
+  static styles = [commonStyles, startPageFormCss];
 
   // 회원가입 페이지 배경색, 글자색 변경
   firstUpdated() {

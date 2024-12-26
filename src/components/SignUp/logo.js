@@ -1,22 +1,11 @@
-import { LitElement, html, css } from 'lit';
-
+import { LitElement, html } from 'lit';
+import { logoCss } from './logoCss';
 class Logo extends LitElement {
   static properties = {
     link: { type: String },
   };
 
-  static styles = css`
-    .logo {
-      display: block;
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .logo img {
-      width: auto;
-      height: 12rem;
-    }
-  `;
+  static styles = logoCss;
 
   render() {
     return html`

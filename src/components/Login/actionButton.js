@@ -1,5 +1,6 @@
-import { LitElement, html, css } from 'lit';
-import resetStyles from '@/styles/reset.js';
+import { LitElement, html } from 'lit';
+import { actionButtonStyles } from './actionButtonCss';
+import commonStyles from '@/styles/common.js';
 
 class ActionButton extends LitElement {
   static properties = {
@@ -7,23 +8,7 @@ class ActionButton extends LitElement {
     onClick: { type: Function },
   };
 
-  static styles = [
-    resetStyles,
-    css`
-      button {
-        width: 100%;
-        margin-top: 1rem;
-        padding: 1rem;
-        background-color: var(--white);
-        border: none;
-        border-radius: 6px;
-        color: #1a1f2e;
-        font-size: 1rem;
-        font-weight: bold;
-        cursor: pointer;
-      }
-    `,
-  ];
+  static styles = [commonStyles, actionButtonStyles];
 
   render() {
     return html` <button @click="${this.onClick}">${this.text}</button> `;

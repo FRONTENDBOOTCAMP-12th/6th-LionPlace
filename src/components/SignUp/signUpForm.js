@@ -1,5 +1,6 @@
-import { LitElement, html, css } from 'lit';
-import resetStyles from '@/styles/reset.js';
+import { LitElement, html } from 'lit';
+import { signUpFormCss } from './signUpFormCss.js';
+import commonStyles from '@/styles/common.js';
 import pb from '@/api/pocketbase';
 import './formInput.js';
 import './submitButton.js';
@@ -29,23 +30,7 @@ class SignUpForm extends LitElement {
     this.isSubmitEnabled = false;
   }
 
-  static styles = [
-    resetStyles,
-    css`
-      .container {
-        max-width: 30rem;
-        margin: 0 auto;
-        padding: 4rem;
-      }
-
-      h1 {
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 2rem;
-        color: var(--white);
-      }
-    `,
-  ];
+  static styles = [commonStyles, signUpFormCss];
 
   // 회원가입 페이지 배경색, 글자색 변경
   firstUpdated() {
