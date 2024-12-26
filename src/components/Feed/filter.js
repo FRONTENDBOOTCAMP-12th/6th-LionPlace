@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import resetStyles from '@/styles/reset.js';
+import resetStyles from '@/styles/common.js';
 
 import '@/components/Feed/post.js';
 
