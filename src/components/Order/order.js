@@ -16,22 +16,22 @@ class OrderPage extends LitElement {
           <div class="order">
             <h2><strong>&ldquo;네이버 예약&rdquo;</strong> 지금 바로 이용해보세요.</h2>
             <ul class="order-list">
-              <li><a href="/" target="_blank" rel="noopener noreferrer">네이버 주문</a></li>
-              <li><a href="/" target="_blank" rel="noopener noreferrer">뷔페</a></li>
-              <li><a href="/" target="_blank" rel="noopener noreferrer">공방•클래스</a></li>
-              <li><a href="/" target="_blank" rel="noopener noreferrer">놀이공원</a></li>
-              <li><a href="/" target="_blank" rel="noopener noreferrer">키즈카페</a></li>
-              <li><a href="/" target="_blank" rel="noopener noreferrer">아쿠아리움</a></li>
-              <li><a href="/" target="_blank" rel="noopener noreferrer">전시</a></li>
-              <li><a href="/" target="_blank" rel="noopener noreferrer">공연</a></li>
-              <li><a href="/" target="_blank" rel="noopener noreferrer">펜션</a></li>
-              <li><a href="/" target="_blank" rel="noopener noreferrer">헤어샵</a></li>
-              <li><a href="/" target="_blank" rel="noopener noreferrer">편의점 택배</a></li>
-              <li><a href="/" target="_blank" rel="noopener noreferrer">편의점 배달</a></li>
+              <li><a href="/">네이버 주문</a></li>
+              <li><a href="/">뷔페</a></li>
+              <li><a href="/">공방•클래스</a></li>
+              <li><a href="/">놀이공원</a></li>
+              <li><a href="/">키즈카페</a></li>
+              <li><a href="/">아쿠아리움</a></li>
+              <li><a href="/">전시</a></li>
+              <li><a href="/">공연</a></li>
+              <li><a href="/">펜션</a></li>
+              <li><a href="/">헤어샵</a></li>
+              <li><a href="/">편의점 택배</a></li>
+              <li><a href="/">편의점 배달</a></li>
             </ul>
           </div>
           <div class="event">
-            <a href="/" target="_blank" rel="noopener noreferrer" class="event-link">
+            <a href="/" class="event-link">
               <span class="event-text">
                 <span>도심 속 온천스파!</span>
                 <strong>웅진플레이도시</strong>

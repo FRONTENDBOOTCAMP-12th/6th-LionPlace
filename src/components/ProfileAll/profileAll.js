@@ -33,25 +33,25 @@ class ProfileAll extends LitElement {
               <div class="review">
                 <ul>
                   <li>
-                    <a href="/" target="_blank" rel="noopener noreferrer">
+                    <a href="/">
                       <span>리뷰</span>
                       <span>17</span>
                     </a>
                   </li>
                   <li>
-                    <a href="/" target="_blank" rel="noopener noreferrer">
+                    <a href="/">
                       <span>사진</span>
                       <span>19</span>
                     </a>
                   </li>
                   <li>
-                    <a href="/" target="_blank" rel="noopener noreferrer">
+                    <a href="/">
                       <span>팔로잉</span>
                       <span>0</span>
                     </a>
                   </li>
                   <li>
-                    <a href="/" target="_blank" rel="noopener noreferrer">
+                    <a href="/">
                       <span>팔로워</span>
                       <span>2</span>
                     </a>
@@ -61,12 +61,12 @@ class ProfileAll extends LitElement {
             </div>
           </div>
           <div class="profile-container__bottom">
-            <a href="/" target="_blank" rel="noopener noreferrer">피드작성</a>
-            <a href="/" target="_blank" rel="noopener noreferrer">리뷰작성</a>
+            <a href="/">피드작성</a>
+            <a href="/">리뷰작성</a>
           </div>
         </div>
         <div class="coupon">
-          <a class="coupon-link" href="/" target="_blank" rel="noopener noreferrer">
+          <a class="coupon-link" href="/">
             <span class="coupon-text">쿠폰</span>
             <span class="coupon-count">1</span>
           </a>
