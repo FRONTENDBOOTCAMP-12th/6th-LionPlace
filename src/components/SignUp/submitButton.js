@@ -1,5 +1,6 @@
-import { LitElement, html, css } from 'lit';
-import resetStyles from '@/styles/reset.js';
+import { LitElement, html } from 'lit';
+import { submitButtonCss } from './submitButtonCss';
+import commonStyles from '@/styles/common.js';
 
 class SubmitButton extends LitElement {
   static properties = {
@@ -7,29 +8,7 @@ class SubmitButton extends LitElement {
     text: { type: String },
   };
 
-  static styles = [
-    resetStyles,
-    css`
-      button {
-        width: 100%;
-        margin-top: 3rem;
-        padding: 1rem;
-        background-color: white;
-        border: none;
-        border-radius: 6px;
-        color: #1a1f2e;
-        font-size: 1rem;
-        font-weight: bold;
-        cursor: pointer;
-      }
-
-      button[disabled] {
-        background-color: #f0f0f0;
-        color: gray;
-        cursor: not-allowed;
-      }
-    `,
-  ];
+  static styles = [commonStyles, submitButtonCss];
 
   render() {
     return html`

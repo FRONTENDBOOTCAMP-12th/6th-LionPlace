@@ -1,10 +1,10 @@
-import { LitElement, html, css } from 'lit';
-import resetStyles from '@/styles/reset.js';
+import { LitElement, html } from 'lit';
+import { loginFormCss } from './loginFormCss.js';
+import commonStyles from '@/styles/common.js';
 import pb from '@/api/pocketbase';
 import '../SignUp/logo.js';
 import '../SignUp/formInput.js';
 import '../SignUp/submitButton.js';
-import './actionButton.js';
 
 class LoginForm extends LitElement {
   static properties = {
@@ -18,37 +18,11 @@ class LoginForm extends LitElement {
     this.pwValue = '';
   }
 
-  static styles = [
-    resetStyles,
-    css`
-      .container {
-        max-width: 30rem;
-        margin: 0 auto;
-        padding: 4rem;
-      }
-
-      h1 {
-        font-size: 2rem;
-        font-weight: 600;
-        margin-bottom: 2rem;
-        color: white;
-      }
-
-      .find {
-        display: block;
-        margin-top: 1rem;
-        color: #fff;
-      }
-    `,
-  ];
+  static styles = [commonStyles, loginFormCss];
 
   firstUpdated() {
     document.documentElement.style.setProperty('--background-color', '#171f31');
     document.documentElement.style.setProperty('--color', '#fff');
-  }
-
-  _goToSignUp() {
-    window.location.href = '/src/pages/sign-up/index.html';
   }
 
   async _fetchData() {
@@ -80,9 +54,9 @@ class LoginForm extends LitElement {
   _handleInputChange(e) {
     const { detail } = e;
 
-    if (detail.id === 'id') {
+    if (detail.id === 'user-id') {
       this.idValue = detail.value;
-    } else if (detail.id === 'password') {
+    } else if (detail.id === 'user-password') {
       this.pwValue = detail.value;
     }
   }
@@ -94,34 +68,38 @@ class LoginForm extends LitElement {
 
   render() {
     return html`
-      <div class="container">
-        <app-logo link="./index.html"></app-logo>
+      <section class="login-section">
+        <div class="container">
+          <app-logo link="./loginPage.html"></app-logo>
 
-        <h1>로그인</h1>
+          <h1>로그인</h1>
 
-        <form-input
-          label="아이디"
-          type="text"
-          id="id"
-          placeholder="아이디를 입력해주세요"
-          .value="${this.idValue}"
-          @input-change="${this._handleInputChange}"
-        ></form-input>
-        <form-input
-          label="비밀번호"
-          type="password"
-          id="password"
-          placeholder="비밀번호를 입력해주세요"
-          .value="${this.pwValue}"
-          @input-change="${this._handleInputChange}"
-        ></form-input>
+          <form-input
+            label="아이디"
+            type="text"
+            id="user-id"
+            placeholder="아이디를 입력해주세요"
+            .value="${this.idValue}"
+            @input-change="${this._handleInputChange}"
+          ></form-input>
+          <form-input
+            label="비밀번호"
+            type="password"
+            id="user-password"
+            placeholder="비밀번호를 입력해주세요"
+            .value="${this.pwValue}"
+            @input-change="${this._handleInputChange}"
+          ></form-input>
 
+          <submit-button @click=${this._handleLogin} text="로그인"></submit-button>
+        </div>
+      </section>
+      <section class="help-links">
+        <h2 class="sr-only">계정 관련 도움말</h2>
         <a class="find" href="/findId">아이디 찾기</a>
         <a class="find" href="/findPw">비밀번호 찾기</a>
-
-        <submit-button @click=${this._handleLogin} text="로그인"></submit-button>
-        <action-button @click=${this._goToSignUp} text="회원가입"></action-button>
-      </div>
+        <a class="sign-up" href="/src/pages/sign-up/index.html">회원가입</a>
+      </section>
     `;
   }
 }
