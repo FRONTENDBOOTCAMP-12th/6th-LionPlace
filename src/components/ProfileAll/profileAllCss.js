@@ -35,15 +35,21 @@ export const profileAllStyles = css`
           line-height: 1.5;
           inline-size: 100%;
           block-size: 100%;
-        }
 
-        & img {
-          position: absolute;
-          inset-block-end: 0;
-          inset-inline-end: 0;
-          background-color: var(--white);
-          padding: 0.26rem;
-          border-radius: 5000px;
+          & .profile-img {
+            inline-size: 3.6rem;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+          }
+
+          & .edited-img {
+            position: absolute;
+            inset-block-end: 0;
+            inset-inline-end: 0;
+            background-color: var(--white);
+            padding: 0.26rem;
+            border-radius: 5000px;
+          }
         }
       }
 

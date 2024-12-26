@@ -4,9 +4,8 @@ import '@/components/Time/time.js';
 import '@/components/ProfileAll/profileAll.js';
 import '@/components/Navigation/navigation.js';
 import '@/components/Tab/tab.js';
-import '@/components/Category/category.js';
-import '@/components/Feed/navBar.js';
-import '@/layout/Footer/footer.js';
+import '@/components/ReservedCategory/reservedCategory.js';
+import '@/components/Order/order.js';
 
 class ReservedPage extends LitElement {
   render() {
@@ -15,8 +14,6 @@ class ReservedPage extends LitElement {
       <profileall-element></profileall-element>
       <navigation-element></navigation-element>
       <tab-element></tab-element>
-      <nav-bar></nav-bar>
-      <c-footer></c-footer>
     `;
   }
 }

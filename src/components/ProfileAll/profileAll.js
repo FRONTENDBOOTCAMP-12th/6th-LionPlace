@@ -7,14 +7,14 @@ class ProfileAll extends LitElement {
     userId: { type: Object },
   };
 
+  static styles = [resetStyles, profileAllStyles];
+
   constructor() {
     super();
     this.userId = {
       name: '멋쟁이사자',
     };
   }
-
-  static styles = [resetStyles, profileAllStyles];
 
   render() {
     return html`
@@ -24,8 +24,8 @@ class ProfileAll extends LitElement {
           <div class="profile-container__top">
             <div class="avatar">
               <a href="/" target="_blank" rel="noopener noreferrer">
-                <span>img</span>
-                <img src="/images/ico_write_sm.svg" alt="프로필 수정 이미지" />
+                <img src="/images/profile.png" alt="프로필 이미지" class="profile-img" />
+                <img src="/images/ico_write_sm.svg" alt="" role="presentation" class="edited-img" />
               </a>
             </div>
             <div class="user-info">

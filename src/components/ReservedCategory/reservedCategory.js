@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { categoryStyles } from './categoryCss.js';
+import { categoryStyles } from './reservedCategoryCss.js';
 import resetStyle from '@/styles/reset.js';
 import pb from '@/api/pocketbase';
 
@@ -34,14 +34,14 @@ class TabCategory extends LitElement {
   async _fetchData() {
     try {
       const response = await pb.collection('transactions').getFullList();
-      this.getFetchData(response);
+      this._getFetchData(response);
     } catch (error) {
       console.error('PocketBase 데이터 알 수 없음');
     }
   }
 
   // 설정한 field 필터링 함수
-  getFetchData(items) {
+  _getFetchData(items) {
     const filterData = {
       all: items,
       beauty: items.filter((item) => item.field === 'beauty'),
@@ -52,12 +52,12 @@ class TabCategory extends LitElement {
     this.data = filterData;
   }
 
-  handleClickTab(e) {
+  _handleClickTab(e) {
     const target = e.target;
     this.category = target.dataset.category;
   }
 
-  renderData() {
+  _renderData() {
     const data = this.data[this.category];
     const totalReservations = data.reduce((acc, cur) => acc + cur.count, 0);
     const totalCancle = data.reduce((acc, cur) => acc + cur.cancle, 0);
@@ -99,7 +99,7 @@ class TabCategory extends LitElement {
         </a>
       </div>
 
-      <div class="category-bedge">
+      <div class="category-badge">
         <ul>
           <li>
             <span class="category-btn">방문 <strong>${totalReservations}</strong></span>
@@ -118,7 +118,7 @@ class TabCategory extends LitElement {
         <ul>
           <li>
             <button
-              @click="${this.handleClickTab}"
+              @click="${this._handleClickTab}"
               type="button"
               class="entire tab-btn ${this.category === 'all' ? 'is--active' : ''}"
               data-category="all"
@@ -128,7 +128,7 @@ class TabCategory extends LitElement {
           </li>
           <li>
             <button
-              @click="${this.handleClickTab}"
+              @click="${this._handleClickTab}"
               type="button"
               class="beauty tab-btn ${this.category === 'beauty' ? 'is--active' : ''}"
               data-category="beauty"
@@ -138,7 +138,7 @@ class TabCategory extends LitElement {
           </li>
           <li>
             <button
-              @click="${this.handleClickTab}"
+              @click="${this._handleClickTab}"
               type="button"
               class="hospital tab-btn ${this.category === 'hospital' ? 'is--active' : ''}"
               data-category="hospital"
@@ -148,7 +148,7 @@ class TabCategory extends LitElement {
           </li>
           <li>
             <button
-              @click="${this.handleClickTab}"
+              @click="${this._handleClickTab}"
               type="button"
               class="performance tab-btn ${this.category === 'performance' ? 'is--active' : ''}"
               data-category="performance"
@@ -159,7 +159,7 @@ class TabCategory extends LitElement {
         </ul>
       </nav>
 
-      ${this.renderData()}
+      ${this._renderData()}
     `;
   }
 }
