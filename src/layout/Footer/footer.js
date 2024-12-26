@@ -36,14 +36,24 @@ class Footer extends LitElement {
         <div class="footer__bottom">
           <nav class="footer-nav">
             <ul class="footer-nav__top">
-              <li><a href="#">전체 서비스</a></li>
-              <li><a href="#">로그아웃</a></li>
+              <li>
+                <a href="/" target="_blank" rel="noopener noreferrer">전체 서비스</a>
+              </li>
+              <li>
+                <a href="/" target="_blank" rel="noopener noreferrer">로그아웃</a>
+              </li>
             </ul>
             <ul class="footer-nav__bottom">
-              <li><a href="#">라이언 예약 고객센터</a></li>
-              <li><a href="#">이용약관</a></li>
               <li>
-                <a href="#"><strong>개인정보처리방침</strong></a>
+                <a href="/" target="_blank" rel="noopener noreferrer">라이언 예약 고객센터</a>
+              </li>
+              <li>
+                <a href="/" target="_blank" rel="noopener noreferrer">이용약관</a>
+              </li>
+              <li>
+                <a href="/" target="_blank" rel="noopener noreferrer">
+                  <strong>개인정보처리방침</strong>
+                </a>
               </li>
             </ul>
           </nav>

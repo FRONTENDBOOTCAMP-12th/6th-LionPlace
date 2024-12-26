@@ -8,6 +8,8 @@ class Navigation extends LitElement {
     loading: { type: Boolean },
   };
 
+  static styles = [navgationStyles, resetStyle];
+
   constructor() {
     super();
     this.loading = false;
@@ -19,8 +21,6 @@ class Navigation extends LitElement {
     else if (path.includes('/reserved/')) this.activePage = 'reserved';
     else this.activePage = 'feed'; // 기본값
   }
-
-  static styles = [navgationStyles, resetStyle];
 
   connectedCallback() {
     super.connectedCallback();
@@ -48,7 +48,7 @@ class Navigation extends LitElement {
   }
 
   // 클릭 이벤트 함수
-  handleClickBtn(e) {
+  _handleClickBtn(e) {
     const pageData = e.target.dataset.page;
     if (pageData === this.activePage) return;
     this.activePage = pageData;
@@ -69,7 +69,7 @@ class Navigation extends LitElement {
         <ul>
           <li>
             <button
-              @click="${this.handleClickBtn}"
+              @click="${this._handleClickBtn}"
               class="${this.activePage === 'feed' ? 'is--active' : ''}"
               type="button"
               data-page="feed"
@@ -79,7 +79,7 @@ class Navigation extends LitElement {
           </li>
           <li>
             <button
-              @click="${this.handleClickBtn}"
+              @click="${this._handleClickBtn}"
               class="${this.activePage === 'visit' ? 'is--active' : ''}"
               type="button"
               data-page="visit"
@@ -89,7 +89,7 @@ class Navigation extends LitElement {
           </li>
           <li>
             <button
-              @click="${this.handleClickBtn}"
+              @click="${this._handleClickBtn}"
               class="${this.activePage === 'review' ? 'is--active' : ''}"
               type="button"
               data-page="review"
@@ -99,7 +99,7 @@ class Navigation extends LitElement {
           </li>
           <li>
             <button
-              @click="${this.handleClickBtn}"
+              @click="${this._handleClickBtn}"
               class="${this.activePage === 'reserved' ? 'is--active' : ''}"
               type="button"
               data-page="reserved"

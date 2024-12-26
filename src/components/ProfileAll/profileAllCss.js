@@ -18,33 +18,38 @@ export const profileAllStyles = css`
       gap: 1.19rem;
 
       & .avatar {
-        display: flex;
         position: relative;
-        justify-content: center;
-        align-items: start;
         inline-size: 3.51563rem;
         aspect-ratio: 1/1;
-        border: 0.1875rem solid #fff;
+        border: 0.1875rem solid var(--white);
         border-radius: 5000px;
 
-        & button {
+        & a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           color: var(--white);
           text-align: center;
           font-size: 0.78144rem;
-          inline-size: 100%;
-          block-size: 100%;
           font-weight: 600;
           line-height: 1.5;
-          background-color: inherit;
-        }
+          inline-size: 100%;
+          block-size: 100%;
 
-        & img {
-          position: absolute;
-          inset-block-end: 0;
-          inset-inline-end: 0;
-          background-color: var(--white);
-          padding: 0.26rem;
-          border-radius: 5000px;
+          & .profile-img {
+            inline-size: 3.6rem;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+          }
+
+          & .edited-img {
+            position: absolute;
+            inset-block-end: 0;
+            inset-inline-end: 0;
+            background-color: var(--white);
+            padding: 0.26rem;
+            border-radius: 5000px;
+          }
         }
       }
 
@@ -140,13 +145,13 @@ export const profileAllStyles = css`
 
         &:nth-of-type(1) {
           &::before {
-            background: url(/images/ico_write.png);
+            background: url(/images/ico_write.svg);
           }
         }
 
         &:nth-of-type(2) {
           &::before {
-            background: url(/images/ico_misson.png);
+            background: url(/images/ico_misson.svg);
           }
         }
       }

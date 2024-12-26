@@ -1,12 +1,11 @@
 import { html, LitElement } from 'lit';
 
-import '@/components/Time/time';
-import '@/components/ProfileAll/profileAll';
-import '@/components/Navigation/navigation';
-import '@/components/Tab/tab';
-import '@/components/Category/category';
-import '@/components/Feed/navBar';
-import '@/layout/Footer/footer';
+import '@/components/Time/time.js';
+import '@/components/ProfileAll/profileAll.js';
+import '@/components/Navigation/navigation.js';
+import '@/components/Tab/tab.js';
+import '@/components/ReservedCategory/reservedCategory.js';
+import '@/components/Order/order.js';
 
 class ReservedPage extends LitElement {
   render() {
@@ -15,8 +14,6 @@ class ReservedPage extends LitElement {
       <profileall-element></profileall-element>
       <navigation-element></navigation-element>
       <tab-element></tab-element>
-      <nav-bar></nav-bar>
-      <c-footer></c-footer>
     `;
   }
 }

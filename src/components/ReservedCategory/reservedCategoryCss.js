@@ -142,14 +142,13 @@ export const categoryStyles = css`
     }
   }
 
-  /* 더보기 버튼 영역 */
-  .btn-container {
-    .more-btn {
+  /* 더보기 링크 영역 */
+  .link-container {
+    .more-link {
       display: flex;
       justify-content: center;
-      inline-size: 100%;
       padding: 0.9375rem 8.4375rem;
-      background-color: transparent;
+
       &:focus-visible {
         outline: 1px solid var(--blue--800);
         outline-offset: 1px;
@@ -157,33 +156,15 @@ export const categoryStyles = css`
 
       & span {
         color: var(--contentPrimary);
-
         font-size: 0.75019rem;
         line-height: 1.6;
+        white-space: nowrap;
       }
-
-      & img {
-        transition: transform 0.3s ease;
-
-        &.is--active {
-          transform: rotate(180deg);
-        }
-      }
-    }
-
-    .content {
-      overflow: hidden;
-      transition: height 0.5s ease;
-      height: 0;
-    }
-
-    .content-inner {
-      padding: 1rem;
     }
   }
 
   /* 하단 카테고리 뱃지 영역 */
-  .category-bedge {
+  .category-badge {
     padding: 0.75rem 3.8125rem 2.3125rem 1.25rem;
     background-color: var(--gray--100);
 

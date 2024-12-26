@@ -1,14 +1,12 @@
 import { css } from 'lit';
 
 export const tabStyles = css`
-  .tabs {
-    & nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1.25rem 5.625rem;
-      background-color: var(--gray--50);
-    }
+  .tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem 5.625rem;
+    background-color: var(--gray--50);
   }
 
   .tab-buttons {
