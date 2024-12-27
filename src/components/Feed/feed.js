@@ -1,21 +1,14 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
+import { feedStyles } from './feedCss';
 
 import '@/components/Feed/navBar.js';
 import '@/components/Feed/post.js';
 import '@/components/Feed/filter.js';
 
 export class Feed extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      padding: 1rem;
-      padding-bottom: 4rem;
-      background-color: white;
-    }
-  `;
-
   constructor() {
     super();
+
     // 임시 데이터
     this.posts = [
       {
