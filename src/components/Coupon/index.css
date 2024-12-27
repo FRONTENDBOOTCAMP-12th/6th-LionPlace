@@ -187,9 +187,25 @@
         &.is--disabled {
           border-left: 1px dashed var(--gray--100);
           background: var(--gray--50);
+          padding: 1.125rem 0.447rem;
 
           & > span {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.325rem;
             color: var(--contentTertiary);
+
+            &::before {
+              content: '';
+              display: block;
+              inline-size: 1.25rem;
+              aspect-ratio: 1/1;
+              mask: url('/images/ico_check.svg') center/contain no-repeat;
+              background-color: var(--contentTertiary);
+              text-align: center;
+            }
           }
         }
 

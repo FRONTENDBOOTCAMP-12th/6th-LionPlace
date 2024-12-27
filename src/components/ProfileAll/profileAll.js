@@ -12,7 +12,7 @@ class ProfileAll extends LitElement {
   constructor() {
     super();
     this.userId = {
-      name: '멋쟁이사자',
+      name: 'kind-tiger',
     };
   }
 
