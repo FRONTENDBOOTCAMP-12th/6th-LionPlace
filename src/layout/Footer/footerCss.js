@@ -58,7 +58,7 @@ export const footerStyle = css`
         justify-content: center;
         gap: 1rem;
 
-        & li {
+        & > li {
           position: relative;
           font-size: 0.75019rem;
           line-height: 1.6;
@@ -74,7 +74,7 @@ export const footerStyle = css`
               border-right: 1px solid var(--contentSecondary);
             }
           }
-          & strong {
+          & > strong {
             font-weight: 600;
           }
         }
@@ -87,7 +87,7 @@ export const footerStyle = css`
       }
     }
 
-    p {
+    & > p {
       color: var(--contentSecondary);
       text-align: center;
       font-size: 0.75019rem;
