@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <title>coupon | 6th-LionPlace</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="preload" as="style" href="/src/assets/font/pretendard/pretendard.css" />
+    <link rel="stylesheet" href="/src/assets/font/pretendard/pretendard.css" />
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <section class="coupon-section">
+      <h2 class="a11y-hidden">쿠폰 페이지 영역</h2>
+      <article class="coupon-section__top">
+        <h3 class="a11y-hidden" aria-hidden="true">내 쿠폰함</h3>
+        <button type="button" aria-label="뒤로가기">
+          <img src="/images/ico_arrow_left.svg" alt="" role="presentation" />
+          <span>내 쿠폰함</span>
+        </button>
+        <p>쿠폰 사용 방법이 궁금하신가요?</p>
+      </article>
+      <article class="coupon-section__center">
+        <h3 class="a11y-hidden" aria-hidden="true">카테고리 탭 버튼 및 위치 영역</h3>
+        <nav class="coupon-category">
+          <ul role="tablist">
+            <li><button type="button" role="tab" class="is--active">가까운 순</button></li>
+            <li><button type="button" role="tab">예약 0</button></li>
+            <li><button type="button" role="tab">주문 0</button></li>
+            <li><button type="button" role="tab">사용완료</button></li>
+            <li><button type="button" role="tab">기간만료</button></li>
+          </ul>
+        </nav>
+        <p class="location">내 위치 <strong>서대문구 창천동</strong></p>
+      </article>
+      <article></article>
+    </section>
+  </body>
+</html>

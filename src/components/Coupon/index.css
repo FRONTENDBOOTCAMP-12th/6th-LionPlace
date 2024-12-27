@@ -1,0 +1,109 @@
+.coupon-section {
+  & .coupon-section__top {
+    & > button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border-bottom: 0.5px solid var(--contentTertiary);
+      inline-size: 100%;
+
+      & > span {
+        color: var(--contentPrimary);
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.5;
+        white-space: nowrap;
+      }
+    }
+
+    & > p {
+      display: flex;
+      align-items: center;
+      gap: 0.125rem;
+      color: var(--contentSecondary);
+      padding: 0.5rem 0.875rem;
+      font-size: 0.75019rem;
+      line-height: 1.6;
+
+      &::after {
+        content: '';
+        inline-size: 0.9375rem;
+        aspect-ratio: 1/1;
+        background: url(/images/ico_question.svg) center/contain no-repeat;
+      }
+    }
+  }
+
+  & .coupon-section__center {
+    background-color: var(--gray--50);
+    & > nav {
+      & > ul {
+        display: flex;
+        gap: 0.25rem;
+        overflow: auto;
+        padding: 0.75rem 0 0.75rem 1.125rem;
+        scrollbar-width: none;
+
+        & > li {
+          &:nth-of-type(1) {
+            & > button {
+              display: inline-flex;
+              align-items: center;
+              gap: 0.25rem;
+
+              &::before {
+                content: '';
+                inline-size: 1.125rem;
+                aspect-ratio: 1/1;
+                mask: url(/images/ico_arrow_down.svg) center/contain no-repeat;
+                background-color: var(--white);
+              }
+            }
+          }
+
+          & > button {
+            text-align: center;
+            padding: 0.5rem 0.75rem;
+            border-radius: 1rem;
+            border: 1px solid var(--gray--100);
+            box-sizing: border-box;
+            background-color: var(--white);
+            color: var(--contentPrimary);
+            font-size: 0.75019rem;
+            font-weight: 600;
+            line-height: 1.6;
+            white-space: nowrap;
+
+            &.is--active {
+              background-color: var(--contentSecondary);
+              border-color: var(--contentSecondary);
+              color: var(--white);
+            }
+          }
+        }
+      }
+    }
+
+    & .location {
+      color: var(--contentPrimary);
+      font-size: 0.75019rem;
+      font-weight: 400;
+      line-height: 1.6;
+      padding: 0.5rem 1rem;
+      & > strong {
+        font-weight: 600;
+      }
+
+      &::after {
+        content: '';
+        display: inline-block;
+        vertical-align: text-top;
+        inline-size: 0.9375rem;
+        aspect-ratio: 1/1;
+        background: url(/images/ico_gps.svg) center/contain no-repeat;
+        padding-inline-start: 0.19rem;
+      }
+    }
+  }
+}
