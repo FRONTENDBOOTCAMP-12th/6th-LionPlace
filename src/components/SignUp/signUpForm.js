@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { signUpFormCss } from './signUpFormCss.js';
 import commonStyles from '@/styles/common.js';
-import pb from '@/api/pocketbase';
+import pb from '@/api/pocketbase.js';
 import './formInput.js';
 import './submitButton.js';
 import './logo.js';
