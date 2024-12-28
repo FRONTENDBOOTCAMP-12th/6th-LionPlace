@@ -11,6 +11,7 @@ class SignUpForm extends LitElement {
     formData: { type: Object },
     errors: { type: Object },
     isSubmitEnabled: { type: Boolean },
+    emailVisibility: { type: Boolean },
   };
 
   constructor() {
@@ -28,6 +29,7 @@ class SignUpForm extends LitElement {
       passwordConfirm: '',
     };
     this.isSubmitEnabled = false;
+    this.emailVisibility = true;
   }
 
   static styles = [commonStyles, signUpFormCss];
@@ -131,6 +133,7 @@ class SignUpForm extends LitElement {
           password: this.formData.password,
           passwordConfirm: this.formData.passwordConfirm,
           email: this.formData.email,
+          emailVisibility: this.emailVisibility,
         });
 
         alert('회원가입 완료');
