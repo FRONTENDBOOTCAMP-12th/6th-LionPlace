@@ -38,21 +38,20 @@ class FindUserId extends LitElement {
     return regex.test(email);
   }
 
-  async handleSubmit() {
+  async handleSubmit(e) {
+    e.preventDefault();
+
     if (!this._validateEmail(this.formData.email)) {
       alert('잘못된 이메일 형식입니다. 올바른 이메일을 입력해 주세요.');
       return;
     }
 
     try {
-      const user = await pb.collection('users').getFirstListItem({
-        filter: pb.filter(`email = {:email}`, { email: this.formData.email }),
-      });
-
-      console.log(user);
+      const cleanEmail = this.formData.email.trim().replace(/[^a-zA-Z0-9@.]/g, '');
+      const user = await pb.collection('users').getFirstListItem(`email = "${cleanEmail}"`);
 
       if (user) {
-        this.formData.id = user.userId;
+        this.formData.id = user.userID;
         this.successMessage = `사용자 ID: ${this.formData.id}`;
       } else {
         alert('해당 이메일로 등록된 아이디가 없습니다.');
@@ -68,21 +67,21 @@ class FindUserId extends LitElement {
   render() {
     return html`
       <section class="find-section">
-        <app-logo></app-logo>
+        <app-logo link="./loginPage.html"></app-logo>
         <h1>아이디 찾기</h1>
         <form aria-label="아이디 찾기 양식">
           <form-input
-            label="가입 시 등록한 이메일 주소를 입력해주세요"
+            label="가입 시 등록한 이메일 주소를 입력해주세요."
             type="email"
             id="recover-email"
             placeholder="이메일 (example@domain.com)"
             .value="${this.formData.email}"
             @input-change="${this._handleInputChange}"
           ></form-input>
-
-          <submit-button text="아이디 찾기" @click="${this.handleSubmit}"> </submit-button>
           ${this.successMessage ? html`<p class="success-message">${this.successMessage}</p>` : ''}
+          <submit-button text="아이디 찾기" @click="${this.handleSubmit}"> </submit-button>
         </form>
+        <a class="find" href="/src/pages/login/loginPage.html">로그인 화면으로 이동</a>
       </section>
     `;
   }

@@ -11,4 +11,10 @@ export const findUserIdCss = css`
   h1 {
     margin-bottom: 2rem;
   }
+
+  a {
+    display: block;
+    text-align: right;
+    margin-top: 1rem;
+  }
 `;
