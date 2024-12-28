@@ -6,7 +6,6 @@ import pb from '@/api/pocketbase';
 class TabCategory extends LitElement {
   static properties = {
     category: { type: String, state: true },
-    isOpen: { type: Boolean },
     data: { type: Array },
   };
 
@@ -15,7 +14,6 @@ class TabCategory extends LitElement {
   constructor() {
     super();
     this.category = 'all'; // all dataset category 상태 유지
-    this.isOpen = false; // 토글 컨텐츠 닫혀있는 기본상태 유지
     this.data = {
       // pocketbase 데이터 배열로 기본값 설정
       all: [],
