@@ -50,7 +50,7 @@ class Tab extends LitElement {
       </nav>
 
       <section class="tab-contents">
-        <h2 class="a11y-hidden">탭 컨텐츠입니다.</h2>
+        <h2 class="a11y-hidden">탭 컨텐츠</h2>
         <article
           class="tab-content ${this.active === 'tab-reserved' ? 'is--active' : ''}"
           id="tab-reserved"

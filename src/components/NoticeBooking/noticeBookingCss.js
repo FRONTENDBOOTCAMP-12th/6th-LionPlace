@@ -135,9 +135,9 @@ export const NoticeBookingStyle = css`
       background-color: var(--white);
       border-radius: 0.5rem;
 
-      .reservation-header {
+      .reservation-top {
         position: relative;
-        & > h2 {
+        & > p {
           color: var(--contentPrimary);
           font-size: 0.75019rem;
           font-weight: 600;
@@ -194,7 +194,7 @@ export const NoticeBookingStyle = css`
       }
     }
 
-    .reservation-footer {
+    .reservation-bottom {
       background-color: var(--white);
       border-top: 0.5px dashed var(--contentTertiary);
       border-radius: 0.5rem;

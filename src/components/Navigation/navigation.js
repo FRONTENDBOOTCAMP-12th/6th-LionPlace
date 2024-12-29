@@ -73,7 +73,7 @@ class Navigation extends LitElement {
 
   render() {
     return html`
-      <div class="navigation-warp">
+      <nav class="navigation-warp">
         <ul>
           <li>
             <button
@@ -116,7 +116,7 @@ class Navigation extends LitElement {
             </button>
           </li>
         </ul>
-      </div>
+      </nav>
       ${this.loading ? this._renderLoading() : ''}
     `;
   }

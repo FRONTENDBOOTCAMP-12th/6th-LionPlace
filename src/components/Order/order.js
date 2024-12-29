@@ -12,7 +12,9 @@ class OrderPage extends LitElement {
   render() {
     return html`
       <section class="order-section">
+        <h2 class="a11y-hidden">주문탭 영역</h2>
         <article class="order-section__inner">
+          <h3 class="a11y-hidden">예약 목록 영역</h3>
           <div class="order">
             <h2><strong>&ldquo;네이버 예약&rdquo;</strong> 지금 바로 이용해보세요.</h2>
             <ul class="order-list">

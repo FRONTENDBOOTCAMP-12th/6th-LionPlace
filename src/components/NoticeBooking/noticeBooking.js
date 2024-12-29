@@ -82,13 +82,13 @@ class NoticeBooking extends LitElement {
                   />
                   <figcaption class="a11y-hidden">${item.field}</figcaption>
                 </figure>
-                <article class="notice-booking__text">
+                <div class="notice-booking__text">
                   <h4>${item.store_id}</h4>
                   <p>
                     <span>${item.date}</span>
                     <strong>${item.time}</strong>
                   </p>
-                </article>
+                </div>
               </article>
               <article class="notice-booking__button">
                 <h3 class="a11y-hidden">즐겨찾기, 더보기 버튼 클릭 영역</h3>
@@ -109,9 +109,11 @@ class NoticeBooking extends LitElement {
 
             <!-- 예약 카드 -->
             <section class="reservation-card">
+              <h2 class="a11y-hidden">방문 기록 카드</h2>
               <article class="reservation-details">
-                <header class="reservation-header">
-                  <h2>${item.reserved_count}</h2>
+                <div class="reservation-top">
+                  <h3 class="a11y-hidden">예약 상세 정보</h3>
+                  <p>${item.reserved_count}</p>
                   <figure>
                     <img
                       src="https://lion-place.pockethost.io/api/files/transaction_details/${item.id}/${item.item_image}"
@@ -120,7 +122,7 @@ class NoticeBooking extends LitElement {
                     />
                     <figcaption class="a11y-hidden">리뷰 이미지</figcaption>
                   </figure>
-                </header>
+                </div>
 
                 <div class="review">
                   <p class="description">
@@ -135,7 +137,8 @@ class NoticeBooking extends LitElement {
                   </div>
                 </div>
               </article>
-              <footer class="reservation-footer">
+              <article class="reservation-bottom">
+                <h3 class="a11y-hidden">예약 부가 정보</h3>
                 <div class="staff-info">
                   <span class="manager">${item.manager}</span>
                   <span class="price">${item.price.toLocaleString()}원</span>
@@ -143,7 +146,7 @@ class NoticeBooking extends LitElement {
                 <div class="type-info">
                   <span class="type-role">${item.type_role}</span>
                 </div>
-              </footer>
+              </article>
             </section>
           `
         )}
