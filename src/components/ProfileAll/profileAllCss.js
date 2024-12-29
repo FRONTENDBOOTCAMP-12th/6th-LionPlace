@@ -12,19 +12,19 @@ export const profileAllStyles = css`
     flex-flow: column wrap;
     gap: 0.5rem;
 
-    & .profile-container__top {
+    .profile-container__top {
       display: grid;
       grid-template-columns: min-content 1fr;
       gap: 1.19rem;
 
-      & .avatar {
+      .avatar {
         position: relative;
         inline-size: 3.51563rem;
         aspect-ratio: 1/1;
         border: 0.1875rem solid var(--white);
         border-radius: 5000px;
 
-        & a {
+        & > a {
           display: flex;
           justify-content: center;
           align-items: center;
@@ -36,13 +36,13 @@ export const profileAllStyles = css`
           inline-size: 100%;
           block-size: 100%;
 
-          & .profile-img {
+          .profile-img {
             inline-size: 3.6rem;
             aspect-ratio: 1/1;
             border-radius: 50%;
           }
 
-          & .edited-img {
+          .edited-img {
             position: absolute;
             inset-block-end: 0;
             inset-inline-end: 0;
@@ -53,18 +53,18 @@ export const profileAllStyles = css`
         }
       }
 
-      & .user-info {
+      .user-info {
         display: flex;
         flex-flow: column wrap;
         color: var(--white);
 
-        & .nickname {
+        .nickname {
           font-size: 1rem;
           font-weight: 600;
           line-height: 1.5;
         }
 
-        & .review {
+        .review {
           display: flex;
           flex-flow: row wrap;
           justify-content: space-between;
@@ -102,15 +102,13 @@ export const profileAllStyles = css`
 
                 & span {
                   font-size: 0.75019rem;
-                  line-height: 1.5;
+                  line-height: 1.6;
                   white-space: nowrap;
+                }
 
-                  &:nth-of-type(1) {
-                    line-height: 1.6;
-                  }
-                  &:nth-of-type(2) {
-                    font-weight: 600;
-                  }
+                & span ~ span {
+                  line-height: 1.5;
+                  font-weight: 600;
                 }
               }
             }
@@ -119,11 +117,11 @@ export const profileAllStyles = css`
       }
     }
 
-    & .profile-container__bottom {
+    .profile-container__bottom {
       display: flex;
       gap: 0.31rem;
 
-      & a {
+      & > a {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -159,11 +157,11 @@ export const profileAllStyles = css`
   }
 
   .coupon {
-    & .coupon-link {
+    .coupon-link {
       text-align: center;
       color: var(--white);
 
-      & .coupon-text {
+      .coupon-text {
         position: absolute;
         inset-block-start: 0.72rem;
         inset-inline-end: 1.25rem;
@@ -176,7 +174,7 @@ export const profileAllStyles = css`
         block-size: 1.25rem;
       }
 
-      & .coupon-count {
+      .coupon-count {
         display: flex;
         position: absolute;
         inset-block-start: 0.53rem;

@@ -2,17 +2,17 @@ import { css } from 'lit';
 
 export const navgationStyles = css`
   .navigation-warp {
-    & ul {
+    & > ul {
       display: flex;
       gap: 0.94rem;
       text-align: center;
       inline-size: 100%;
       background: var(--primary);
 
-      & li {
+      & > li {
         flex: 1;
 
-        & button {
+        & > button {
           background-color: transparent;
           color: var(--lightblue--300);
           opacity: 0.7;
@@ -50,7 +50,7 @@ export const navgationStyles = css`
     transform: translate(-50%, -50%);
     z-index: 10;
 
-    & img {
+    & > img {
       display: flex;
       justify-content: center;
       align-items: center;

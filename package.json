@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "lit": "^3.2.1",
-    "pocketbase": "^0.23.0",
-    "sweetalert2": "^11.15.3"
+    "pocketbase": "^0.23.0"
   }
 }

@@ -32,21 +32,21 @@ export const NoticeBookingStyle = css`
       }
 
       .notice-booking__text {
-        & h4 {
+        & > h4 {
           color: var(--contentPrimary);
           font-size: 1rem;
           font-weight: 600;
           line-height: 1.5;
         }
 
-        & p {
+        & > p {
           color: var(--contentSecondary);
           font-size: 0.75019rem;
           font-weight: 400;
           line-height: 1.6;
         }
 
-        & span {
+        & > span {
           display: inline-flex;
           align-items: center;
           gap: 0.25rem;
@@ -58,7 +58,7 @@ export const NoticeBookingStyle = css`
             background-color: var(--contentSecondary);
           }
         }
-        & strong {
+        & > strong {
           font-weight: 600;
         }
       }
@@ -83,14 +83,15 @@ export const NoticeBookingStyle = css`
           }
         }
 
-        & .is--active {
+        .is--active {
           mask-image: url('/images/ico_favorite.svg');
           background-color: var(--error);
         }
       }
-      & .more {
-        & button {
-          img {
+
+      .more {
+        & > button {
+          & > img {
             inline-size: 1.125rem;
             aspect-ratio: 1/1;
           }
@@ -117,15 +118,15 @@ export const NoticeBookingStyle = css`
 
       .reservation-header {
         position: relative;
-        & h2 {
+        & > h2 {
           color: var(--contentPrimary);
           font-size: 0.75019rem;
           font-weight: 600;
           line-height: 1.5;
           text-decoration-line: underline;
         }
-        & figure {
-          & img {
+        & > figure {
+          & > img {
             position: absolute;
             inset-block-start: 0;
             inset-inline-end: 0;
@@ -151,7 +152,7 @@ export const NoticeBookingStyle = css`
           text-overflow: ellipsis;
           white-space: nowrap;
 
-          & span {
+          & > span {
             overflow: hidden;
             display: block;
             text-overflow: ellipsis;
@@ -194,29 +195,5 @@ export const NoticeBookingStyle = css`
         }
       }
     }
-  }
-
-  .menu {
-    position: absolute;
-    inset-inline-end: 0.9375rem;
-    inset-block-start: 2.8125rem;
-    inline-size: 5rem;
-    border: 1px solid var(--gray--100);
-    box-sizing: border-box;
-    border-radius: 1.125rem;
-
-    & button {
-      inline-size: 100%;
-      text-align: left;
-      padding: 0.5625rem;
-    }
-  }
-
-  .not-reserved {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.3rem;
-    padding: 5rem;
   }
 `;

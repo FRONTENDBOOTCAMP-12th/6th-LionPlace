@@ -7,24 +7,25 @@ export const timeStyles = css`
     align-items: center;
     padding: 0.44rem 1.12rem;
 
-    & .time-wrap__left {
+    .time-wrap__left {
       display: flex;
       gap: 0.06rem;
       align-items: center;
 
-      p {
+      & > p {
         color: var(--contentPrimary);
         font-size: 1rem;
         font-weight: 600;
         line-height: 1.5;
       }
     }
-    & .time-wrap__right {
+
+    .time-wrap__right {
       display: flex;
       justify-self: end;
       align-items: self-end;
 
-      p {
+      & > p {
         color: var(--contentPrimary);
         font-size: 0.75019rem;
         font-weight: 600;

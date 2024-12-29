@@ -68,13 +68,13 @@ export const categoryStyles = css`
   .summary {
     padding: 1rem 2.25rem;
 
-    & p {
+    & > p {
       color: var(--contentPrimary);
       font-size: 1rem;
       font-weight: 600;
       line-height: 1.6;
 
-      & span {
+      & > span {
         color: var(--lightblue--400);
       }
     }
@@ -111,20 +111,20 @@ export const categoryStyles = css`
         text-align: center;
       }
 
-      & .rank {
+      .rank {
         border-radius: 0.5rem;
         border: 0.5px solid var(--gray-100, #e1e1e1);
         color: var(--contentSecondary);
         padding: 0.125rem 0.5rem;
       }
 
-      & .name {
+      .name {
         display: flex;
         align-items: center;
         color: var(--contentPrimary);
       }
 
-      & .count {
+      .count {
         color: var(--contentSecondary);
       }
     }
@@ -154,7 +154,7 @@ export const categoryStyles = css`
         outline-offset: 1px;
       }
 
-      & span {
+      & > span {
         color: var(--contentPrimary);
         font-size: 0.75019rem;
         line-height: 1.6;

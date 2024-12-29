@@ -2,12 +2,12 @@ import { css } from 'lit';
 
 export const orderStyles = css`
   .order-section {
-    & .order-section__inner {
+    .order-section__inner {
       padding: 0.75rem;
       background-color: #c6c6c6;
     }
 
-    & .order {
+    .order {
       display: flex;
       flex-flow: column wrap;
 
@@ -23,7 +23,7 @@ export const orderStyles = css`
         }
       }
 
-      & .order-list {
+      .order-list {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         border-radius: 1rem 1rem 0 0;
@@ -55,7 +55,7 @@ export const orderStyles = css`
       }
     }
 
-    & .event {
+    .event {
       overflow: hidden;
       position: relative;
       border: 0.5px solid var(--contentTertiary);
@@ -65,15 +65,15 @@ export const orderStyles = css`
       padding: 0.625rem 1rem 0;
       box-sizing: border-box;
 
-      & .event-text {
+      .event-text {
         display: flex;
         flex-flow: column wrap;
 
-        & strong {
+        & > strong {
           color: var(--primary);
           font-size: 1.333rem;
         }
-        & span {
+        & > span {
           color: var(--contentSecondary);
           font-size: 0.75019rem;
           font-weight: 600;
@@ -81,12 +81,12 @@ export const orderStyles = css`
         }
       }
 
-      & .event-img {
+      .event-img {
         position: absolute;
         inset-inline-end: 0;
         inset-block-end: 0;
 
-        & img {
+        & > img {
           display: block;
           inline-size: 8.125rem;
           block-size: 4.5rem;
