@@ -1,12 +1,31 @@
 import { css } from 'lit';
 
 export const NoticeBookingStyle = css`
+  .back-container {
+    & > button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      border-bottom: 0.5px solid var(--contentTertiary);
+      inline-size: 100%;
+
+      & > span {
+        color: var(--contentPrimary);
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.5;
+        white-space: nowrap;
+      }
+    }
+  }
+
   .notice-container {
     display: flex;
     flex-flow: column wrap;
     gap: 0.5rem;
     background-color: var(--gray--50);
-    padding-block-end: 1rem;
+    padding-block-end: 3rem;
   }
 
   /* notice-booking */

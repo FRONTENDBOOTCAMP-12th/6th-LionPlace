@@ -14,7 +14,8 @@ class Tab extends LitElement {
 
   static styles = [commonStyles, tabStyles];
 
-  handleTabBtn(e) {
+  // 클릭 이벤트 함수 => data-tab 접근해 활성화 상태 제어함
+  _handleTabBtn(e) {
     const targetTab = e.target.dataset.tab;
     this.active = targetTab;
   }
@@ -25,7 +26,7 @@ class Tab extends LitElement {
         <ul class="tab-buttons" role="tablist">
           <li>
             <button
-              @click="${this.handleTabBtn}"
+              @click="${this._handleTabBtn}"
               type="button"
               data-tab="tab-reserved"
               class="tab-button ${this.active === 'tab-reserved' ? 'is--active' : ''}"
@@ -36,7 +37,7 @@ class Tab extends LitElement {
           </li>
           <li>
             <button
-              @click="${this.handleTabBtn}"
+              @click="${this._handleTabBtn}"
               type="button"
               data-tab="tab-order"
               class="tab-button ${this.active === 'tab-order' ? 'is--active' : ''}"

@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
 import { couponStyle } from './couponCss.js';
-import { data } from './data.js';
+import { couponTabData } from './data.js';
 import commonStyles from '@/styles/common.js';
 import pb from '@/api/pocketbase';
 
@@ -8,16 +8,17 @@ class Coupon extends LitElement {
   static styles = [commonStyles, couponStyle];
 
   static properties = {
-    active: { type: String },
-    data: { type: Array },
-    pocketData: { type: Array },
+    active: { type: String }, // 활성화 된 class 상태
+    data: { type: Array }, // 카테고리 탭 관련 외부 데이터 js
+    pocketData: { type: Array }, // pocketbase에서 가져오는 데이터
   };
 
   constructor() {
     super();
-    this.active = 'neardy';
-    this.data = data;
+    this.active = 'neardy'; // 활성화 class 초기값 설정
+    this.data = couponTabData; // 외부 데이터 가져오는 그 변수명으로 기본값 설정
     this.pocketData = {
+      // pocketbase에 설정한 field 배열 형태로 데이터 전달
       available: [],
       used: [],
     };
@@ -28,15 +29,17 @@ class Coupon extends LitElement {
     await this._fetchData();
   }
 
+  // pocketbase에 쿠폰함 데이터 가져오는 함수
   async _fetchData() {
     try {
       const response = await pb.collection('coupons').getFullList();
       this._getFetchData(response);
     } catch (error) {
-      console.error('포켓호스트 데이터를 가져올 수 없습니다');
+      console.error('포켓호스트 데이터를 가져올 수 없습니다', error);
     }
   }
 
+  // pocketbase에 쿠폰함 데이터 중 field가 available , used를 필터링하여 pocketData에 전달 함수
   _getFetchData(items) {
     const filterData = {
       available: items.filter((item) => item.field === 'available'),
@@ -46,11 +49,13 @@ class Coupon extends LitElement {
     this.pocketData = filterData;
   }
 
+  // 클릭이벤트 함수
   _handleClick(e) {
     const tabId = e.target.dataset.tab;
     this.active = tabId;
   }
 
+  // pocketbase에서 해당하는 필드 조건 처리하여 랜더링 하는 함수
   _renderData() {
     let data = [];
 
@@ -128,7 +133,7 @@ class Coupon extends LitElement {
     // 그 외의 탭에서는 "쿠폰함이 비워져있습니다." 메시지를 표시
     return html`
       <div class="empty">
-        <img src="/public/images/empty_coupon.png" alt="쿠폰" />
+        <img src="/images/empty_coupon.png" alt="쿠폰" />
         <p>쿠폰함이 비워져있습니다.</p>
       </div>
     `;

@@ -22,42 +22,50 @@ class NoticeBooking extends LitElement {
     await this._fetchData();
   }
 
-  // 데이터 통신
+  // pocketbase에 transaction_details 데이터 가져오는 함수
   async _fetchData() {
     try {
       const response = await pb.collection('transaction_details').getFullList();
       this.data = response.map((item) => ({
-        ...item,
-        favorites: item.favorites ?? false,
+        ...item, // item 객체 모든 필드 복사
+        favorites: item.favorites ?? false, // favorites 필드 사용 그 값이 없다면 기본값 false 사용
       }));
     } catch (error) {
-      console.error('PocketBase 데이터 알 수 없음');
+      console.error('데이터를 가져오는 중 오류가 발생했습니다.', error);
     }
   }
 
+  // 즐겨찾기 함수
   async handleFavorite(e) {
     const dataIndex = e.target.closest('button').dataset.index;
     const updateData = [...this.data];
-    const target = updateData[dataIndex];
+    const target = updateData[dataIndex]; // this.data의 data-index 추출
 
-    const favoriteStatus = !target.favorites;
+    const favoriteStatus = !target.favorites; // 즐겨찾기 상태 반전하기 위함(토글)
 
     try {
-      // 서버에 상태 업데이트
+      // 서버에 상태 업데이트 => target.id에 favorites 필드를 favoriteStatus로 업데이트
       await pb.collection('transaction_details').update(target.id, {
         favorites: favoriteStatus,
       });
 
       // 로컬 상태 업데이트
-      updateData[dataIndex].favorites = favoriteStatus;
-      this.data = updateData;
+      updateData[dataIndex].favorites = favoriteStatus; // 로컬 데이터 해당 favorites 반전된 favoriteStatus로 업데이트
+      this.data = updateData; // this.data 갱신된 updateData 배열로 설정
     } catch (error) {
-      console.error('즐겨찾기 업데이트 실패');
+      console.error('즐겨찾기 업데이트 실패', error);
     }
   }
 
   render() {
     return html`
+      <div class="back-container">
+        <button @click=${() => history.back()} type="button" aria-label="뒤로가기">
+          <img src="/images/ico_arrow_left.svg" alt="" role="presentation" />
+          <span>방문한 기록</span>
+        </button>
+      </div>
+
       <div class="notice-container">
         ${this.data.map(
           (item, index) => html`
