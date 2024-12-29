@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { loginFormCss } from './loginFormCss.js';
 import commonStyles from '@/styles/common.js';
-import pb from '@/api/pocketbase';
+import pb from '@/api/pocketbase.js';
 import '../SignUp/logo.js';
 import '../SignUp/formInput.js';
 import '../SignUp/submitButton.js';
@@ -95,9 +95,9 @@ class LoginForm extends LitElement {
         </div>
       </section>
       <section class="help-links">
-        <h2 class="sr-only">계정 관련 도움말</h2>
-        <a class="find" href="/findId">아이디 찾기</a>
-        <a class="find" href="/findPw">비밀번호 찾기</a>
+        <h2 class="a11y-hidden">계정 관련 도움말</h2>
+        <a class="find" href="/src/pages/login/findUserId.html">아이디 찾기</a>
+        <a class="find" href="/src/pages/login/findUserPw.html">비밀번호 찾기</a>
         <a class="sign-up" href="/src/pages/sign-up/index.html">회원가입</a>
       </section>
     `;

@@ -1,2 +1,1 @@
-import '@/components/Time/time';
-import '@/layout/Footer/footer';
+import '@/components/Login/startPageForm.js';
