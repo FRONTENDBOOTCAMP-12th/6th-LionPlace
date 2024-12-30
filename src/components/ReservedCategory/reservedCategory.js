@@ -28,13 +28,13 @@ class TabCategory extends LitElement {
     await this._fetchData();
   }
 
-  // get 통신 함수
+  // pocketbase에 transactions 데이터 가져오는 함수
   async _fetchData() {
     try {
       const response = await pb.collection('transactions').getFullList();
       this._getFetchData(response);
     } catch (error) {
-      console.error('PocketBase 데이터 알 수 없음');
+      console.error('포켓호스트 데이터를 가져올 수 없습니다', error);
     }
   }
 
@@ -50,6 +50,7 @@ class TabCategory extends LitElement {
     this.data = filterData;
   }
 
+  // 클릭 이벤트 함수
   _handleClickTab(e) {
     const target = e.target;
     this.category = target.dataset.category;
@@ -57,9 +58,9 @@ class TabCategory extends LitElement {
 
   _renderData() {
     const data = this.data[this.category];
-    const totalReservations = data.reduce((acc, cur) => acc + cur.count, 0);
-    const totalCancle = data.reduce((acc, cur) => acc + cur.cancle, 0);
-    const totalAmount = data.reduce((acc, cur) => acc + cur.total_price, 0);
+    const totalReservations = data.reduce((acc, cur) => acc + cur.count, 0); // 총 예약횟수
+    const totalCancle = data.reduce((acc, cur) => acc + cur.cancle, 0); // 총 취소횟수
+    const totalAmount = data.reduce((acc, cur) => acc + cur.total_price, 0); // 총 가격
     const maxCount = Math.max(...data.map((item) => item.count)); // 최대값 설정
     const userId = [...new Set(data.map((item) => item.user_id))][0] || '알 수 없음'; // Set 중복 제거 후 배열로 전환 후 map
 

@@ -113,7 +113,7 @@ export const categoryStyles = css`
 
       .rank {
         border-radius: 0.5rem;
-        border: 0.5px solid var(--gray-100, #e1e1e1);
+        border: 0.5px solid var(--gray-100);
         color: var(--contentSecondary);
         padding: 0.125rem 0.5rem;
       }
