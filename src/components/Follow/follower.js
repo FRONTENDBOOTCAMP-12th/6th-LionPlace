@@ -19,7 +19,7 @@ class FollowerList extends LitElement {
         ${this.followerList.length === 0
           ? html`
               <div class="empty-state">
-                <img src="/public/images/ico_users.svg" />
+                <img src="/images/ico_users.svg" />
                 <p>아직 팔로워가 없습니다</p>
               </div>
             `

@@ -13,6 +13,8 @@ export const followStyles = css`
     font-size: 1.5rem;
     margin-right: 1rem;
     cursor: pointer;
+    background: none;
+    border: none;
   }
 
   .title {
@@ -46,5 +48,9 @@ export const followStyles = css`
   .tab.active {
     background-color: #171f31;
     color: #fff;
+  }
+
+  .content {
+    padding: 1rem;
   }
 `;
