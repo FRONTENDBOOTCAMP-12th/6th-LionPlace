@@ -41,7 +41,7 @@ export const editProfileFormStyles = css`
 
     gap: 0.625rem;
     padding: 1rem;
-    background-color: #f9f9f9;
+    background-color: var(--gray--50);
     border: 1px solid #ddd;
     border-radius: 8px;
     width: 100%;
@@ -54,7 +54,7 @@ export const editProfileFormStyles = css`
     display: block;
     font-size: 1rem;
     margin-bottom: 8px;
-    color: #333;
+    color: var(--color);
   }
 
   .introduction-section textarea {
@@ -79,8 +79,8 @@ export const editProfileFormStyles = css`
     align-self: flex-end;
     padding: 0.625rem 1.25rem;
     font-size: 1rem;
-    color: #fff;
-    background-color: #007bff;
+    color: var(--white);
+    background-color: var(--blue--400);
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -90,17 +90,11 @@ export const editProfileFormStyles = css`
   }
 
   .introduction-section button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-  }
-
-  .introduction-section button:active {
-    background-color: #004080;
-    transform: translateY(0);
+    background-color: var(--blue--500);
   }
 
   .introduction-section .error-message {
-    color: #ff4d4d;
+    color: var(--error);
     font-size: 0.75rem;
     margin-top: -8px;
   }
@@ -119,7 +113,7 @@ export const editProfileFormStyles = css`
   }
 
   .modal-content {
-    background: white;
+    background: var(--white);
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -130,7 +124,7 @@ export const editProfileFormStyles = css`
     display: block;
     margin: 0.5rem auto;
     padding: 0.5rem 1rem;
-    background: #007bff;
+    background: var(--blue--400);
     color: white;
     border: none;
     border-radius: 4px;
@@ -139,6 +133,6 @@ export const editProfileFormStyles = css`
   }
 
   .modal-content button:hover {
-    background: #0056b3;
+    background: var(--blue--500);
   }
 `;
