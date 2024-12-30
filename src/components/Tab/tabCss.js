@@ -5,31 +5,31 @@ export const tabStyles = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1.25rem 5.625rem;
     background-color: var(--gray--50);
+    padding: 1.25rem 5.625rem;
   }
 
   .tab-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1.25rem 5.625rem;
     position: relative;
+    padding: 1.25rem 5.625rem;
 
     & > li {
       position: relative;
 
       & > button {
         display: flex;
-        padding: 0.5rem 1.125rem;
+        position: relative;
         justify-content: center;
         align-items: center;
         gap: 0.25rem;
         background-color: var(--gray--100);
         color: var(--primary);
         white-space: nowrap;
-        position: relative;
-        margin-right: -1.12rem;
+        padding: 0.5rem 1.125rem;
+        margin-inline-end: -1.12rem;
         z-index: 1;
         &:focus-visible {
           outline: 1px solid var(--blue--800);

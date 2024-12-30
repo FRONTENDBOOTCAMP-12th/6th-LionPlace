@@ -5,9 +5,9 @@ export const navgationStyles = css`
     & > ul {
       display: flex;
       gap: 0.94rem;
-      text-align: center;
       inline-size: 100%;
       background: var(--primary);
+      text-align: center;
 
       & > li {
         flex: 1;
@@ -16,15 +16,15 @@ export const navgationStyles = css`
           background-color: transparent;
           color: var(--lightblue--300);
           opacity: 0.7;
-          font-size: 1rem;
-          font-weight: 600;
-          line-height: 1.6;
           inline-size: 100%;
-          padding: 0.25rem;
           background-size: 100% 0.1875rem;
           background-repeat: no-repeat;
           background-position: bottom;
+          font-size: 1rem;
+          font-weight: 600;
+          line-height: 1.6;
           white-space: nowrap;
+          padding: 0.25rem;
 
           &:focus-visible {
             outline: 2px solid var(--white);

@@ -70,8 +70,8 @@ export const footerStyle = css`
               display: inline-flex;
               position: absolute;
               inset: 0.125rem auto auto -0.5125rem;
-              height: 0.8125rem;
               border-right: 1px solid var(--contentSecondary);
+              block-size: 0.8125rem;
             }
           }
           & > strong {

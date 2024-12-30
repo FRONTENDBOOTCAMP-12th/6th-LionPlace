@@ -4,7 +4,7 @@ export const orderStyles = css`
   .order-section {
     .order-section__inner {
       padding: 0.75rem;
-      background-color: #c6c6c6;
+      background-color: var(--gray--200);
     }
 
     .order {
@@ -62,8 +62,19 @@ export const orderStyles = css`
       border-top: 0;
       border-radius: 0rem 0rem 1rem 1rem;
       background: linear-gradient(90deg, #8db0f9 0%, rgba(141, 176, 249, 0) 72.63%);
-      padding: 0.625rem 1rem 0;
       box-sizing: border-box;
+
+      .event-link {
+        display: block;
+        padding: 0.625rem 1rem 0;
+
+        &:focus-visible {
+          position: relative;
+          z-index: 10;
+          outline: 1px solid var(--blue--800);
+          outline-offset: 1px;
+        }
+      }
 
       .event-text {
         display: flex;
@@ -122,13 +133,13 @@ export const orderStyles = css`
         justify-content: center;
         align-items: center;
         gap: 0.25rem;
-        padding: 0.25rem 0.75rem;
         border-radius: 1.25rem;
         background: var(--lightblue--400);
         color: var(--white);
         font-size: 0.75019rem;
         font-weight: 600;
         line-height: 1.5;
+        padding: 0.25rem 0.75rem;
 
         &::before {
           content: '';

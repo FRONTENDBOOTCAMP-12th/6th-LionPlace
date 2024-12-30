@@ -6,9 +6,9 @@ export const NoticeBookingStyle = css`
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.5rem;
-      border-bottom: 0.5px solid var(--contentTertiary);
       inline-size: 100%;
+      border-bottom: 0.5px solid var(--contentTertiary);
+      padding: 0.5rem;
 
       & > span {
         color: var(--contentPrimary);
@@ -44,10 +44,10 @@ export const NoticeBookingStyle = css`
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: var(--lightblue--400);
-        border-radius: 5000px;
         width: 2.125rem;
         aspect-ratio: 1/1;
+        background-color: var(--lightblue--400);
+        border-radius: 5000px;
       }
 
       .notice-booking__text {
@@ -131,9 +131,9 @@ export const NoticeBookingStyle = css`
       display: flex;
       flex-flow: column wrap;
       gap: 0.75rem;
-      padding: 0.875rem 0.75rem;
       background-color: var(--white);
       border-radius: 0.5rem;
+      padding: 0.875rem 0.75rem;
 
       .reservation-top {
         position: relative;
@@ -163,7 +163,7 @@ export const NoticeBookingStyle = css`
         color: var(--contentSecondary);
         font-size: 0.75019rem;
         line-height: 1.6;
-        width: 50vw;
+        inline-size: 50vw;
 
         .description {
           overflow: hidden;
@@ -186,10 +186,10 @@ export const NoticeBookingStyle = css`
         }
 
         .feedback-info {
-          padding: 0.125rem 0.5rem;
+          max-inline-size: fit-content;
           background-color: var(--gray--50);
           border-radius: 0.25rem;
-          max-inline-size: fit-content;
+          padding: 0.125rem 0.5rem;
         }
       }
     }
@@ -198,10 +198,10 @@ export const NoticeBookingStyle = css`
       background-color: var(--white);
       border-top: 0.5px dashed var(--contentTertiary);
       border-radius: 0.5rem;
-      padding: 0.5rem 0.75rem;
       color: var(--contentSecondary);
       font-size: 0.75019rem;
       line-height: 1.5;
+      padding: 0.5rem 0.75rem;
 
       .staff-info {
         display: flex;
