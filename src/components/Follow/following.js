@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { followingStyles } from './followingCss';
+import { followingStyles } from './followingCss.js';
 
 class FollowingList extends LitElement {
   static properties = {

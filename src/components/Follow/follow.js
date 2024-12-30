@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { followStyles } from './followCss';
+import { followStyles } from './followCss.js';
 
 import './follower.js';
 import './following.js';
