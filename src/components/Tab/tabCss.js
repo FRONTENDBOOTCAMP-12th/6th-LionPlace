@@ -32,7 +32,7 @@ export const tabStyles = css`
         margin-inline-end: -1.12rem;
         z-index: 1;
         &:focus-visible {
-          outline: 1px solid var(--blue--800);
+          outline: 2px solid var(--blue--800);
           outline-offset: 1px;
         }
 

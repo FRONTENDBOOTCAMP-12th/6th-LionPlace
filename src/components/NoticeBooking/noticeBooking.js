@@ -37,7 +37,7 @@ class NoticeBooking extends LitElement {
 
   // 즐겨찾기 함수
   async handleFavorite(e) {
-    const dataIndex = e.target.closest('button').dataset.index;
+    const dataIndex = Number(e.target.closest('button').dataset.index); // target에 가까운 button data-index 추출-> 기본 문자열 제공, 숫자형 데이터로 변환
     const updateData = [...this.data];
     const target = updateData[dataIndex]; // this.data의 data-index 추출
 

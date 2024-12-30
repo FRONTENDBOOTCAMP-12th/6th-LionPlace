@@ -158,6 +158,9 @@ export const profileAllStyles = css`
 
   .coupon {
     .coupon-link {
+      position: absolute;
+      inset-block-start: 0.53rem;
+      inset-inline-end: 1rem;
       text-align: center;
       color: var(--white);
 

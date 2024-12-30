@@ -56,7 +56,6 @@ export const orderStyles = css`
     }
 
     .event {
-      overflow: hidden;
       position: relative;
       border: 0.5px solid var(--contentTertiary);
       border-top: 0;
@@ -67,13 +66,6 @@ export const orderStyles = css`
       .event-link {
         display: block;
         padding: 0.625rem 1rem 0;
-
-        &:focus-visible {
-          position: relative;
-          z-index: 10;
-          outline: 1px solid var(--blue--800);
-          outline-offset: 1px;
-        }
       }
 
       .event-text {

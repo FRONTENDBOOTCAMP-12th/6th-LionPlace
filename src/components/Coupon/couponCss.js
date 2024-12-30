@@ -11,6 +11,11 @@ export const couponStyle = css`
         border-bottom: 0.5px solid var(--contentTertiary);
         padding: 0.5rem;
 
+        &:focus-visible {
+          outline: 2px solid var(--blue--800);
+          outline-offset: 1px;
+        }
+
         & > span {
           color: var(--contentPrimary);
           font-size: 1rem;
