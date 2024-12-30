@@ -92,7 +92,7 @@ class TabCategory extends LitElement {
       </ul>
 
       <div class="link-container">
-        <a href="/src/pages/notice-booking/" class="more-link">
+        <a href="/src/pages/notice-booking/" class="more-link" role="button">
           <span>더보기</span>
           <img src="/images/ico_right.svg" alt="우측방향 화살표" aria-hidden="true" />
         </a>
