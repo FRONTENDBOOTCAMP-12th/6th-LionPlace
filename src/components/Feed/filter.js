@@ -22,6 +22,8 @@ export class FilterFeed extends LitElement {
     this.categories = ['전체', '한식', '중식', '양식', '카페', '일식'];
   }
 
+  static styles = [filterStyles];
+
   _filterPosts() {
     return this.posts.filter((post) => {
       const regionMatch = this.selectedRegion === '전체' || post.region === this.selectedRegion;

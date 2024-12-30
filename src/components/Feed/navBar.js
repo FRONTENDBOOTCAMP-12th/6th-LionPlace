@@ -13,6 +13,8 @@ class NavBar extends LitElement {
     this.activePage = 'feed'; // 기본값 설정
   }
 
+  static styles = [navBarStyles];
+
   handleClick(e, tab) {
     e.preventDefault();
     this.activePage = tab;

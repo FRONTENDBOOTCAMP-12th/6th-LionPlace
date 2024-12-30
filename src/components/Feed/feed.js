@@ -34,6 +34,8 @@ export class Feed extends LitElement {
     ];
   }
 
+  static styles = [feedStyles];
+
   render() {
     return html`
       <filter-feed .posts="${this.posts}"></filter-feed>

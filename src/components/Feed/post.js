@@ -25,6 +25,8 @@ class PostComponent extends LitElement {
     this.expanded = false;
   }
 
+  static styles = [postStyles];
+
   toggleLike() {
     this.liked = !this.liked;
   }
