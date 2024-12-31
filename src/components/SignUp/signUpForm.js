@@ -199,6 +199,7 @@ class SignUpForm extends LitElement {
             @submit-click="${this._handleSubmit}"
           ></submit-button>
         </form>
+        <a class="find" href="/src/pages/login/loginPage.html">로그인 화면으로 이동</a>
       </section>
     `;
   }

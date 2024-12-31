@@ -17,4 +17,9 @@ export const signUpFormCss = css`
   .sign-up-section submit-button {
     margin-bottom: 2rem;
   }
+
+  .sign-up-section a {
+    display: block;
+    text-align: right;
+  }
 `;
