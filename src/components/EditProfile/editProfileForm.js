@@ -18,12 +18,12 @@ class EditProfileForm extends LitElement {
       avatar: '',
       introduction: '',
     };
-    this.loadUserData();
+    this._loadUserData();
     this.isModalOpen = false;
     this.errorMessage = '';
   }
 
-  async loadUserData() {
+  async _loadUserData() {
     try {
       const userId = pb.authStore.model.id;
       const userRecord = await pb.collection('users').getOne(userId);
@@ -42,7 +42,7 @@ class EditProfileForm extends LitElement {
     }
   }
 
-  async handleAvatarUpload(e) {
+  async _handleAvatarUpload(e) {
     this.errorMessage = '';
     const file = e.target.files[0];
     if (file) {
@@ -63,7 +63,7 @@ class EditProfileForm extends LitElement {
     }
   }
 
-  async handleAvatarRemove() {
+  async _handleAvatarRemove() {
     this.errorMessage = '';
     try {
       const userId = pb.authStore.model.id;
@@ -75,7 +75,7 @@ class EditProfileForm extends LitElement {
     }
   }
 
-  async saveIntroduction() {
+  async _saveIntroduction() {
     this.errorMessage = '';
     const introduction = this.shadowRoot.querySelector('textarea').value;
     if (!introduction.trim()) {
@@ -92,19 +92,19 @@ class EditProfileForm extends LitElement {
     }
   }
 
-  showAvatarOptions() {
+  _showAvatarOptions() {
     this.isModalOpen = true;
   }
 
-  closeAvatarOptions() {
+  _closeAvatarOptions() {
     this.isModalOpen = false;
     if (this.fileInput) {
       this.fileInput.value = '';
     }
   }
 
-  handleAvatarUploadClick() {
-    this.closeAvatarOptions();
+  _handleAvatarUploadClick() {
+    this._closeAvatarOptions();
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.accept = 'image/*';
@@ -129,12 +129,12 @@ class EditProfileForm extends LitElement {
     fileInput.click();
   }
 
-  renderAvatarOptionsModal() {
+  _renderAvatarOptionsModal() {
     if (!this.isModalOpen) {
       return html``;
     }
     return html`
-      <div class="modal-overlay" @click="${this.closeAvatarOptions}">
+      <div class="modal-overlay" @click="${this._closeAvatarOptions}">
         <div
           class="modal-content"
           @click="${(e) => e.stopPropagation()}"
@@ -142,11 +142,11 @@ class EditProfileForm extends LitElement {
           aria-labelledby="modal-title"
         >
           <h2 id="modal-title" class="visually-hidden">프로필 사진 옵션</h2>
-          <button @click="${this.handleAvatarUploadClick}" aria-label="사진 업로드">
+          <button @click="${this._handleAvatarUploadClick}" aria-label="사진 업로드">
             사진 업로드
           </button>
-          <button @click="${this.handleAvatarRemove}" aria-label="사진 삭제">사진 삭제</button>
-          <button @click="${this.closeAvatarOptions}" aria-label="취소">취소</button>
+          <button @click="${this._handleAvatarRemove}" aria-label="사진 삭제">사진 삭제</button>
+          <button @click="${this._closeAvatarOptions}" aria-label="취소">취소</button>
         </div>
       </div>
     `;
@@ -160,7 +160,7 @@ class EditProfileForm extends LitElement {
             <img
               src="${this.formData.avatar}"
               alt="사용자 프로필 사진"
-              @click="${this.showAvatarOptions}"
+              @click="${this._showAvatarOptions}"
             />
             <label class="avatar-upload">
               <img
@@ -168,7 +168,7 @@ class EditProfileForm extends LitElement {
                 alt="사진 변경"
                 role="presentation"
                 class="edited-img"
-                @click="${this.showAvatarOptions}"
+                @click="${this._showAvatarOptions}"
               />
             </label>
           </div>
@@ -180,7 +180,7 @@ class EditProfileForm extends LitElement {
             .value="${this.formData.introduction}"
             @input="${(e) => (this.formData.introduction = e.target.value)}"
           ></textarea>
-          <button @click="${this.saveIntroduction}">저장</button>
+          <button @click="${this._saveIntroduction}">저장</button>
           <span
             class="error-message"
             role="alert"
@@ -189,7 +189,7 @@ class EditProfileForm extends LitElement {
             >${this.errorMessage}</span
           >
         </section>
-        ${this.renderAvatarOptionsModal()}
+        ${this._renderAvatarOptionsModal()}
       </main>
     `;
   }
