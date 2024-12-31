@@ -10,16 +10,17 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        start: resolve(__dirname, 'src/pages/login/startPage.html'),
         login: resolve(__dirname, 'src/pages/login/loginPage.html'),
         findUser: resolve(__dirname, 'src/pages/login/findUserId.html'),
         signUp: resolve(__dirname, 'src/pages/sign-up/index.html'),
+        editProfile: resolve(__dirname, 'src/pages/edit-profile/index.html'),
         reserved: resolve(__dirname, 'src/pages/reserved/index.html'),
         reviewWrite: resolve(__dirname, 'src/pages/review-write/index.html'),
         feed: resolve(__dirname, 'src/pages/feed/index.html'),
         savedPlaces: resolve(__dirname, 'src/pages/saved-places/index.html'),
         noticeBooking: resolve(__dirname, 'src/pages/notice-booking/index.html'),
         coupon: resolve(__dirname, 'src/pages/coupon/index.html'),
+        map: resolve(__dirname, 'src/pages/map/index.html'),
         follow: resolve(__dirname, 'src/pages/follow/index.html'),
       },
     },

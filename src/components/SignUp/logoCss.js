@@ -2,8 +2,8 @@ import { css } from 'lit';
 
 export const logoCss = css`
   .logo {
-    display: block;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     margin-bottom: 3rem;
   }
 
