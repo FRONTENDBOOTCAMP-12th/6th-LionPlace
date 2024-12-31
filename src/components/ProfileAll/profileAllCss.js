@@ -21,8 +21,6 @@ export const profileAllStyles = css`
         position: relative;
         inline-size: 3.51563rem;
         aspect-ratio: 1/1;
-        border: 0.1875rem solid var(--white);
-        border-radius: 5000px;
 
         & > a {
           display: flex;
@@ -47,7 +45,7 @@ export const profileAllStyles = css`
             inset-block-end: 0;
             inset-inline-end: 0;
             background-color: var(--white);
-            border-radius: 5000px;
+            border-radius: 50%;
             padding: 0.26rem;
           }
         }
@@ -183,12 +181,11 @@ export const profileAllStyles = css`
         inset-block-start: 0.53rem;
         inset-inline-end: 1rem;
         justify-content: center;
-        align-items: center;
         inline-size: 0.75rem;
         aspect-ratio: 1 / 1;
         font-size: 0.75019rem;
         background-color: var(--white);
-        border-radius: 5000px;
+        border-radius: 50%;
         color: var(--primary);
         padding: 0.15rem;
       }
