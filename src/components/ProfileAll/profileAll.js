@@ -54,7 +54,7 @@ class ProfileAll extends LitElement {
         <div class="profile-container">
           <div class="profile-container__top">
             <div class="avatar">
-              <a href="/">
+              <a href="/src/pages/edit-profile/index.html">
                 <img src="/images/profile.png" alt="프로필 이미지" class="profile-img" />
                 <img src="/images/ico_write_sm.svg" alt="" role="presentation" class="edited-img" />
               </a>

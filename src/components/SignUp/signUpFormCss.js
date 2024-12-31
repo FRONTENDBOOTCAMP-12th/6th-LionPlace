@@ -4,7 +4,7 @@ export const signUpFormCss = css`
   .container {
     max-width: 30rem;
     margin: 0 auto;
-    padding: 4rem;
+    padding: 2rem;
   }
 
   h1 {
