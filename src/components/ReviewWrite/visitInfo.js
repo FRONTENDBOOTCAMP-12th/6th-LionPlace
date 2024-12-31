@@ -1,9 +1,9 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss.js';
+import { reviewWriteStyles } from './reviewWriteCss.js';
 
 class ReviewVisitInfo extends LitElement {
   static styles = [
-    ...reviewStyles,
+    ...reviewWriteStyles,
     css`
       .visit-info {
         padding: 0.875rem;
@@ -40,7 +40,7 @@ class ReviewVisitInfo extends LitElement {
 
   render() {
     return html`
-      <div class="visit-info section">
+      <section class="visit-info">
         <h2 class="a11y-hidden">방문 정보</h2>
         <img class="visit-info__img" src="/" alt="상품명" onerror="this.style.display='none'" />
         <strong class="visit-info__place-name">${this.visitInfo.name}</strong>
@@ -48,7 +48,7 @@ class ReviewVisitInfo extends LitElement {
           ${this.visitInfo.startDate} ${this.visitInfo.count}번째 방문
         </p>
         <p class="visit-info__product-name">${this.visitInfo.itemName}</p>
-      </div>
+      </section>
     `;
   }
 }

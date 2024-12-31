@@ -1,27 +1,22 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss.js';
+import { reviewWriteStyles } from './reviewWriteCss.js';
 
 class ReviewHeader extends LitElement {
   static styles = [
-    ...reviewStyles,
+    ...reviewWriteStyles,
     css`
       .header {
-        position: relative;
-        box-sizing: border-box;
-        height: 2.5rem;
-        line-height: 2.5rem;
-        padding: 0 0.875rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 0.875rem;
 
         .title {
           font-size: 1rem;
         }
 
-        .close-btn {
-          position: absolute;
-          top: 0;
-          right: 0;
-          height: 100%;
-          padding-right: 0.875rem;
+        .btn.close-btn {
+          padding: 0 !important;
         }
       }
     `,
@@ -35,18 +30,24 @@ class ReviewHeader extends LitElement {
     super();
   }
 
-  // TODO 닫기 버튼 클릭
-  _handleClose(e) {
-    alert('작업 예정');
+  // 닫기 버튼 클릭
+  _handleCloseClick(e) {
+    this.dispatchEvent(
+      new CustomEvent('close-click', {
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   render() {
     return html`
-      <div class="header section">
-        <h1 class="title">${this.title}</h1>
-        <button type="button" class="close-btn" @click="${this._handleClose}">
-          <span class="a11y-hidden">닫기</span>
-
+      <section class="header">
+        <h1 class="title">
+          <!-- <slot name="title"></slot> -->
+          ${this.title}
+        </h1>
+        <button type="button" class="close-btn btn" @click="${this._handleCloseClick}">
           <svg
             role="img"
             aria-labelledby="close-text"
@@ -66,7 +67,7 @@ class ReviewHeader extends LitElement {
             />
           </svg>
         </button>
-      </div>
+      </section>
     `;
   }
 }

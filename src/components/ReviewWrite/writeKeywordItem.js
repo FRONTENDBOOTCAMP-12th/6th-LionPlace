@@ -1,9 +1,9 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss.js';
+import { reviewWriteStyles } from './reviewWriteCss.js';
 
 class ReviewWriteKeywordItem extends LitElement {
   static styles = [
-    ...reviewStyles,
+    ...reviewWriteStyles,
     css`
       .keyword-item {
         margin: 0.5rem 0;

@@ -1,11 +1,11 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss.js';
+import { reviewWriteStyles } from './reviewWriteCss.js';
 import './writeKeywordCategory.js';
 
 // TODO 수정 - 드래그 기능(현재: 모바일 버전 안됨)
 class ReviewWriteKeyword extends LitElement {
   static styles = [
-    ...reviewStyles,
+    ...reviewWriteStyles,
     css`
       .keyword {
         background-color: var(--gray--50);
@@ -219,7 +219,7 @@ class ReviewWriteKeyword extends LitElement {
 
   render() {
     return html`
-      <div class="keyword section">
+      <section class="keyword">
         <h2 class="a11y-hidden">가게 키워드 선택하기</h2>
 
         <div class="keyword__question">
@@ -230,11 +230,11 @@ class ReviewWriteKeyword extends LitElement {
         <div class="keyword__view">
           <div class="keyword__category-wrapper">
             ${this.keywordCategories.map(
-              (category) => html`
+              (item) => html`
                 <review-write-keyword-category-element
-                  .id=${category.id}
-                  .name=${category.name}
-                  .keywords=${category.keywords}
+                  .id=${item.id}
+                  .name=${item.name}
+                  .keywords=${item.keywords}
                   .selectedKeywords=${this.selectedKeywords}
                 ></review-write-keyword-category-element>
               `
@@ -264,7 +264,7 @@ class ReviewWriteKeyword extends LitElement {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     `;
   }
 }
