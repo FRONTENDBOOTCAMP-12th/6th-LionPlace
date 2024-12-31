@@ -1,56 +1,57 @@
 import { css } from 'lit';
 
 export const followStyles = css`
-  .header {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #eee;
-    background: white;
-  }
+  .follow-section {
+    .follow-section__top {
+      & > button {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        inline-size: 100%;
+        border-bottom: 0.5px solid var(--contentTertiary);
+        padding: 0.5rem;
 
-  .back-button {
-    font-size: 1.5rem;
-    margin-right: 1rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-  }
+        &:focus-visible {
+          outline: 2px solid var(--blue--800);
+          outline-offset: 1px;
+        }
 
-  .title {
-    font-size: 1.25rem;
-    font-weight: bold;
+        & > span {
+          color: var(--contentPrimary);
+          font-size: 1rem;
+          font-weight: 600;
+          line-height: 1.5;
+          white-space: nowrap;
+        }
+      }
+    }
   }
 
   .tabs {
-    display: flex;
-    justify-content: flex-start; /* 왼쪽 정렬 */
-    gap: 1rem; /* 탭 간의 간격 추가 */
-    padding: 0.5rem 0;
-    padding-left: 1.5rem; /* 왼쪽 간격 추가 */
-    border-bottom: 1px solid #eee;
-    background: white;
-  }
+    & > ul {
+      display: flex;
+      gap: 0.75rem;
+      border-bottom: 0.5px solid var(--contentTertiary);
+      padding: 1rem;
 
-  .tab {
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #666;
-    background-color: #f5f5f5;
-    transition:
-      background-color 0.3s,
-      color 0.3s;
-  }
+      & > li {
+        & > button {
+          border-radius: 1rem;
+          background-color: var(--gray--100);
+          color: var(--contentSecondary);
+          font-size: 0.75019rem;
+          font-weight: 600;
+          padding: 0.5rem 0.75rem;
+          transition:
+            background-color 0.3s,
+            color 0.3s;
 
-  .tab.active {
-    background-color: #171f31;
-    color: #fff;
-  }
-
-  .content {
-    padding: 1rem;
+          &.is--active {
+            background-color: var(--contentPrimary);
+            color: var(--white);
+          }
+        }
+      }
+    }
   }
 `;

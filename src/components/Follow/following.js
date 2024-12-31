@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { followingStyles } from './followingCss.js';
+import commonStyles from '@/styles/common.js';
 
 class FollowingList extends LitElement {
   static properties = {
@@ -15,23 +16,23 @@ class FollowingList extends LitElement {
     ];
   }
 
-  static styles = [followingStyles];
+  static styles = [followingStyles, commonStyles];
 
   render() {
     return html`
-      <div class="list">
+      <ul class="list">
         ${this.followingList.map(
           (user) => html`
-            <div class="list-item">
+            <li class="list-item">
               <div class="profile">
                 <img src="${user.img}" alt="${user.name}" />
                 <span class="username">${user.name}</span>
               </div>
               <button type="button" class="follow-button">팔로우</button>
-            </div>
+            </li>
           `
         )}
-      </div>
+      </ul>
     `;
   }
 }
