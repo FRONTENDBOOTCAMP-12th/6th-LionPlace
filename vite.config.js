@@ -20,6 +20,7 @@ export default defineConfig({
         savedPlaces: resolve(__dirname, 'src/pages/saved-places/index.html'),
         noticeBooking: resolve(__dirname, 'src/pages/notice-booking/index.html'),
         coupon: resolve(__dirname, 'src/pages/coupon/index.html'),
+        map: resolve(__dirname, 'src/pages/map/index.html'),
       },
     },
   },
