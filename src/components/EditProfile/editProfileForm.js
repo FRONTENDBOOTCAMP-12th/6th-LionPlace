@@ -18,9 +18,26 @@ class EditProfileForm extends LitElement {
       avatar: '',
       introduction: '',
     };
-    this._loadUserData();
     this.isModalOpen = false;
     this.errorMessage = '';
+    this._boundHandleKeyDown = this._handleKeyDown.bind(this);
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this._loadUserData();
+    window.addEventListener('keydown', this._boundHandleKeyDown);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener('keydown', this._boundHandleKeyDown);
+  }
+
+  _handleKeyDown(e) {
+    if (e.key === 'Escape') {
+      this._closeAvatarOptions();
+    }
   }
 
   async _loadUserData() {
@@ -39,36 +56,70 @@ class EditProfileForm extends LitElement {
       };
     } catch (error) {
       console.error('유저 데이터 로딩 실패: ', error);
+      this.errorMessage = '유저 데이터 로딩에 실패했습니다.';
+    }
+  }
+
+  async _selectFile() {
+    return new Promise((resolve) => {
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.accept = 'image/*';
+
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        resolve(file);
+      });
+
+      fileInput.click();
+    });
+  }
+
+  async _uploadAvatar(file) {
+    this.errorMessage = '';
+    try {
+      const userId = pb.authStore.model.id;
+      const formData = new FormData();
+      formData.append('avatar', file);
+
+      const updatedRecord = await pb.collection('users').update(userId, formData);
+      const newAvatarUrl = pb.getFileUrl(updatedRecord, updatedRecord.avatar);
+      this.formData = {
+        ...this.formData,
+        avatar: newAvatarUrl,
+      };
+      this.requestUpdate();
+    } catch (error) {
+      console.error('프로필 사진 업로드 실패: ', error);
+      this.errorMessage = '프로필 사진 업로드에 실패했습니다.';
     }
   }
 
   async _handleAvatarUpload(e) {
     this.errorMessage = '';
     const file = e.target.files[0];
-    if (file) {
-      try {
-        const userId = pb.authStore.model.id;
-        const formData = new FormData();
-        formData.append('avatar', file);
+    if (file) this._uploadAvatar(file);
+  }
 
-        const updatedRecord = await pb.collection('users').update(userId, formData);
-        this.formData.avatar = `${pb.getFileUrl(
-          updatedRecord,
-          updatedRecord.avatar
-        )}?t=${Date.now()}`;
-      } catch (error) {
-        console.error('프로필 사진 업로드 실패: ', error);
-        this.errorMessage = '프로필 사진 업로드에 실패했습니다.';
-      }
-    }
+  async _handleAvatarUploadClick() {
+    this.errorMessage = '';
+    this._closeAvatarOptions();
+    const file = await this._selectFile();
+    if (file) await this._uploadAvatar(file);
   }
 
   async _handleAvatarRemove() {
     this.errorMessage = '';
     try {
       const userId = pb.authStore.model.id;
-      const updatedRecord = await pb.collection('users').update(userId, { avatar: null });
-      this.formData.avatar = `/images/profile.png?t=${Date.now()}`;
+      await pb.collection('users').update(userId, { avatar: null });
+      const newAvatarUrl = `/images/profile.png`;
+      this.formData = {
+        ...this.formData,
+        avatar: newAvatarUrl,
+      };
+      this.requestUpdate();
+      this.isModalOpen = false;
     } catch (error) {
       console.error('프로필 사진 제거 실패: ', error);
       this.errorMessage = '프로필 사진 제거에 실패했습니다.';
@@ -77,14 +128,17 @@ class EditProfileForm extends LitElement {
 
   async _saveIntroduction() {
     this.errorMessage = '';
-    const introduction = this.shadowRoot.querySelector('textarea').value;
-    if (!introduction.trim()) {
+    const textarea = this.shadowRoot.querySelector('textarea');
+    const introduction = textarea.value.trim();
+    if (!introduction) {
       this.errorMessage = '소개를 입력하세요.';
       return;
     }
     try {
       const userId = pb.authStore.model.id;
       await pb.collection('users').update(userId, { introduction });
+      this.formData.introduction = introduction;
+      window.location.href = '/src/pages/reserved/index.html';
       this.errorMessage = '';
     } catch (error) {
       console.error('소개 저장 실패: ', error);
@@ -94,39 +148,20 @@ class EditProfileForm extends LitElement {
 
   _showAvatarOptions() {
     this.isModalOpen = true;
+    const modalOverlay = this.shadowRoot.querySelector('.modal-overlay');
+    if (modalOverlay) {
+      modalOverlay.setAttribute('aria-hidden', 'false');
+    }
   }
 
   _closeAvatarOptions() {
     this.isModalOpen = false;
-    if (this.fileInput) {
-      this.fileInput.value = '';
+    const focusableElement = this.shadowRoot.querySelector('.avatar-edit-btn');
+    const modalOverlay = this.shadowRoot.querySelector('.modal-overlay');
+    if (focusableElement) focusableElement.focus();
+    if (modalOverlay) {
+      modalOverlay.setAttribute('aria-hidden', 'true');
     }
-  }
-
-  _handleAvatarUploadClick() {
-    this._closeAvatarOptions();
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = 'image/*';
-
-    fileInput.addEventListener('change', async (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        try {
-          const userId = pb.authStore.model.id;
-          const formData = new FormData();
-          formData.append('avatar', file);
-
-          const updatedRecord = await pb.collection('users').update(userId, formData);
-          this.formData.avatar = pb.getFileUrl(updatedRecord, updatedRecord.avatar);
-        } catch (error) {
-          console.error('프로필 사진 업로드 실패: ', error);
-          this.errorMessage = '프로필 사진 업로드에 실패했습니다.';
-        }
-      }
-    });
-
-    fileInput.click();
   }
 
   _renderAvatarOptionsModal() {
@@ -134,14 +169,18 @@ class EditProfileForm extends LitElement {
       return html``;
     }
     return html`
-      <div class="modal-overlay" @click="${this._closeAvatarOptions}">
+      <div
+        class="modal-overlay"
+        @click="${this._closeAvatarOptions}"
+        aria-hidden="${this.isModalOpen ? 'false' : 'true'}"
+      >
         <div
           class="modal-content"
           @click="${(e) => e.stopPropagation()}"
           role="dialog"
           aria-labelledby="modal-title"
         >
-          <h2 id="modal-title" class="visually-hidden">프로필 사진 옵션</h2>
+          <h3 id="modal-title">프로필 사진 옵션</h3>
           <button @click="${this._handleAvatarUploadClick}" aria-label="사진 업로드">
             사진 업로드
           </button>
@@ -154,41 +193,53 @@ class EditProfileForm extends LitElement {
 
   render() {
     return html`
-      <main class="container">
-        <section class="avatar-section">
-          <div class="avatar">
+      <main class="profile-container">
+        <header class="profile-header">
+          <button @click=${() => history.back()} type="button" aria-label="뒤로가기">
+            <img src="/images/ico_arrow_left.svg" alt="" role="presentation" />
+            <span>프로필 설정</span>
+          </button>
+        </header>
+
+        <section class="profile-avatar-section">
+          <h2 class="a11y-hidden">프로필 사진</h2>
+          <div class="avatar-wrapper">
             <img
               src="${this.formData.avatar}"
               alt="사용자 프로필 사진"
+              class="avatar-image"
               @click="${this._showAvatarOptions}"
             />
-            <label class="avatar-upload">
-              <img
-                src="/images/ico_write_sm.svg"
-                alt="사진 변경"
-                role="presentation"
-                class="edited-img"
-                @click="${this._showAvatarOptions}"
-              />
-            </label>
+            <button
+              class="avatar-edit-btn"
+              @click="${this._showAvatarOptions}"
+              aria-label="사진 변경"
+            >
+              <img src="/images/ico_write_sm.svg" alt="" class="edit-icon" />
+            </button>
           </div>
         </section>
-        <section class="introduction-section">
-          <label for="introduction-textarea" class="introduction-label">소개</label>
+
+        <section class="profile-introduction-section">
+          <h2 class="section-title">소개</h2>
           <textarea
+            id="introduction-textarea"
             placeholder="소개를 작성해주세요"
+            class="introduction-textarea"
             .value="${this.formData.introduction}"
             @input="${(e) => (this.formData.introduction = e.target.value)}"
           ></textarea>
-          <button @click="${this._saveIntroduction}">저장</button>
-          <span
+          <p
             class="error-message"
             role="alert"
             aria-live="assertive"
             ?hidden="${!this.errorMessage}"
-            >${this.errorMessage}</span
           >
+            ${this.errorMessage}
+          </p>
+          <button class="save-btn" @click="${this._saveIntroduction}">저장</button>
         </section>
+
         ${this._renderAvatarOptionsModal()}
       </main>
     `;
