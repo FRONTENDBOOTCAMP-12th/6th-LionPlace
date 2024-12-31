@@ -69,7 +69,6 @@ export const profileAllStyles = css`
 
           & > ul {
             display: flex;
-            padding: 0.25rem 0;
             inline-size: 100%;
 
             & :not(li ~ li) {
@@ -172,7 +171,7 @@ export const profileAllStyles = css`
         line-height: 1.6;
         border: 0.0625rem solid var(--white);
         border-radius: 0.25rem;
-        padding: 0.25rem;
+        padding: 0.2rem;
       }
 
       .coupon-count {
