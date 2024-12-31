@@ -9,6 +9,7 @@ export const loginFormCss = css`
     max-width: 30rem;
     margin: 0 auto;
     padding: 2rem;
+    padding-bottom: 1rem;
   }
 
   h1 {

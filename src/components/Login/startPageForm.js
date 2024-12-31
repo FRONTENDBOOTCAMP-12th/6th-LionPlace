@@ -20,7 +20,7 @@ class StartPageForm extends LitElement {
   render() {
     return html`
       <section class="start-section">
-        <h1 class="sr-only">시작 페이지</h1>
+        <h1 class="a11y-hidden">시작 페이지</h1>
         <app-logo link="/src/pages/login/loginPage.html"></app-logo>
         <action-button @click="${this.goToLoginPage}" text="시작하기"></action-button>
       </section>

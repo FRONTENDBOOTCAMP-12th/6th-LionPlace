@@ -5,7 +5,6 @@ export const signUpFormCss = css`
     max-width: 30rem;
     margin: 0 auto;
     padding: 2rem;
-    height: 100vh;
   }
 
   .sign-up-section h1 {
