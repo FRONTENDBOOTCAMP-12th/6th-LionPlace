@@ -26,6 +26,7 @@ export const orderStyles = css`
       .order-list {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(2.125rem, auto);
         border-radius: 1rem 1rem 0 0;
         border: 0.5px solid var(--contentTertiary);
         box-sizing: border-box;
