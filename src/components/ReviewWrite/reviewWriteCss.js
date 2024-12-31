@@ -1,7 +1,7 @@
 import { css } from 'lit';
 import commonStyles from '@/styles/common.js';
 
-export const reviewStyles = [
+export const reviewWriteStyles = [
   commonStyles,
   css`
     .btn {
@@ -11,7 +11,7 @@ export const reviewStyles = [
       // width: auto;
     }
 
-    .section {
+    section {
       padding: 0 0.875rem;
     }
   `,

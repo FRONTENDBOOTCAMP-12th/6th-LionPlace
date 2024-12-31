@@ -1,9 +1,9 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss.js';
+import { reviewWriteStyles } from './reviewWriteCss.js';
 
 class ReviewWriteLike extends LitElement {
   static styles = [
-    ...reviewStyles,
+    ...reviewWriteStyles,
     css`
       .like {
         padding: 1.625rem 4.625rem 2.5rem 4.625rem;
@@ -56,7 +56,7 @@ class ReviewWriteLike extends LitElement {
 
   render() {
     return html`
-      <div class="like section">
+      <section class="like">
         <h2 class="a11y-hidden">이 장소 좋아요</h2>
         <div class="like__description">
           <strong class="description__text">이 곳이 마음에 든다면, </strong>
@@ -76,20 +76,21 @@ class ReviewWriteLike extends LitElement {
           <svg
             role="img"
             aria-labelledby="like-text"
-            width="14"
-            height="14"
-            fill="#e11900"
-            viewBox="0 0 32 32"
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <title id="like-text">좋아요</title>
             <path
-              d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"
-            ></path>
+              d="M9 16.0125L7.9125 15.0225C4.05 11.52 1.5 9.2025 1.5 6.375C1.5 4.0575 3.315 2.25 5.625 2.25C6.93 2.25 8.1825 2.8575 9 3.81C9.8175 2.8575 11.07 2.25 12.375 2.25C14.685 2.25 16.5 4.0575 16.5 6.375C16.5 9.2025 13.95 11.52 10.0875 15.0225L9 16.0125Z"
+              fill="#F03F40"
+            />
           </svg>
           <span>이런 곳 좋아요!</span>
         </label>
-      </div>
+      </section>
     `;
   }
 }

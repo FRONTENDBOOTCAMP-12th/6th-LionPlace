@@ -1,10 +1,10 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss.js';
+import { reviewWriteStyles } from './reviewWriteCss.js';
 import './writeKeywordItem.js';
 
 class ReviewWriteKeywordList extends LitElement {
   static styles = [
-    ...reviewStyles,
+    ...reviewWriteStyles,
     css`
       .keyword__list-more {
         text-align: center;
@@ -42,11 +42,11 @@ class ReviewWriteKeywordList extends LitElement {
     return html`
       <ul class="keyword__list">
         ${this.keywords.map(
-          (keyword) =>
+          (item) =>
             html` <review-write-keyword-item-element
-              .keyword=${keyword}
+              .keyword=${item}
               .selectedKeywords=${this.selectedKeywords}
-              .isChecked=${this.selectedKeywords.some((k) => k.id == keyword.id)}
+              .isChecked=${this.selectedKeywords.some((k) => k.id == item.id)}
             ></review-write-keyword-item-element>`
         )}
       </ul>

@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss.js';
+import { reviewWriteStyles } from './reviewWriteCss.js';
 
 import './header.js';
 import './visitInfo.js';
@@ -50,7 +50,7 @@ const data = {
         {
           id: 'picture',
           imageEnglishName: 'camera',
-          text: '사진이 잘 나와와요',
+          text: '사진이 잘 나와요',
         },
       ],
     },
@@ -72,7 +72,7 @@ class ReviewWrite extends LitElement {
   static MAX_CONTENT_LENGTH = 400; // 리뷰 내용 최대 글자 수(상수)
 
   static styles = [
-    ...reviewStyles,
+    ...reviewWriteStyles,
     css`
       .review-write-form {
         font-weight: 600; /* label-semibold */
@@ -98,6 +98,46 @@ class ReviewWrite extends LitElement {
     this.isLike = false;
     this.selectedKeywords = [];
     this.content = '';
+  }
+
+  // DOM에 연결될 때 호출
+  connectedCallback() {
+    super.connectedCallback();
+
+    // 브라우저 뒤로가기 및 페이지 나가기 시 확인을 요청
+    this._addUnloadListener();
+  }
+
+  // DOM에서 제거될 때 호출
+  disconnectedCallback() {
+    super.disconnectedCallback();
+
+    // 브라우저의 나가기 시 발생하는 이벤트 제거
+    this._removeUnloadListener();
+  }
+
+  // 브라우저의 나가기 및 뒤로가기 시 확인 이벤트 추가
+  _addUnloadListener() {
+    window.addEventListener('beforeunload', this._handleBeforeUnload);
+  }
+
+  // 브라우저의 나가기 및 뒤로가기 시 확인 이벤트 제거
+  _removeUnloadListener() {
+    window.removeEventListener('beforeunload', this._handleBeforeUnload);
+  }
+
+  // 브라우저의 나가기 시 이벤트
+  _handleBeforeUnload(e) {
+    // `returnValue`에 값을 설정하여 기본 확인 메시지 표시
+    const message = '사이트에서 나가시겠습니까?';
+    e.returnValue = message; // 표준 방식
+    return message; // 일부 브라우저에 필요
+  }
+
+  // 닫기 버튼 클릭
+  _handleCloseClick(e) {
+    // 이전 페이지로 돌아가기
+    window.history.back();
   }
 
   // 좋아요 상태 토글
@@ -141,7 +181,9 @@ class ReviewWrite extends LitElement {
   render() {
     return html`
       <form class="review-write-form">
-        <review-header-element .title="${'리뷰 쓰기'}"></review-header-element>
+        <review-header-element @close-click="${this._handleCloseClick}" .title="${'리뷰 쓰기'}">
+          <!-- <span slot="title">리뷰 쓰기</span> -->
+        </review-header-element>
         <review-visit-info-element .visitInfo=${this.visitInfo}></review-visit-info-element>
         <review-write-like-element
           @like-change=${this._handleLikeToggle}
@@ -154,7 +196,7 @@ class ReviewWrite extends LitElement {
         ></review-write-keyword-element>
         <review-write-content-element
           .content=${this.content}
-          .maxCount=${ReviewWrite.MAX_CONTENT_LENGTH}
+          .maxLength=${ReviewWrite.MAX_CONTENT_LENGTH}
         ></review-write-content-element>
         <review-write-footer-element
           @submit-click=${this._handleSubmit}

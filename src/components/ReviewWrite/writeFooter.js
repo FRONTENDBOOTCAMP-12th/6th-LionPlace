@@ -1,17 +1,16 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss.js';
+import { reviewWriteStyles } from './reviewWriteCss.js';
 
 class ReviewWriteFooter extends LitElement {
   static styles = [
-    ...reviewStyles,
+    ...reviewWriteStyles,
     css`
       .footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-size: 0.75rem;
-        margin-bottom: 1.375rem;
-        padding: 0 0.875rem;
+        padding: 0 0.875rem 1.375rem;
 
         .guideline-btn {
           font-weight: 400; /* paragraph-regular */
@@ -50,17 +49,23 @@ class ReviewWriteFooter extends LitElement {
 
   render() {
     return html`
-      <div class="footer section">
-        <button type="button"
+      <section class="footer">
+        <button
+          type="button"
           id="guideline-btn"
           class="guideline-btn"
           @click="${this._handleGuideClick}"
-          >리뷰 작성 유의사항</
         >
-        <button type="submit" class="submit-btn btn base black rounded" @click="${this._handleSubmitClick}">
+          리뷰 작성 유의사항
+        </button>
+        <button
+          type="submit"
+          class="submit-btn btn base black rounded"
+          @click="${this._handleSubmitClick}"
+        >
           등록하기
         </button>
-      </div>
+      </section>
     `;
   }
 }

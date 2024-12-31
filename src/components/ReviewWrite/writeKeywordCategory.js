@@ -1,10 +1,10 @@
 import { LitElement, html, css } from 'lit';
-import { reviewStyles } from './reviewCss.js';
+import { reviewWriteStyles } from './reviewWriteCss.js';
 import './writeKeywordList.js';
 
 class ReviewWriteKeywordCategory extends LitElement {
   static styles = [
-    ...reviewStyles,
+    ...reviewWriteStyles,
     css`
       .keyword__category {
         padding-left: 1.25rem;
