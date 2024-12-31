@@ -1,22 +1,12 @@
-import { LitElement, html, css } from 'lit';
-import resetStyles from '@/styles/common.js';
+import { LitElement, html } from 'lit';
+import { listIconsStyles } from './listIconCss';
+
+import commonStyles from '@/styles/common.js';
 
 export class ListIcons extends LitElement {
   static properties = {
     name: { type: String },
   };
-
-  static styles = css`
-    :host {
-      display: inline-block;
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-  `;
 
   render() {
     return html`${this._getIcon()}`;
