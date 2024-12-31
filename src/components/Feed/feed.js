@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { feedStyles } from './feedCss';
+import { feedStyles } from './feedCss.js';
 
 import '@/components/Feed/navBar.js';
 import '@/components/Feed/post.js';
