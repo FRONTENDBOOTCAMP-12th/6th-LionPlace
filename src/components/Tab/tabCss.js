@@ -75,6 +75,7 @@ export const tabStyles = css`
   }
 
   .tab-contents {
+    height: auto;
     .tab-content {
       display: none;
 
