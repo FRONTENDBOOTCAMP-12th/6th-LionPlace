@@ -1,102 +1,130 @@
 import { css } from 'lit';
 
 export const editProfileFormStyles = css`
-  main.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  :focus {
+    outline: 1px solid black;
+  }
+
+  .profile-container {
+    max-width: 37.5rem;
+    margin: 0 auto;
     padding: 1rem;
   }
 
-  .avatar {
-    position: relative;
-    width: 6rem;
-    height: 6rem;
+  .profile-header {
+    margin-bottom: 1.5rem;
+    border-bottom: 0.5px solid var(--contentTertiary);
   }
 
-  .avatar img {
-    inline-size: 5rem;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-  }
-
-  .edited-img {
-    position: absolute;
-    bottom: 0;
-    right: -30px;
-    background-color: var(--white);
-    padding: 0.26rem;
-    border-radius: 50%;
-    z-index: 1;
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  .introduction-section {
+  .profile-header button {
     display: flex;
-    flex-direction: column;
     align-items: center;
-
-    gap: 0.625rem;
-    padding: 1rem;
-    background-color: var(--gray--50);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 20rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    inline-size: 100%;
+    padding: 0.25rem;
+    transform: translateX(-1rem);
   }
 
-  .introduction-label {
-    align-self: flex-start;
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    color: var(--color);
-  }
-
-  .introduction-section textarea {
-    width: 100%;
-    min-height: 8rem;
-    padding: 0.625rem;
-    font-size: 1rem;
-    font-family: inherit;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition:
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-
-  .introduction-section textarea:focus {
+  .profile-header button:focus {
     outline: none;
   }
 
-  .introduction-section button {
-    align-self: flex-end;
-    padding: 0.625rem 1.25rem;
-    font-size: 1rem;
-    color: var(--white);
-    background-color: var(--blue--400);
-    border: none;
-    border-radius: 6px;
+  .profile-header button:focus img {
+    outline: 1px solid black;
+  }
+
+  .profile-header button span {
+    color: var(--contentPrimary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  .profile-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .section-title {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .avatar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 9.375rem;
+    height: 9.375rem;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--gray--50);
+  }
+
+  .avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     cursor: pointer;
-    transition:
-      background-color 0.3s ease,
-      transform 0.2s ease;
   }
 
-  .introduction-section button:hover {
-    background-color: var(--blue--500);
+  .avatar-edit-btn {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    background: var(--white);
+    border: none;
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  .introduction-section .error-message {
+  .avatar-edit-btn .edit-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .avatar-edit-btn .edit-icon:focus {
+    border: 0.5px solid black;
+  }
+
+  .profile-introduction-section {
+    margin-top: 1.5rem;
+  }
+
+  .introduction-textarea {
+    width: 100%;
+    height: 6.25rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: none;
+    box-sizing: border-box;
+  }
+
+  .save-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    background: var(--blue--400);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .save-btn:hover {
+    background: var(--blue--500);
+  }
+
+  .error-message {
+    margin-top: 0.5rem;
     color: var(--error);
-    font-size: 0.75rem;
-    margin-top: -8px;
+    font-size: 0.875rem;
   }
 
   .modal-overlay {
@@ -113,9 +141,11 @@ export const editProfileFormStyles = css`
   }
 
   .modal-content {
+    width: 18rem;
+    height: 10rem;
     background: var(--white);
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
@@ -125,11 +155,15 @@ export const editProfileFormStyles = css`
     margin: 0.5rem auto;
     padding: 0.5rem 1rem;
     background: var(--blue--400);
-    color: white;
+    color: var(--white);
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
+    width: 9rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 1rem;
   }
 
   .modal-content button:hover {

@@ -3,7 +3,8 @@ import { css } from 'lit';
 export const submitButtonCss = css`
   button {
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     padding: 1rem;
     background-color: var(--white);
     border: none;

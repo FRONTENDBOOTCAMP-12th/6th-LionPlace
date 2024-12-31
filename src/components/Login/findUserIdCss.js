@@ -5,14 +5,13 @@ export const findUserIdCss = css`
     max-width: 30rem;
     margin: 0 auto;
     padding: 2rem;
-    margin-top: 2rem;
   }
 
-  h1 {
-    margin-bottom: 2rem;
+  .find-section h1 {
+    margin-bottom: 1rem;
   }
 
-  a {
+  .find-section a {
     display: block;
     text-align: right;
     margin-top: 1rem;
