@@ -18,23 +18,6 @@ class Tab extends LitElement {
   _handleTabBtn(e) {
     const targetTab = e.target.dataset.tab;
     this.active = targetTab;
-    this._updateContentHeight();
-  }
-
-  // lit 라이프사이클 메서드
-  updated() {
-    this._updateContentHeight();
-  }
-
-  // 활성화 되면서 변경되는 tab-contents의 높이 자동 계산 반영
-  _updateContentHeight() {
-    console.log('Updating content height...');
-    const activeContent = this.shadowRoot.querySelector(`${this.active}`);
-    const contentsContainer = this.shadowRoot.querySelector('.tab-contents');
-
-    if (activeContent && contentsContainer) {
-      contentsContainer.style.height = `${activeContent.scrollHeight}px`;
-    }
   }
 
   render() {
