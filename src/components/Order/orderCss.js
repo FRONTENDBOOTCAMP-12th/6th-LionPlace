@@ -44,6 +44,7 @@ export const orderStyles = css`
 
           & > a {
             display: block;
+            overflow: hidden;
             color: var(--contentPrimary);
             text-align: center;
             padding: 0.5rem;
