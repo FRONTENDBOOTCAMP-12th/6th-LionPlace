@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { navBarStyles } from './navBarCss';
+import { navBarStyles } from './navBarCss.js';
 
 import commonStyles from '@/styles/common.js';
 
@@ -10,21 +10,26 @@ class NavBar extends LitElement {
 
   constructor() {
     super();
-    this.activePage = 'feed'; // 기본값 설정
+    this.activePage = this.getActivePageFromURL(); // URL 기반으로 활성 페이지 설정
   }
 
   static styles = [navBarStyles];
 
-  handleClick(e, tab) {
+  // 현재 URL에서 활성 탭을 추출하는 메서드
+  getActivePageFromURL() {
+    const path = window.location.pathname;
+    if (path.includes('/map')) return 'map';
+    if (path.includes('/saved-places')) return 'saved';
+    if (path.includes('/feed')) return 'feed';
+    if (path.includes('/reserved')) return 'my';
+    return 'my'; // 기본값
+  }
+
+  handleClick(e, tab, url = null) {
     e.preventDefault();
-    this.activePage = tab;
-    this.dispatchEvent(
-      new CustomEvent('nav-change', {
-        detail: tab,
-        bubbles: true,
-        composed: true,
-      })
-    );
+    if (url) {
+      window.location.href = url; // 지정된 URL로 이동
+    }
   }
 
   render() {
@@ -33,9 +38,9 @@ class NavBar extends LitElement {
         <ul class="tab-menu__list">
           <li class="tab-menu__list-item">
             <a
-              href="#"
+              href="/src/pages/map/index.html"
               class="tab-menu__item ${this.activePage === 'map' ? 'tab-menu__item--active' : ''}"
-              @click="${(e) => this.handleClick(e, 'map')}"
+              @click="${(e) => this.handleClick(e, 'map', '/src/pages/map/index.html')}"
             >
               <img src="/images/ico_map.svg" alt="지도" class="tab-menu__icon" />
               <span class="tab-menu__label">지도</span>
@@ -43,9 +48,9 @@ class NavBar extends LitElement {
           </li>
           <li class="tab-menu__list-item">
             <a
-              href="/src/components/SavedPlaces/index.html"
+              href="/src/pages/saved-places/index.html"
               class="tab-menu__item ${this.activePage === 'saved' ? 'tab-menu__item--active' : ''}"
-              @click="${(e) => this.handleClick(e, 'saved')}"
+              @click="${(e) => this.handleClick(e, 'saved', '/src/pages/saved-places/index.html')}"
             >
               <img src="/images/ico_save.svg" alt="저장" class="tab-menu__icon" />
               <span class="tab-menu__label">저장</span>
@@ -53,9 +58,9 @@ class NavBar extends LitElement {
           </li>
           <li class="tab-menu__list-item">
             <a
-              href="/src/components/Feed/index.html"
+              href="/src/pages/feed/index.html"
               class="tab-menu__item ${this.activePage === 'feed' ? 'tab-menu__item--active' : ''}"
-              @click="${(e) => this.handleClick(e, 'feed')}"
+              @click="${(e) => this.handleClick(e, 'feed', '/src/pages/feed/index.html')}"
             >
               <img src="/images/ico_feed.svg" alt="피드" class="tab-menu__icon" />
               <span class="tab-menu__label">피드</span>
@@ -63,9 +68,9 @@ class NavBar extends LitElement {
           </li>
           <li class="tab-menu__list-item">
             <a
-              href="#"
+              href="/src/pages/reserved/index.html"
               class="tab-menu__item ${this.activePage === 'my' ? 'tab-menu__item--active' : ''}"
-              @click="${(e) => this.handleClick(e, 'my')}"
+              @click="${(e) => this.handleClick(e, 'my', '/src/pages/reserved/index.html')}"
             >
               <img src="/images/ico_my.svg" alt="MY" class="tab-menu__icon" />
               <span class="tab-menu__label">MY</span>

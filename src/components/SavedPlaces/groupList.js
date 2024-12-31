@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { groupListStyles } from './groupListCss';
+import { groupListStyles } from './groupListCss.js';
 
 export class GroupList extends LitElement {
   static properties = {
@@ -12,6 +12,8 @@ export class GroupList extends LitElement {
     this.groups = []; // 초기 그룹 리스트
     this.activeDropdown = null; // 드롭다운 메뉴 상태
   }
+
+  static styles = [groupListStyles];
 
   render() {
     return html`

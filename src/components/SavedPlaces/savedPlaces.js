@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { savedPlacesStyles } from './savedPlacesCss';
+import { savedPlacesStyles } from './savedPlacesCss.js';
 
 import commonStyles from '@/styles/common.js';
 import './navBar.js';
@@ -27,6 +27,8 @@ export class SavedPlaces extends LitElement {
     this.isCreatingGroup = false;
     this.newGroupName = '';
   }
+
+  static styles = [savedPlacesStyles];
 
   render() {
     return html`

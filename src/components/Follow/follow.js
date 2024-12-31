@@ -23,7 +23,11 @@ class FollowInfo extends LitElement {
         <h2 class="a11y-hidden">팔로잉</h2>
         <article class="follow-section__top">
           <h3 class="a11y-hidden" aria-hidden="true">뒤로가기</h3>
-          <button @click=${() => history.back()} type="button" aria-label="뒤로가기">
+          <button
+            @click=${() => (window.location.href = '/src/pages/reserved/index.html')}
+            type="button"
+            aria-label="뒤로가기"
+          >
             <img src="/images/ico_arrow_left.svg" alt="" role="presentation" />
             <span>COOLION</span>
           </button>
