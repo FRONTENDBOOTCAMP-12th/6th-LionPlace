@@ -11,7 +11,7 @@ export const orderStyles = css`
       display: flex;
       flex-flow: column wrap;
 
-      & > h2 {
+      & > h3 {
         color: var(--contentPrimary);
         text-align: center;
         font-size: 0.75019rem;
@@ -24,27 +24,18 @@ export const orderStyles = css`
       }
 
       .order-list {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: minmax(2.125rem, auto);
         border-radius: 1rem 1rem 0 0;
-        border: 0.5px solid var(--contentTertiary);
         box-sizing: border-box;
         background: var(--white);
         margin-block-start: 0.75rem;
+        border-collapse: separate;
 
-        & > li {
-          &:not(:nth-of-type(3n)) {
-            border-right: 0.5px solid var(--contentTertiary);
-          }
-
-          &:not(:nth-of-type(10), :nth-of-type(11), :nth-of-type(12)) {
-            border-bottom: 0.5px solid var(--contentTertiary);
-          }
+        /* td 공통 */
+        & td {
+          border: 0.5px solid var(--contentTertiary);
 
           & > a {
             display: block;
-            overflow: hidden;
             color: var(--contentPrimary);
             text-align: center;
             padding: 0.5rem;
@@ -54,10 +45,52 @@ export const orderStyles = css`
             white-space: nowrap;
           }
         }
+
+        /* thead */
+        & thead {
+          & > tr {
+            & > td {
+              &:nth-of-type(1) {
+                border-top-left-radius: 1rem;
+                border-right: 0;
+              }
+              &:nth-of-type(2) {
+                border-right: 0;
+              }
+              &:nth-of-type(3) {
+                border-top-right-radius: 1rem;
+              }
+            }
+          }
+        }
+
+        /* tbody */
+        & tbody {
+          & tr {
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+              & td {
+                border-top: 0;
+                border-right: 0;
+
+                &:nth-of-type(3n) {
+                  border-right: 0.5px solid var(--contentTertiary);
+                }
+              }
+            }
+            &:nth-of-type(3) {
+              & td {
+                border-bottom: 0;
+              }
+            }
+          }
+        }
       }
     }
 
     .event {
+      overflow: hidden;
       position: relative;
       border: 0.5px solid var(--contentTertiary);
       border-top: 0;
@@ -90,11 +123,13 @@ export const orderStyles = css`
         position: absolute;
         inset-inline-end: 0;
         inset-block-end: 0;
+        border-radius: 0rem 0rem 1rem 0;
 
         & > img {
           display: block;
           inline-size: 8.125rem;
           block-size: 4.5rem;
+          border-radius: 0rem 0rem 1rem 0;
         }
       }
     }

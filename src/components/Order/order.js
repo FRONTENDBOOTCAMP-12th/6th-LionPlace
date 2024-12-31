@@ -16,21 +16,36 @@ class OrderPage extends LitElement {
         <article class="order-section__inner">
           <h3 class="a11y-hidden">예약 목록 영역</h3>
           <div class="order">
-            <h2><strong>&ldquo;네이버 예약&rdquo;</strong> 지금 바로 이용해보세요.</h2>
-            <ul class="order-list">
-              <li><a href="/">네이버 주문</a></li>
-              <li><a href="/">뷔페</a></li>
-              <li><a href="/">공방•클래스</a></li>
-              <li><a href="/">놀이공원</a></li>
-              <li><a href="/">키즈카페</a></li>
-              <li><a href="/">아쿠아리움</a></li>
-              <li><a href="/">전시</a></li>
-              <li><a href="/">공연</a></li>
-              <li><a href="/">펜션</a></li>
-              <li><a href="/">헤어샵</a></li>
-              <li><a href="/">편의점 택배</a></li>
-              <li><a href="/">편의점 배달</a></li>
-            </ul>
+            <h3><strong>&ldquo;라이온 예약&rdquo;</strong> 지금 바로 이용해보세요.</h3>
+            <table class="order-list">
+              <caption class="a11y-hidden">
+                예약 목록표
+              </caption>
+              <thead>
+                <tr>
+                  <td id="order"><a href="/">라이온 주문</a></td>
+                  <td id="buffet"><a href="/">뷔페</a></td>
+                  <td id="class"><a href="/">공방•클래스</a></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="park"><a href="/">놀이공원</a></td>
+                  <td id="kidCafe"><a href="/">키즈카페</a></td>
+                  <td id="aquarium"><a href="/">아쿠아리움</a></td>
+                </tr>
+                <tr>
+                  <td id="display"><a href="/">전시</a></td>
+                  <td id="performance"><a href="/">공연</a></td>
+                  <td id="pension"><a href="/">펜션</a></td>
+                </tr>
+                <tr>
+                  <td id="hairShop"><a href="/">헤어샵</a></td>
+                  <td id="storeParcel"><a href="/">편의점 택배</a></td>
+                  <td id="storeDelivery"><a href="/">편의점 배달</a></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div class="event">
             <a href="/" class="event-link">

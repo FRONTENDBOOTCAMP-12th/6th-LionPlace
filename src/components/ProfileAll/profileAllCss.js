@@ -182,11 +182,11 @@ export const profileAllStyles = css`
         justify-content: center;
         inline-size: 0.75rem;
         aspect-ratio: 1 / 1;
-        font-size: 0.75019rem;
         background-color: var(--white);
         border-radius: 50%;
         color: var(--primary);
-        padding: 0.15rem;
+        font-size: 0.75019rem;
+        line-height: 1;
       }
     }
   }
