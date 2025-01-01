@@ -28,7 +28,7 @@ class Place extends LitElement {
   }
 
   async connectedCallback() {
-    await this._fetchUserData();
+    // await this._fetchUserData();
     await this._fetchStoreImageData();
     await this._fetchReviewData();
     await this._fetchReviewKeywordData();
@@ -55,7 +55,7 @@ class Place extends LitElement {
   async _fetchStoreImageData() {
     try {
       // 임시 TODO 삭제
-      this.storeInfo.id = 815670814;
+      //this.storeInfo.id = 815670814;
 
       const query = `id='${this.storeInfo.id}'`;
       const response = await pb.collection('stores').getFullList({
@@ -74,7 +74,7 @@ class Place extends LitElement {
   async _fetchReviewData() {
     try {
       // 임시 TODO 삭제
-      this.storeInfo.id = 815670814;
+      //this.storeInfo.id = 815670814;
 
       const query = `store_id='${this.storeInfo.id}'`;
       const response = await pb.collection('reviews').getFullList({
@@ -99,7 +99,7 @@ class Place extends LitElement {
   async _fetchReviewKeywordData() {
     try {
       // 임시 TODO 삭제
-      this.storeInfo.id = 815670814;
+      //this.storeInfo.id = 815670814;
 
       const query = `store_id='${this.storeInfo.id}'`;
       const response = await pb.collection('review_keywords').getFullList({
@@ -156,7 +156,7 @@ class Place extends LitElement {
   async _fetchMenuData() {
     try {
       // 임시 TODO 삭제
-      this.storeInfo.id = 815670814;
+      //this.storeInfo.id = 815670814;
 
       const query = `store_id='${this.storeInfo.id}'`;
       const response = await pb.collection('store_menus').getFullList({
