@@ -86,7 +86,7 @@ class Coupon extends LitElement {
                     <span>${item.expiration_period}</span>
                   </p>
                 </div>
-                <button type="button" class="coupon-btn is--disabled">
+                <button type="button" class="coupon-btn is--disabled" aria-disabled="true">
                   <span>${item.status}</span>
                 </button>
               </div>
@@ -157,12 +157,13 @@ class Coupon extends LitElement {
             <ul role="tablist">
               ${this.data.map(
                 (tab) => html`
-                  <li>
+                  <li role="presentation">
                     <button
                       @click="${this._handleClick}"
                       type="button"
                       role="tab"
                       data-tab="${tab.id}"
+                      aria-selected="${this.active === tab.id}"
                       class="${this.active === tab.id ? 'is--active' : ''}"
                     >
                       ${tab.name} ${tab.count !== undefined ? `${tab.count}` : ''}
