@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import { mapStyles } from './mapCss.js';
+import { mcategoryItemStyles } from './categoryItemCss.js';
 import commonStyle from '@/styles/common.js';
 
 class CategoryItem extends LitElement {
@@ -8,7 +8,7 @@ class CategoryItem extends LitElement {
     on: { type: Boolean },
   };
 
-  static styles = [commonStyle, mapStyles];
+  static styles = [commonStyle, mcategoryItemStyles];
 
   constructor() {
     super();

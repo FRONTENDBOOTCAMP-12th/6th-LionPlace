@@ -1,18 +1,19 @@
 import { css } from 'lit';
 
-export const imagePreviewStyles = css`
-  .image-preview {
+export const imageStyles = css`
+  .image {
     font-size: 0.75rem;
     background-color: var(--white);
 
     h2 {
       padding: 0.5rem 1rem;
       border-bottom: 0.5px solid var(--contentTertiary);
+      font-size: 1rem;
     }
 
     .list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       align-items: center;
       justify-content: center;
       gap: 0.0625rem;
@@ -21,6 +22,7 @@ export const imagePreviewStyles = css`
 
     .image {
       figure img {
+        vertical-align: top;
         width: 100%;
         object-fit: cover;
         aspect-ratio: 1 / 1;
