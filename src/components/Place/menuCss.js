@@ -1,13 +1,14 @@
 import { css } from 'lit';
 
-export const menuPreviewStyles = css`
-  .menu-preview {
+export const menuStyles = css`
+  .menu {
     font-size: 0.75rem;
     background-color: var(--white);
 
     h2 {
       padding: 0.5rem 1rem;
       border-bottom: 0.5px solid var(--contentTertiary);
+      font-size: 1rem;
 
       .menu-count {
         color: var(--lightblue--400);
@@ -25,6 +26,7 @@ export const menuPreviewStyles = css`
 
     .image {
       figure img {
+        vertical-align: top;
         width: 100%;
       }
     }
