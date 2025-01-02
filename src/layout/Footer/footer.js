@@ -1,12 +1,23 @@
 import { LitElement, html } from 'lit';
 import { footerStyle } from './footerCss.js';
 import commonStyles from '@/styles/common.js';
+import pb from '@/api/pocketbase';
 
 class Footer extends LitElement {
   static styles = [commonStyles, footerStyle];
 
   constructor() {
     super();
+  }
+
+  _logout() {
+    pb.authStore.clear();
+  }
+
+  _handleLogoutClick(e) {
+    e.preventDefault();
+    this._logout();
+    window.location.href = '/src/pages/login/loginPage.html';
   }
 
   render() {
@@ -40,7 +51,7 @@ class Footer extends LitElement {
                 <a href="/" target="_blank" rel="noopener noreferrer">전체 서비스</a>
               </li>
               <li>
-                <a href="/" target="_blank" rel="noopener noreferrer">로그아웃</a>
+                <a @click="${this._handleLogoutClick}" role="button">로그아웃</a>
               </li>
             </ul>
             <ul class="footer-nav__bottom">
