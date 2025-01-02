@@ -29,10 +29,13 @@ class Menu extends LitElement {
 
   render() {
     return html`
-      <section class="menu">
+      <section class="menu-section">
         <h2>
           <span>메뉴</span>
-          <span class="menu-count">${this.totalMenuCount}</span>
+          <span class="menu-count">
+            <span class="a11y-hidden">총 메뉴 개수</span>
+            ${this.totalMenuCount}
+          </span>
         </h2>
         <ul class="list">
           ${this.menus.map(

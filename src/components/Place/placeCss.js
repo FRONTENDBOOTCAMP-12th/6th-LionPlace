@@ -13,6 +13,11 @@ export const placeStyles = css`
     z-index: 99;
     width: 100%;
 
+    button:focus-visible {
+      outline: 2px solid var(--blue--800);
+      outline-offset: 1px;
+    }
+
     .place-section__top {
       & > button {
         display: flex;
@@ -22,11 +27,6 @@ export const placeStyles = css`
         inline-size: 100%;
         border-bottom: 0.5px solid var(--contentTertiary);
         padding: 0.5rem;
-
-        &:focus-visible {
-          outline: 2px solid var(--blue--800);
-          outline-offset: 1px;
-        }
 
         & > span {
           color: var(--contentPrimary);

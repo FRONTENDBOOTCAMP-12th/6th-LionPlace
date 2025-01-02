@@ -1,7 +1,7 @@
 import { css } from 'lit';
 
 export const imageStyles = css`
-  .image {
+  .image-section {
     font-size: 0.75rem;
     background-color: var(--white);
 
@@ -46,6 +46,11 @@ export const imageStyles = css`
         aspect-ratio: 1/1;
         mask: url(/images/ico_arrow_right.svg) center/contain no-repeat;
         background-color: var(--contentSecondary);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--blue--800);
+        outline-offset: 1px;
       }
     }
   }

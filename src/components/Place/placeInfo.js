@@ -25,7 +25,7 @@ class PlaceInfo extends LitElement {
 
   render() {
     return html`
-      <section class="place-info">
+      <section class="place-info-section">
         <h2 class="a11y-hidden">장소 상세 정보</h2>
         <ul>
           ${this.storeInfo.road_address_name
