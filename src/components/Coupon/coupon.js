@@ -11,6 +11,7 @@ class Coupon extends LitElement {
     active: { type: String }, // 활성화 된 class 상태
     data: { type: Array }, // 카테고리 탭 관련 외부 데이터 js
     pocketData: { type: Array }, // pocketbase에서 가져오는 데이터
+    currentLocation: { type: String }, // 위치 정보
   };
 
   constructor() {
@@ -22,11 +23,13 @@ class Coupon extends LitElement {
       available: [],
       used: [],
     };
+    this.currentLocation = ''; // 초기 위치 정보 설정
   }
 
   async connectedCallback() {
     super.connectedCallback();
     await this._fetchData();
+    this._getGeolocation();
   }
 
   // pocketbase에 쿠폰함 데이터 가져오는 함수
@@ -47,6 +50,44 @@ class Coupon extends LitElement {
     };
 
     this.pocketData = filterData;
+  }
+
+  // 위치 정보 가져오는 함수
+  _getGeolocation() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      this.getAdressLocation(latitude, longitude);
+    });
+  }
+
+  // 위도, 경도를 사용하여 주소를 얻는 함수
+  async getAdressLocation(latitude, longitude) {
+    const adressApi = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+
+    try {
+      const response = await fetch(adressApi);
+      const conversion = await response.json();
+
+      // console.log(conversion);
+
+      // address 내장 객체를 통해 필요한 부분만 추출
+      const { province, city, quarter } = conversion.address;
+      let basicAdress = ''; // 빈 문자열 초기화 주소 누적
+      const addressParts = []; // 빈 배열로 초기화
+
+      // 조건에 맞게 값 배열 추가
+      if (province) addressParts.push(province);
+      if (city) addressParts.push(city);
+      if (quarter) addressParts.push(quarter);
+
+      // 배열 공백으로 구분 합쳐서 주소 생성
+      basicAdress = addressParts.join(' ');
+
+      this.currentLocation = basicAdress;
+      this.requestUpdate(); // 주소 랜더링 업데이트
+    } catch (error) {
+      console.error('주소를 변환하는데 실패했습니다.', error);
+    }
   }
 
   // 클릭이벤트 함수
@@ -173,7 +214,7 @@ class Coupon extends LitElement {
               )}
             </ul>
           </nav>
-          <p class="location">내 위치 <strong>양주시 덕계동</strong></p>
+          <p class="location">내 위치 <strong>${this.currentLocation}</strong></p>
         </article>
 
         ${this._renderData()}

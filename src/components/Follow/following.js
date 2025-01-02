@@ -31,7 +31,7 @@ class FollowingList extends LitElement {
         id: user.id,
         name: user.username,
         img: user.profileImage
-          ? pb.getFileUrl(user, user.profileImage)
+          ? pb.files.getURL(user, user.profileImage)
           : '/images/default-profile.png',
       }));
     } catch (error) {
