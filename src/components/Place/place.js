@@ -4,7 +4,6 @@ import { getPbImageURL } from '@/api/getPbImageURL.js';
 import commonStyles from '@/styles/common.js';
 import { placeStyles } from './placeCss.js';
 
-import '@/components/Header/header.js';
 import './navigation.js';
 import './placeInfo.js';
 import './menu.js';
@@ -62,7 +61,7 @@ class Place extends LitElement {
     try {
       const query = `store_id='${this.storeInfo.id}'`;
       const response = await pb.collection('reviews').getFullList({
-        sort: '-updated',
+        sort: '-visit_date',
         // filter: query, // TODO 주석 해제
       });
 
