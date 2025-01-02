@@ -42,7 +42,7 @@ class NavBar extends LitElement {
               class="tab-menu__item ${this.activePage === 'map' ? 'tab-menu__item--active' : ''}"
               @click="${(e) => this.handleClick(e, 'map', '/src/pages/map/index.html')}"
             >
-              <img src="/images/ico_map.svg" alt="지도" class="tab-menu__icon" />
+              <img src="/images/ico_map.svg" alt="" role="presentation" class="tab-menu__icon" />
               <span class="tab-menu__label">지도</span>
             </a>
           </li>
@@ -52,7 +52,7 @@ class NavBar extends LitElement {
               class="tab-menu__item ${this.activePage === 'saved' ? 'tab-menu__item--active' : ''}"
               @click="${(e) => this.handleClick(e, 'saved', '/src/pages/saved-places/index.html')}"
             >
-              <img src="/images/ico_save.svg" alt="저장" class="tab-menu__icon" />
+              <img src="/images/ico_save.svg" alt="" role="presentation" class="tab-menu__icon" />
               <span class="tab-menu__label">저장</span>
             </a>
           </li>
@@ -62,7 +62,7 @@ class NavBar extends LitElement {
               class="tab-menu__item ${this.activePage === 'feed' ? 'tab-menu__item--active' : ''}"
               @click="${(e) => this.handleClick(e, 'feed', '/src/pages/feed/index.html')}"
             >
-              <img src="/images/ico_feed.svg" alt="피드" class="tab-menu__icon" />
+              <img src="/images/ico_feed.svg" alt="" role="presentation" class="tab-menu__icon" />
               <span class="tab-menu__label">피드</span>
             </a>
           </li>
@@ -72,7 +72,7 @@ class NavBar extends LitElement {
               class="tab-menu__item ${this.activePage === 'my' ? 'tab-menu__item--active' : ''}"
               @click="${(e) => this.handleClick(e, 'my', '/src/pages/reserved/index.html')}"
             >
-              <img src="/images/ico_my.svg" alt="MY" class="tab-menu__icon" />
+              <img src="/images/ico_my.svg" alt="" role="presentation" class="tab-menu__icon" />
               <span class="tab-menu__label">MY</span>
             </a>
           </li>

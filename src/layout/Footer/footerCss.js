@@ -46,6 +46,7 @@ export const footerStyle = css`
   }
 
   .footer__bottom {
+    color: var(--contentPrimary);
     .footer-nav {
       display: flex;
       flex-flow: column wrap;
@@ -70,7 +71,7 @@ export const footerStyle = css`
               display: inline-flex;
               position: absolute;
               inset: 0.125rem auto auto -0.5125rem;
-              border-right: 1px solid var(--contentSecondary);
+              border-right: 1px solid var(--contentPrimary);
               block-size: 0.8125rem;
             }
           }
@@ -79,16 +80,9 @@ export const footerStyle = css`
           }
         }
       }
-      .footer-nav__top {
-        color: var(--contentPrimary);
-      }
-      .footer-nav__bottom {
-        color: var(--contentSecondary);
-      }
     }
 
     & > p {
-      color: var(--contentSecondary);
       text-align: center;
       font-size: 0.75019rem;
       line-height: 1.6;

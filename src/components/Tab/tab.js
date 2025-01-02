@@ -24,24 +24,28 @@ class Tab extends LitElement {
     return html`
       <nav class="tab">
         <ul class="tab-buttons" role="tablist">
-          <li>
+          <li role="presentation">
             <button
               @click="${this._handleTabBtn}"
               type="button"
-              data-tab="tab-reserved"
               class="tab-button ${this.active === 'tab-reserved' ? 'is--active' : ''}"
               role="tab"
+              data-tab="tab-reserved"
+              aria-selected="${this.active === 'tab-reserved'}"
+              tabindex="${this.active === 'tab-reserved' ? '0' : '-1'}"
             >
               예약
             </button>
           </li>
-          <li>
+          <li role="presentation">
             <button
               @click="${this._handleTabBtn}"
               type="button"
-              data-tab="tab-order"
               class="tab-button ${this.active === 'tab-order' ? 'is--active' : ''}"
               role="tab"
+              data-tab="tab-order"
+              aria-selected="${this.active === 'tab-order'}"
+              tabindex="${this.active === 'tab-order' ? '0' : '-1'}"
             >
               주문
             </button>
@@ -54,7 +58,7 @@ class Tab extends LitElement {
         <article
           class="tab-content ${this.active === 'tab-reserved' ? 'is--active' : ''}"
           id="tab-reserved"
-          role="tabpanel"
+          aria-labelledby="tab-reserved"
         >
           <h3 class="a11y-hidden">예약탭</h3>
           <category-tab></category-tab>
@@ -62,7 +66,7 @@ class Tab extends LitElement {
         <article
           class="tab-content ${this.active === 'tab-order' ? 'is--active' : ''}"
           id="tab-order"
-          role="tabpanel"
+          aria-labelledby="tab-order"
         >
           <h3 class="a11y-hidden">주문탭</h3>
           <order-page></order-page>
