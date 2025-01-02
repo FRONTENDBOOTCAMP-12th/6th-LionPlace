@@ -15,7 +15,7 @@ class ProfileAll extends LitElement {
   constructor() {
     super();
     this.userId = ''; // 초기값 설정
-    this.pocketData = [];
+    this.pocketData = { coupons: [], follow: [] };
     this.avatarUrl = '';
   }
 
@@ -43,8 +43,13 @@ class ProfileAll extends LitElement {
   // 쿠폰함 collection 데이터를 가져오는 함수 (쿠폰함 갯수를 가져오기 위함)
   async _fetchRecordCount() {
     try {
-      const records = await pb.collection('coupons').getFullList();
-      this.pocketData = records;
+      const couponRecords = await pb.collection('coupons').getFullList();
+      const followingRecords = await pb.collection('following').getFullList();
+      this.pocketData = {
+        coupons: couponRecords,
+        follow: followingRecords,
+      };
+      this.requestUpdate(); // 렌더링 업데이트 요청
     } catch (error) {
       console.error('쿠폰함의 갯수를 가져오는 중 오류가 발생했습니다.', error);
     }
@@ -55,7 +60,7 @@ class ProfileAll extends LitElement {
       const userId = pb.authStore.model.id;
       const userRecord = await pb.collection('users').getOne(userId);
       this.avatarUrl = userRecord.avatar
-        ? pb.getFileUrl(userRecord, userRecord.avatar)
+        ? pb.files.getURL(userRecord, userRecord.avatar)
         : '/images/profile.png';
     } catch (error) {
       console.error('유저 프로필 사진 로딩 실패: ', error);
@@ -91,15 +96,15 @@ class ProfileAll extends LitElement {
                     </a>
                   </li>
                   <li>
-                    <a href="/">
+                    <a href="/src/pages/follow/">
                       <span>팔로잉</span>
                       <span>0</span>
                     </a>
                   </li>
                   <li>
-                    <a href="/">
+                    <a href="/src/pages/follow/">
                       <span>팔로워</span>
-                      <span>6</span>
+                      <span>${this.pocketData.follow ? this.pocketData.follow.length : 0}</span>
                     </a>
                   </li>
                 </ul>
@@ -114,7 +119,9 @@ class ProfileAll extends LitElement {
         <div class="coupon">
           <a class="coupon-link" href="/src/pages/coupon/">
             <span class="coupon-text">쿠폰</span>
-            <span class="coupon-count">${this.pocketData.length}</span>
+            <span class="coupon-count"
+              >${this.pocketData.coupons ? this.pocketData.coupons.length : 0}</span
+            >
           </a>
         </div>
       </section>
