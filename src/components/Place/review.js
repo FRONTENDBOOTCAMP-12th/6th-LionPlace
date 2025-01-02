@@ -44,10 +44,15 @@ class Review extends LitElement {
   }
 
   render() {
-    console.log(this.totalKeywordCount, this.reviewKeywords);
     return html`
-      <section class="review">
-        <h2><span>방문자 리뷰</span> <span class="review-count">${this.totalReviewCount}</span></h2>
+      <section class="review-section">
+        <h2>
+          <span>방문자 리뷰</span>
+          <span class="review-count">
+            <span class="a11y-hidden">총 리뷰 개수</span>
+            ${this.totalReviewCount}
+          </span>
+        </h2>
 
         <div class="keyword-preview">
           <button class="keyword-btn" @click=${this._handleMoreClick}>
@@ -61,7 +66,7 @@ class Review extends LitElement {
                       opacity: ${item.count / this.reviewKeywords[0].count};"
                     ></div>
                     <div class="info">
-                      <figure class="coupon-icon">
+                      <figure>
                         <img
                           role="presentation"
                           src="/images/keywords/ico_${item.keyword_icon}.png"
@@ -92,31 +97,30 @@ class Review extends LitElement {
           ${this.reviews.map(
             (item) => html`
               <li>
-                  <div class="review-content">
-                    <p class="content-text">${item.content}</p>
-                    <figure class="content-image">
-                      <img src="${getPbImageURL(item)}" alt="" />
-                      <figcaption class="a11y-hidden">리뷰 사진</figcaption>
-                    </figure>
-                  </div>
-                </a>
+                <div class="review-content">
+                  <p class="content-text">${item.content}</p>
+                  ${item.image
+                    ? html`<figure class="content-image">
+                        <img src="${getPbImageURL(item)}" alt="" />
+                        <figcaption class="a11y-hidden">리뷰 사진</figcaption>
+                      </figure>`
+                    : ''}
+                </div>
 
-                <a href="/">
-                  <div class="post-header">
-                    <div class="user-info">
-                      <img
-                        class="profile-image"
-                        src="${item.user_avatar_src}"
-                        alt="프로필"
-                        onerror="this.src='/images/profile.png';"
-                      />
-                      <div class="user-details">
-                        <span class="username">${item.user_name}</span>
-                        <span class="date">${this._formatDate(item.visit_date)}</span>
-                        <!--<span class="reserved-count">item.reserved_count</span>-->
-                      </div>
+                <div class="post-header">
+                  <div class="user-info">
+                    <img
+                      class="profile-image"
+                      src="${item.user_avatar_src}"
+                      alt="프로필"
+                      onerror="this.src='/images/profile.png';"
+                    />
+                    <div class="user-details">
+                      <span class="username">${item.user_name}</span>
+                      <span class="date">${this._formatDate(item.visit_date)}</span>
                     </div>
                   </div>
+                </div>
               </li>
             `
           )}

@@ -1,7 +1,7 @@
 import { css } from 'lit';
 
 export const placeInfoStyles = css`
-  .place-info {
+  .place-info-section {
     width: 100%;
     position: relative;
     display: flex;
@@ -11,6 +11,11 @@ export const placeInfoStyles = css`
     text-align: left;
     font-size: 12px;
     color: var(--contentTertiary);
+
+    button:focus-visible {
+      outline: 2px solid var(--blue--800);
+      outline-offset: 1px;
+    }
 
     li {
       align-self: stretch;

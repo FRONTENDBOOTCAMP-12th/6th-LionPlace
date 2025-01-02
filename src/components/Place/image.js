@@ -27,7 +27,7 @@ class Image extends LitElement {
 
   render() {
     return html`
-      <section class="image">
+      <section class="image-section">
         <h2>방문자 사진</h2>
         <ul class="list">
           ${this.images.map(

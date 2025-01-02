@@ -1,7 +1,7 @@
 import { css } from 'lit';
 
 export const reviewStyles = css`
-  .review {
+  .review-section {
     font-size: 0.75rem;
     background-color: var(--white);
 
@@ -13,6 +13,11 @@ export const reviewStyles = css`
       .review-count {
         color: var(--lightblue--400);
       }
+    }
+
+    button:focus-visible {
+      outline: 2px solid var(--blue--800);
+      outline-offset: 1px;
     }
 
     .keyword-preview {

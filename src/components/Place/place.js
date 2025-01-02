@@ -27,8 +27,12 @@ class Place extends LitElement {
     this.active = 'tab-home';
   }
 
+  firstUpdated() {
+    const focusTarget = this.shadowRoot.querySelector('.close-btn');
+    focusTarget.focus();
+  }
+
   async connectedCallback() {
-    // await this._fetchUserData();
     await this._fetchStoreImageData();
     await this._fetchReviewData();
     await this._fetchReviewKeywordData();
@@ -37,26 +41,9 @@ class Place extends LitElement {
     super.connectedCallback();
   }
 
-  // 로그인 한 유저의 아이디 조회
-  async _fetchUserData() {
-    try {
-      const response = pb.authStore.model; // 현재 로그인 한 사용자의 정보 객체로 저장
-      if (response) {
-        this.userId = response.userID; // user collection userID record에 접근
-      } else {
-        alert('로그인 된 사용자가 없습니다.');
-      }
-    } catch (error) {
-      console.error('유저 데이터를 가져오는 중 오류가 발생했습니다.', error);
-    }
-  }
-
   // 업체 이미지 조회
   async _fetchStoreImageData() {
     try {
-      // 임시 TODO 삭제
-      //this.storeInfo.id = 815670814;
-
       const query = `id='${this.storeInfo.id}'`;
       const response = await pb.collection('stores').getFullList({
         // filter: query, // TODO 주석 해제
@@ -65,7 +52,7 @@ class Place extends LitElement {
       // 업체 이미지 정보 세팅
       this.storeImages = this._getImageObjects(response);
     } catch (error) {
-      //console.error('PocketBase 데이터 알 수 없음', error);
+      console.error('PocketBase 데이터 알 수 없음', error);
       this.storeImages = [];
     }
   }
@@ -73,9 +60,6 @@ class Place extends LitElement {
   // 리뷰 조회
   async _fetchReviewData() {
     try {
-      // 임시 TODO 삭제
-      //this.storeInfo.id = 815670814;
-
       const query = `store_id='${this.storeInfo.id}'`;
       const response = await pb.collection('reviews').getFullList({
         sort: '-updated',
@@ -92,15 +76,14 @@ class Place extends LitElement {
       response.map;
     } catch (error) {
       console.error('PocketBase 데이터 알 수 없음');
+      this.storeInfo.reviews = [];
+      this._reviewImages = [];
     }
   }
 
   // 리뷰 키워드 조회
   async _fetchReviewKeywordData() {
     try {
-      // 임시 TODO 삭제
-      //this.storeInfo.id = 815670814;
-
       const query = `store_id='${this.storeInfo.id}'`;
       const response = await pb.collection('review_keywords').getFullList({
         // filter: query, // TODO 주석 해제
@@ -113,6 +96,8 @@ class Place extends LitElement {
       this.storeInfo.reviewKeywords = keywords;
     } catch (error) {
       console.error('PocketBase 데이터 알 수 없음', error);
+      this.storeInfo.totalKeywordCount = 0;
+      this.storeInfo.reviewKeywords = [];
     }
   }
 
@@ -155,9 +140,6 @@ class Place extends LitElement {
   // 메뉴 정보 조회
   async _fetchMenuData() {
     try {
-      // 임시 TODO 삭제
-      //this.storeInfo.id = 815670814;
-
       const query = `store_id='${this.storeInfo.id}'`;
       const response = await pb.collection('store_menus').getFullList({
         sort: 'index',
@@ -167,10 +149,11 @@ class Place extends LitElement {
       this._menus = response;
     } catch (error) {
       console.error('PocketBase 데이터 알 수 없음');
+      this._menus = [];
     }
   }
 
-  // 버튼 클릭 시 스크롤 이동
+  // 스크롤 이동
   _scrollToTarget(target) {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -185,11 +168,6 @@ class Place extends LitElement {
     );
   }
 
-  // 저장 버튼 클릭
-  _handleSaveClick() {
-    // TODO
-  }
-
   // 복사 버튼 클릭
   _handleCopyClick(e) {
     const { data } = e.detail;
@@ -201,7 +179,8 @@ class Place extends LitElement {
         alert('텍스트가 복사되었습니다!');
       })
       .catch(function (err) {
-        alert('복사 실패: ' + err);
+        console.error(err);
+        alert('복사 실패했습니다.');
       });
   }
 
@@ -240,7 +219,6 @@ class Place extends LitElement {
                     <span>${this.storeImages.length}+</span>
                   </span>`
                 : ''}
-
               <span class="a11y-hidden">업체 이미지 더보기</span>
             </button>
           </li>`
@@ -252,8 +230,13 @@ class Place extends LitElement {
     return html`
       <section class="place-section">
         <article class="place-section__top">
-          <h3 class="a11y-hidden" aria-hidden="true">장소 상세 정보보</h3>
-          <button @click=${this._handleCloseClick} type="button" aria-label="닫기">
+          <h3 class="a11y-hidden" aria-hidden="true">장소 상세 정보</h3>
+          <button
+            @click=${this._handleCloseClick}
+            type="button"
+            aria-label="닫기"
+            class="close-btn"
+          >
             <span>${this.storeInfo.place_name}</span>
             <img src="/images/ico_close.svg" alt="" role="presentation" />
           </button>
@@ -267,23 +250,6 @@ class Place extends LitElement {
               <strong class="place-name">${this.storeInfo.place_name}</strong>
               <span class="place-category">${this.storeInfo.category_group_name}</span>
             </div>
-            <!--
-            <div class="review-record">
-              <p class="like-count">
-                <span class="a11y-hidden">좋아요 수</span>
-                <span>${this.storeInfo.reviews.filter((item) => item.is_like).length}</span>
-              </p>
-              <p class="review-count">
-                <span>리뷰</span>
-                <span>${this.storeInfo.reviews.length}</span>
-              </p>
-            </div>
-            <div class="button-container">
-              <button class="save-btn btn base rounded" @click=${this._handleSaveClick}>
-                저장
-              </button>
-            </div>
-            -->
           </div>
 
           <navigation-element
