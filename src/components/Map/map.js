@@ -3,7 +3,6 @@ import { mapStyles } from './mapCss.js';
 import commonStyle from '@/styles/common.js';
 import pb from '@/api/pocketbase.js';
 
-import './categoryItem.js';
 import '@/components/Place/place.js';
 import '@/components/Feed/navBar.js';
 
@@ -235,7 +234,8 @@ class Map extends LitElement {
 
   // 카테고리 클릭 이벤트
   _handleCategoryClick(e) {
-    this.currCategory = e.detail.category;
+    const index = e.currentTarget.dataset.index;
+    this.currCategory = this.categories[index];
     this._searchPlaces();
   }
 
@@ -290,12 +290,22 @@ class Map extends LitElement {
   _renderCategories() {
     return html` <ul id="category" class="category-list">
       ${this.categories.map(
-        (item) =>
-          html`<category-item-element
-              .categoryInfo=${item}
-              .on=${this.currCategory && this.currCategory.id == item.id}
-              @category-click=${this._handleCategoryClick}
-          ></place-element>`
+        (item, index) =>
+          html` <li>
+            <button
+              class="category-btn btn rounded 
+                ${this.currCategory && this.currCategory.id == item.id ? 'on' : ''}"
+              data-index=${index}
+              @click=${this._handleCategoryClick}
+            >
+              <img
+                src="/images/places/categories/ico_${item.icon}.svg"
+                role="presentation"
+                alt=""
+              />
+              <span>${item.name}</span>
+            </button>
+          </li>`
       )}
     </ul>`;
   }
