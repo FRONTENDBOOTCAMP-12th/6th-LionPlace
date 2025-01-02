@@ -8,7 +8,7 @@ export const savedPlacesStyles = css`
     padding-bottom: 3.75rem;
   }
   .header {
-    padding: 1rem;
+    margin-left: 1.25rem;
     border-bottom: 0.0625rem solid #f0f0f0;
   }
   .title {
@@ -24,6 +24,12 @@ export const savedPlacesStyles = css`
     padding: 1rem;
     background-color: #f8f9fa;
     border-bottom: 0.0625rem solid #f0f0f0;
+  }
+  .create-group-form h2 {
+    margin: 0; /* 상단 마진 제거 */
+    margin-bottom: 0.5rem; /* 하단 여백 추가 */
+    font-size: 1.25rem;
+    font-weight: bold;
   }
   .input-field {
     width: 100%;
@@ -63,6 +69,9 @@ export const savedPlacesStyles = css`
     background-color: #f0f0f0;
     color: #666;
   }
+  .place-title {
+    margin-left: 1.25rem;
+  }
   .place-item {
     display: flex;
     padding: 1rem;
@@ -82,11 +91,12 @@ export const savedPlacesStyles = css`
   .place-name {
     font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0;
   }
   .place-info {
     font-size: 0.875rem;
     color: #8e8e8e;
+    margin-top: 0;
   }
   .back-button {
     display: flex;
@@ -95,5 +105,12 @@ export const savedPlacesStyles = css`
     padding: 1rem;
     cursor: pointer;
     color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .back-button a {
+    color: inherit;
+    text-decoration: none;
   }
 `;

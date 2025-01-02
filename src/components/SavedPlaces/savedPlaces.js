@@ -1,7 +1,8 @@
 import { LitElement, html } from 'lit';
 import { savedPlacesStyles } from './savedPlacesCss.js';
-
 import commonStyles from '@/styles/common.js';
+import pb from '@/api/pocketbase';
+
 import './navBar.js';
 import './groupList.js';
 import './listIcons.js';
@@ -30,12 +31,36 @@ export class SavedPlaces extends LitElement {
 
   static styles = [savedPlacesStyles];
 
+  // PocketBase 데이터 가져오기
+  async connectedCallback() {
+    super.connectedCallback();
+    await this._fetchPlacesData(); // places 컬렉션 데이터 가져오기
+  }
+
+  // PocketBase에서 'places' 컬렉션 데이터를 가져오는 함수
+  async _fetchPlacesData() {
+    try {
+      // PocketBase의 'places' 컬렉션에서 데이터 가져오기
+      const response = await pb.collection('places').getFullList();
+
+      // 필요한 데이터만 매핑하여 places 배열에 저장
+      this.places = response.map((place) => ({
+        id: place.id,
+        name: place.name || '이름 없음',
+        address: place.address || '주소 정보 없음',
+        category: place.category || '카테고리 정보 없음',
+        imageUrl: place.image
+          ? pb.files.getURL(place, place.image) // 이미지 URL 생성
+          : '/images/default-place.png', // 기본 이미지
+      }));
+    } catch (error) {
+      console.error('장소 데이터를 가져오는 중 오류 발생:', error);
+    }
+  }
+
   render() {
     return html`
       <main>
-        <header>
-          <h1>저장된 장소</h1>
-        </header>
         ${this.selectedGroup ? this._renderPlaces() : this._renderGroups()}
         <footer>
           <nav-bar></nav-bar>
@@ -48,7 +73,6 @@ export class SavedPlaces extends LitElement {
     return html`
       <div class="create-group-form" aria-labelledby="create-group-title">
         <h2 id="create-group-title">새 그룹 만들기</h2>
-        <label for="group-name-input" class="visually-hidden">그룹 이름 입력</label>
         <input
           id="group-name-input"
           type="text"
@@ -82,7 +106,7 @@ export class SavedPlaces extends LitElement {
     return html`
       <section aria-labelledby="groups-title">
         <div class="header">
-          <h2 id="groups-title">전체 리스트 (${this.groups.length})</h2>
+          <h2 id="groups-title">전체 리스트 ${this.groups.length}</h2>
         </div>
         ${this.isCreatingGroup ? this._renderCreateGroupForm() : ''}
         <group-list
@@ -102,7 +126,7 @@ export class SavedPlaces extends LitElement {
         <div class="back-button" @click="${this._handleBack}">
           <a href="#" aria-label="뒤로가기"><span>&larr;</span> 뒤로가기</a>
         </div>
-        <h2 id="places-title">${this.selectedGroup.title}의 장소</h2>
+        <h2 class="place-title" id="places-title">${this.selectedGroup?.title || '장소'}</h2>
         ${this.places.map(
           (place) => html`
             <article class="place-item" aria-labelledby="place-${place.name}">
@@ -133,20 +157,6 @@ export class SavedPlaces extends LitElement {
 
   _handleGroupSelect(e) {
     this.selectedGroup = e.detail;
-    this.places = [
-      {
-        name: '멋진 피자가게',
-        address: '서울시 강남구 역삼동 123-45',
-        category: '이탈리안 레스토랑',
-        imageUrl: '/images/pizza-place.jpg',
-      },
-      {
-        name: '행복한 카페',
-        address: '서울시 강남구 역삼동 234-56',
-        category: '카페',
-        imageUrl: '/images/cafe.jpg',
-      },
-    ];
   }
 
   _handleNewGroup() {
@@ -161,7 +171,7 @@ export class SavedPlaces extends LitElement {
     if (this.newGroupName.trim()) {
       const newGroup = {
         id: String(this.groups.length + 1),
-        icon: 'folder',
+        icon: 'pin', // 기본 아이콘을 'pin'으로 설정
         title: this.newGroupName,
         places: 0,
         isPrivate: true,
@@ -174,7 +184,6 @@ export class SavedPlaces extends LitElement {
 
   _handleBack() {
     this.selectedGroup = null;
-    this.places = [];
   }
 }
 
