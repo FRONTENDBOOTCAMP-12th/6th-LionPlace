@@ -187,7 +187,7 @@
   :root {
     --white: #fff;
     --primary: #171f31;
-    --secondary: ##8db0f9;
+    --secondary: #8db0f9;
     --negative: #e11900;
     --contentPrimary: #000000;
     --contentSecondary: #6b6b6b;
@@ -221,6 +221,7 @@
     --lightblue--800: #2d3e63;
     --lightblue--900: #171f31;
     --error: #f03f40;
+    --errorRed: #9b1c1c;
     --background-color: #fff;
     --color: #000;
   }

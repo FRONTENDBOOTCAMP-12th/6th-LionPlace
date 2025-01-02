@@ -86,9 +86,6 @@ export const editProfileFormStyles = css`
     width: 1.25rem;
     height: 1.25rem;
   }
-  .avatar-edit-btn .edit-icon:focus {
-    border: 0.5px solid black;
-  }
 
   .profile-introduction-section {
     margin-top: 1.5rem;
@@ -123,7 +120,7 @@ export const editProfileFormStyles = css`
 
   .error-message {
     margin-top: 0.5rem;
-    color: var(--error);
+    color: var(--errorRed);
     font-size: 0.875rem;
   }
 

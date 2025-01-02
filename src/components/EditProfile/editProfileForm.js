@@ -43,7 +43,7 @@ class EditProfileForm extends LitElement {
   async _loadUserData() {
     try {
       const userId = pb.authStore.model.id;
-      const userRecord = await pb.collection('users').getOne(userId);
+      const [userRecord] = await Promise.all([pb.collection('users').getOne(userId)]);
 
       const avatarUrl = userRecord.avatar
         ? pb.getFileUrl(userRecord, userRecord.avatar)
@@ -55,7 +55,6 @@ class EditProfileForm extends LitElement {
         introduction: userRecord.introduction || '',
       };
     } catch (error) {
-      console.error('유저 데이터 로딩 실패: ', error);
       this.errorMessage = '유저 데이터 로딩에 실패했습니다.';
     }
   }
@@ -90,7 +89,6 @@ class EditProfileForm extends LitElement {
       };
       this.requestUpdate();
     } catch (error) {
-      console.error('프로필 사진 업로드 실패: ', error);
       this.errorMessage = '프로필 사진 업로드에 실패했습니다.';
     }
   }
@@ -121,7 +119,6 @@ class EditProfileForm extends LitElement {
       this.requestUpdate();
       this.isModalOpen = false;
     } catch (error) {
-      console.error('프로필 사진 제거 실패: ', error);
       this.errorMessage = '프로필 사진 제거에 실패했습니다.';
     }
   }
@@ -141,7 +138,6 @@ class EditProfileForm extends LitElement {
       window.location.href = '/src/pages/reserved/index.html';
       this.errorMessage = '';
     } catch (error) {
-      console.error('소개 저장 실패: ', error);
       this.errorMessage = '소개 저장에 실패했습니다.';
     }
   }

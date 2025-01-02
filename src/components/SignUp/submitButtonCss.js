@@ -20,4 +20,9 @@ export const submitButtonCss = css`
     color: var(--gray--500);
     cursor: not-allowed;
   }
+
+  button:focus {
+    outline: 0.5px solid #ffa500;
+    outline-offset: 0.5px;
+  }
 `;
