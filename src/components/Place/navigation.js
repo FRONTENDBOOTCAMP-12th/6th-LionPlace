@@ -41,7 +41,7 @@ class Navigation extends LitElement {
             <button
               id="tab_home"
               class="${this.active === 'tab-home' ? 'is--active' : ''}"
-              aria-selected=${this.active === 'tab-home' ? 'true' : 'false'}"
+              aria-selected=${this.active === 'tab-home'}"
               aria-controls="panel_home"
               data-tab="tab-home"
               @click="${this._handleClickBtn}"
@@ -51,7 +51,7 @@ class Navigation extends LitElement {
             <button
               id="tab_menu"
               class="${this.active === 'tab-menu' ? 'is--active' : ''}"
-              aria-selected=${this.active === 'tab-menu' ? 'true' : 'false'}"
+              aria-selected=${this.active === 'tab-menu'}"
               aria-controls="panel_menu"
               data-tab="tab-menu"
               @click="${this._handleClickBtn}"
@@ -63,7 +63,7 @@ class Navigation extends LitElement {
             <button
               id="tab_review"
               class="${this.active === 'tab-review' ? 'is--active' : ''}"
-              aria-selected=${this.active === 'tab-review' ? 'true' : 'false'}"
+              aria-selected=${this.active === 'tab-review'}"
               aria-controls="panel_review"
               data-tab="tab-review"
               @click="${this._handleClickBtn}"
@@ -75,7 +75,7 @@ class Navigation extends LitElement {
             <button
               id="tab_image"
               class="${this.active === 'tab-image' ? 'is--active' : ''}"
-              aria-selected=${this.active === 'tab-image' ? 'true' : 'false'}"
+              aria-selected=${this.active === 'tab-image'}"
               aria-controls="panel_image"
               data-tab="tab-image"
               @click="${this._handleClickBtn}"
