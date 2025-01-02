@@ -127,7 +127,7 @@ class TabCategory extends LitElement {
               전체
             </button>
           </li>
-          <li>
+          <li role="presentation">
             <button
               @click="${this._handleClickTab}"
               type="button"
@@ -139,7 +139,7 @@ class TabCategory extends LitElement {
               뷰티
             </button>
           </li>
-          <li>
+          <li role="presentation">
             <button
               @click="${this._handleClickTab}"
               type="button"
@@ -151,7 +151,7 @@ class TabCategory extends LitElement {
               병의원
             </button>
           </li>
-          <li>
+          <li role="presentation">
             <button
               @click="${this._handleClickTab}"
               type="button"
