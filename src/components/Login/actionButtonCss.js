@@ -13,4 +13,9 @@ export const actionButtonStyles = css`
     font-weight: bold;
     cursor: pointer;
   }
+
+  button:focus {
+    outline: 0.5px solid #ffa500;
+    outline-offset: 0.5px;
+  }
 `;

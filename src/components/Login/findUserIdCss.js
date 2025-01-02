@@ -12,8 +12,6 @@ export const findUserIdCss = css`
   }
 
   .find-section a {
-    display: block;
-    text-align: right;
-    margin-top: 1rem;
+    float: right;
   }
 `;

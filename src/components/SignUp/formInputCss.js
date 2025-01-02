@@ -34,4 +34,8 @@ export const formInputCss = css`
     font-size: 0.875rem;
     margin-top: 0.5rem;
   }
+
+  .form-group input:focus {
+    outline: 0.5px solid #ffa500;
+  }
 `;

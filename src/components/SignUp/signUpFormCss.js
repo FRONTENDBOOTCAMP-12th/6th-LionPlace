@@ -19,7 +19,6 @@ export const signUpFormCss = css`
   }
 
   .sign-up-section a {
-    display: block;
-    text-align: right;
+    float: right;
   }
 `;
