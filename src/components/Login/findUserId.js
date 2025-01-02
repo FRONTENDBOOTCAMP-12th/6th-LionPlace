@@ -57,7 +57,6 @@ class FindUserId extends LitElement {
         alert('해당 이메일로 등록된 아이디가 없습니다.');
       }
     } catch (error) {
-      console.error('아이디 조회 오류:', error);
       alert('아이디를 찾을 수 없습니다. 다시 시도해 주세요.');
     }
 

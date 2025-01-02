@@ -87,5 +87,10 @@ export const footerStyle = css`
       font-size: 0.75019rem;
       line-height: 1.6;
     }
+
+    a[role='button'] {
+      cursor: pointer;
+      text-decoration: none;
+    }
   }
 `;
