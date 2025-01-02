@@ -22,14 +22,17 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Preload Critical CSS -->
+    <link rel="preload" href="/src/assets/font/pretendard/pretendard.css" as="style" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/src/assets/font/pretendard/pretendard.css" />
     <link rel="stylesheet" href="/src/styles/main.css" />
 
     <!-- Script -->
-    <script type="module" src="/src/pages/reserved/index.js"></script>
+    <script type="module" src="/src/pages/reserved/index.js" defer></script>
   </head>
   <body>
     <reserved-page></reserved-page>

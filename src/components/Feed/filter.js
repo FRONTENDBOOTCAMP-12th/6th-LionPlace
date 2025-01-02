@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { filterStyles } from './filterCss';
+import { filterStyles } from './filterCss.js';
 
 import commonStyles from '@/styles/common.js';
 import '@/components/Feed/post.js';

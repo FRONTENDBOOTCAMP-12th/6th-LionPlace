@@ -45,19 +45,4 @@ export const navgationStyles = css`
       }
     }
   }
-  .loading {
-    position: absolute;
-    inset-inline-start: 50%;
-    inset-block-start: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-
-    & img {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      inline-size: 100px;
-      aspect-ratio: 1/1;
-    }
-  }
 `;

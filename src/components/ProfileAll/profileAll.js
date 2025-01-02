@@ -7,6 +7,7 @@ class ProfileAll extends LitElement {
   static properties = {
     userId: { type: String },
     pocketData: { type: Array },
+    avatarUrl: { type: String },
   };
 
   static styles = [commonStyles, profileAllStyles];
@@ -15,12 +16,14 @@ class ProfileAll extends LitElement {
     super();
     this.userId = ''; // 초기값 설정
     this.pocketData = [];
+    this.avatarUrl = '';
   }
 
   async connectedCallback() {
     super.connectedCallback();
     await this._fetchData();
     await this._fetchRecordCount();
+    await this._loadUserAvatar();
   }
 
   // 로그인 시 로그인 한 유저의 아이디 데이터 가져오는 함수
@@ -47,6 +50,18 @@ class ProfileAll extends LitElement {
     }
   }
 
+  async _loadUserAvatar() {
+    try {
+      const userId = pb.authStore.model.id;
+      const userRecord = await pb.collection('users').getOne(userId);
+      this.avatarUrl = userRecord.avatar
+        ? pb.getFileUrl(userRecord, userRecord.avatar)
+        : '/images/profile.png';
+    } catch (error) {
+      console.error('유저 프로필 사진 로딩 실패: ', error);
+    }
+  }
+
   render() {
     return html`
       <section class="profile">
@@ -55,7 +70,7 @@ class ProfileAll extends LitElement {
           <div class="profile-container__top">
             <div class="avatar">
               <a href="/src/pages/edit-profile/index.html">
-                <img src="/images/profile.png" alt="프로필 이미지" class="profile-img" />
+                <img src="${this.avatarUrl}" alt="프로필 이미지" class="profile-img" />
                 <img src="/images/ico_write_sm.svg" alt="" role="presentation" class="edited-img" />
               </a>
             </div>

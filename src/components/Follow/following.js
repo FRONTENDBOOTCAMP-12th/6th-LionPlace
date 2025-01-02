@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { followingStyles } from './followingCss.js';
 import commonStyles from '@/styles/common.js';
+import pb from '@/api/pocketbase';
 
 class FollowingList extends LitElement {
   static properties = {
@@ -9,14 +10,34 @@ class FollowingList extends LitElement {
 
   constructor() {
     super();
-    this.followingList = [
-      { id: 1, name: 'User1', img: '' },
-      { id: 2, name: 'User2', img: '' },
-      { id: 3, name: 'User3', img: '' },
-    ];
+    this.followingList = [];
   }
 
   static styles = [followingStyles, commonStyles];
+
+  // PocketBase 데이터 가져오기
+  async connectedCallback() {
+    super.connectedCallback();
+    await this._fetchFollowingData();
+  }
+
+  // PocketBase에서 데이터 가져오는 함수
+  async _fetchFollowingData() {
+    try {
+      // PocketBase의 'following' 컬렉션에서 데이터 가져오기
+      const response = await pb.collection('following').getFullList();
+
+      this.followingList = response.map((user) => ({
+        id: user.id,
+        name: user.username,
+        img: user.profileImage
+          ? pb.getFileUrl(user, user.profileImage)
+          : '/images/default-profile.png',
+      }));
+    } catch (error) {
+      console.error('팔로잉 데이터를 가져오는 중 오류 발생:', error);
+    }
+  }
 
   render() {
     return html`

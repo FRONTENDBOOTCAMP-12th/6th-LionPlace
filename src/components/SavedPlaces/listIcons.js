@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { listIconsStyles } from './listIconCss';
+import { listIconsStyles } from './listIconCss.js';
 
 import commonStyles from '@/styles/common.js';
 
@@ -7,6 +7,8 @@ export class ListIcons extends LitElement {
   static properties = {
     name: { type: String },
   };
+
+  static styles = [listIconsStyles];
 
   render() {
     return html`${this._getIcon()}`;

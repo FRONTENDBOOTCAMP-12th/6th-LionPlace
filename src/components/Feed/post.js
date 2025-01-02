@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import { postStyles } from './postCss';
+import { postStyles } from './postCss.js';
 
 import commonStyles from '@/styles/common.js';
 

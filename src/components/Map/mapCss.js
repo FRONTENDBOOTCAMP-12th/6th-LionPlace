@@ -1,7 +1,11 @@
 import { css } from 'lit';
 
 export const mapStyles = css`
-  .map,
+  .map-section {
+    width: 100%;
+    height: calc(100vh - 3.4375rem);
+  }
+
   .map-content {
     width: 100%;
     height: 100%;
@@ -17,6 +21,12 @@ export const mapStyles = css`
     gap: 0.5rem;
     overflow-x: auto;
     white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid var(--blue--800);
+    outline-offset: 1px;
   }
 
   .category-btn {
@@ -37,7 +47,7 @@ export const mapStyles = css`
 
   .search-btn {
     position: fixed;
-    bottom: 20px;
+    bottom: 70px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
@@ -48,7 +58,7 @@ export const mapStyles = css`
 
   .my-location-btn {
     position: fixed;
-    bottom: 20px;
+    bottom: 70px;
     right: 20px;
     z-index: 10;
     background-color: #fff;

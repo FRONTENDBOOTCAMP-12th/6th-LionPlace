@@ -1,10 +1,11 @@
 import { html, LitElement } from 'lit';
 import { mapStyles } from './mapCss.js';
 import commonStyle from '@/styles/common.js';
-import pb from '@/api/pocketbase';
+import pb from '@/api/pocketbase.js';
 
-import './category-item.js';
+import './categoryItem.js';
 import '@/components/Place/place.js';
+import '@/components/Feed/navBar.js';
 
 class Map extends LitElement {
   static properties = {
@@ -58,7 +59,7 @@ class Map extends LitElement {
     try {
       const response = await pb.collection('store_categories').getFullList({
         sort: 'index',
-        // filter: 'is_active=true', // TODO 주석 제거
+        filter: 'is_active=true',
       });
 
       this.categories = response;
@@ -150,7 +151,6 @@ class Map extends LitElement {
 
     if (status === kakao.maps.services.Status.OK) {
       // 정상적으로 검색이 완료됐으면 지도에 표출
-      //console.log(data);
       this._displayPlaces(data);
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
       // 검색결과가 없는경우
@@ -166,8 +166,6 @@ class Map extends LitElement {
     const { kakao } = window;
 
     for (var i = 0; i < places.length; i++) {
-      //console.log(places[i].id, places[i]);
-
       // 장소 데이터 저장
       this._places[places[i].id] = places[i];
 
@@ -254,6 +252,7 @@ class Map extends LitElement {
 
   // 장소 상세 - 닫기 이벤트
   _handleCloseClick() {
+    this.loading = false;
     this.storeInfo = null;
   }
 
@@ -303,15 +302,18 @@ class Map extends LitElement {
 
   // 장소 상세 그리기
   _renderPlaces() {
+    this.loading = true;
+
     return html`<place-element
       .storeInfo=${this.storeInfo}
+      .loading=${this.loading}
       @close-click=${this._handleCloseClick}
     ></place-element>`;
   }
 
   render() {
     return html`
-      <section class="map">
+      <section class="map-section">
         ${this.categories ? this._renderCategories() : ''}
 
         <div id="map" class="map-content"></div>
@@ -326,6 +328,7 @@ class Map extends LitElement {
           <img src="/images/ico_location.svg" alt="접속위치" />
         </button>
       </section>
+      <nav-bar></nav-bar>
       ${this.storeInfo ? this._renderPlaces() : ''} ${this.loading ? this._renderLoading() : ''}
     `;
   }

@@ -4,105 +4,87 @@ import commonStyles from '@/styles/common.js';
 
 class Navigation extends LitElement {
   static properties = {
-    activePage: { type: String },
-    loading: { type: Boolean },
+    active: { type: String },
   };
 
   static styles = [navgationStyles, commonStyles];
 
   constructor() {
     super();
-    this.loading = false;
-    this.activePage = 'home'; // 기본값
   }
 
   connectedCallback() {
     super.connectedCallback();
-    // 빌드 시 페이지 이동 후에도 로딩 gif 유지가 지속되어 로딩 상태 초기화
-    this.loading = false;
-  }
-
-  // 페이지 이동 함수
-  _navigationTo(page) {
-    // TODO
-
-    // this.loading = true;
-    this.requestUpdate();
   }
 
   // 클릭 이벤트 함수
   _handleClickBtn(e) {
-    const pageData = e.target.dataset.page;
-    if (pageData === this.activePage) return;
-    this.activePage = pageData;
-    this._navigationTo(pageData);
-  }
+    const tabData = e.target.dataset.tab;
 
-  _renderLoading() {
-    return html`
-      <div class="loading">
-        <img src="/images/loading_spinner.gif" alt="로딩중" />
-      </div>
-    `;
+    if (tabData === this.active) return;
+    this.active = tabData;
+
+    this.dispatchEvent(
+      new CustomEvent('active-change', {
+        detail: { active: this.active },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   render() {
     return html`
       <div class="navigation-warp">
-        <ul>
+        <ul role="tablist">
           <li>
             <button
+              id="tab_home"
+              class="${this.active === 'tab-home' ? 'is--active' : ''}"
+              aria-selected=${this.active === 'tab-home' ? 'true' : 'false'}"
+              aria-controls="panel_home"
+              data-tab="tab-home"
               @click="${this._handleClickBtn}"
-              class="${this.activePage === 'home' ? 'is--active' : ''}"
-              type="button"
-              data-page="home"
-            >
-              홈
-            </button>
+            >홈</button>
           </li>
           <li>
             <button
+              id="tab_menu"
+              class="${this.active === 'tab-menu' ? 'is--active' : ''}"
+              aria-selected=${this.active === 'tab-menu' ? 'true' : 'false'}"
+              aria-controls="panel_menu"
+              data-tab="tab-menu"
               @click="${this._handleClickBtn}"
-              class="${this.activePage === 'menu' ? 'is--active' : ''}"
-              type="button"
-              data-page="menu"
             >
               메뉴
             </button>
           </li>
           <li>
             <button
+              id="tab_review"
+              class="${this.active === 'tab-review' ? 'is--active' : ''}"
+              aria-selected=${this.active === 'tab-review' ? 'true' : 'false'}"
+              aria-controls="panel_review"
+              data-tab="tab-review"
               @click="${this._handleClickBtn}"
-              class="${this.activePage === 'review' ? 'is--active' : ''}"
-              type="button"
-              data-page="review"
             >
               리뷰
             </button>
           </li>
           <li>
             <button
+              id="tab_image"
+              class="${this.active === 'tab-image' ? 'is--active' : ''}"
+              aria-selected=${this.active === 'tab-image' ? 'true' : 'false'}"
+              aria-controls="panel_image"
+              data-tab="tab-image"
               @click="${this._handleClickBtn}"
-              class="${this.activePage === 'image' ? 'is--active' : ''}"
-              type="button"
-              data-page="image"
             >
               사진
             </button>
           </li>
-          <li>
-            <button
-              @click="${this._handleClickBtn}"
-              class="${this.activePage === 'map' ? 'is--active' : ''}"
-              type="button"
-              data-page="map"
-            >
-              지도
-            </button>
-          </li>
         </ul>
       </div>
-      ${this.loading ? this._renderLoading() : ''}
     `;
   }
 }

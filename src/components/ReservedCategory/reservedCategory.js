@@ -101,10 +101,10 @@ class TabCategory extends LitElement {
       <div class="category-badge">
         <ul>
           <li>
-            <span class="category-btn">방문 <strong>${totalReservations}</strong></span>
+            <span>방문 <strong>${totalReservations}</strong></span>
           </li>
           <li>
-            <span class="category-btn">예약취소 <strong>${totalCancle}</strong></span>
+            <span>예약취소 <strong>${totalCancle}</strong></span>
           </li>
         </ul>
       </div>
@@ -114,13 +114,15 @@ class TabCategory extends LitElement {
   render() {
     return html`
       <nav class="category-tab">
-        <ul>
-          <li>
+        <ul role="tablist">
+          <li role="presentation">
             <button
               @click="${this._handleClickTab}"
               type="button"
+              role="tab"
               class="entire tab-btn ${this.category === 'all' ? 'is--active' : ''}"
               data-category="all"
+              aria-selected="${this.category === 'all'}"
             >
               전체
             </button>
@@ -129,8 +131,10 @@ class TabCategory extends LitElement {
             <button
               @click="${this._handleClickTab}"
               type="button"
+              role="tab"
               class="beauty tab-btn ${this.category === 'beauty' ? 'is--active' : ''}"
               data-category="beauty"
+              aria-selected="${this.category === 'beauty'}"
             >
               뷰티
             </button>
@@ -139,8 +143,10 @@ class TabCategory extends LitElement {
             <button
               @click="${this._handleClickTab}"
               type="button"
+              role="tab"
               class="hospital tab-btn ${this.category === 'hospital' ? 'is--active' : ''}"
               data-category="hospital"
+              aria-selected="${this.category === 'hospital'}"
             >
               병의원
             </button>
@@ -149,8 +155,10 @@ class TabCategory extends LitElement {
             <button
               @click="${this._handleClickTab}"
               type="button"
+              role="tab"
               class="performance tab-btn ${this.category === 'performance' ? 'is--active' : ''}"
               data-category="performance"
+              aria-selected="${this.category === 'performance'}"
             >
               공연
             </button>

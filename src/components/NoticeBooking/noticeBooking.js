@@ -79,6 +79,9 @@ class NoticeBooking extends LitElement {
                     src="https://lion-place.pockethost.io/api/files/transaction_details/${item.id}/${item.field_img}"
                     alt=""
                     role="presentation"
+                    loading="lazy"
+                    width="18"
+                    height="18"
                   />
                   <figcaption class="a11y-hidden">${item.field}</figcaption>
                 </figure>
@@ -93,13 +96,18 @@ class NoticeBooking extends LitElement {
               <article class="notice-booking__button">
                 <h3 class="a11y-hidden">즐겨찾기, 더보기 버튼 클릭 영역</h3>
                 <figure class="favorites">
-                  <button @click="${this.handleFavorite}" type="button" data-index="${index}">
+                  <button
+                    @click="${this.handleFavorite}"
+                    type="button"
+                    data-index="${index}"
+                    aria-label="즐겨찾기 추가"
+                  >
                     <span class="${item.favorites ? 'is--active' : ''}"></span>
                   </button>
                   <figcaption class="a11y-hidden" aria-hidden="true">즐겨찾기 버튼</figcaption>
                 </figure>
                 <figure class="more">
-                  <button type="button">
+                  <button type="button" aria-label="자세히 보기">
                     <img src="/images/ico_more.svg" alt="" role="presentation" />
                   </button>
                   <figcaption class="a11y-hidden">더보기 버튼</figcaption>
@@ -119,6 +127,9 @@ class NoticeBooking extends LitElement {
                       src="https://lion-place.pockethost.io/api/files/transaction_details/${item.id}/${item.item_image}"
                       alt=""
                       role="presentation"
+                      loading="lazy"
+                      width="57"
+                      height="57"
                     />
                     <figcaption class="a11y-hidden">리뷰 이미지</figcaption>
                   </figure>

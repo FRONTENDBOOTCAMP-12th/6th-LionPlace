@@ -73,7 +73,7 @@ class Navigation extends LitElement {
 
   render() {
     return html`
-      <nav class="navigation-warp">
+      <nav class="navigation-warp" aria-label="주요 네비게이션 메뉴">
         <ul>
           <li>
             <button
@@ -81,6 +81,7 @@ class Navigation extends LitElement {
               class="${this.activePage === 'feed' ? 'is--active' : ''}"
               type="button"
               data-page="feed"
+              aria-selected="${this.activePage === 'feed'}"
             >
               피드
             </button>
@@ -91,6 +92,7 @@ class Navigation extends LitElement {
               class="${this.activePage === 'visit' ? 'is--active' : ''}"
               type="button"
               data-page="visit"
+              aria-selected="${this.activePage === 'visit'}"
             >
               방문
             </button>
@@ -101,6 +103,7 @@ class Navigation extends LitElement {
               class="${this.activePage === 'review' ? 'is--active' : ''}"
               type="button"
               data-page="review"
+              aria-selected="${this.activePage === 'review'}"
             >
               리뷰
             </button>
@@ -111,6 +114,7 @@ class Navigation extends LitElement {
               class="${this.activePage === 'reserved' ? 'is--active' : ''}"
               type="button"
               data-page="reserved"
+              aria-selected="${this.activePage === 'reserved'}"
             >
               예약•주문
             </button>

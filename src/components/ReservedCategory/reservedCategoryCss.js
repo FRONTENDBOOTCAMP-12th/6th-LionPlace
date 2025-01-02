@@ -166,7 +166,7 @@ export const categoryStyles = css`
   /* 하단 카테고리 뱃지 영역 */
   .category-badge {
     padding: 0.75rem 3.8125rem 2.3125rem 1.25rem;
-    background-color: var(--gray--100);
+    background-color: var(--gray--50);
 
     & > ul {
       display: flex;

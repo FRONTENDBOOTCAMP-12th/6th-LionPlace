@@ -68,8 +68,8 @@ class LoginForm extends LitElement {
 
   render() {
     return html`
-      <section class="login-section">
-        <div class="container">
+      <main class="form-container">
+        <section class="login-section">
           <app-logo link="./loginPage.html"></app-logo>
 
           <h1>로그인</h1>
@@ -92,14 +92,14 @@ class LoginForm extends LitElement {
           ></form-input>
 
           <submit-button @click=${this._handleLogin} text="로그인"></submit-button>
-        </div>
-      </section>
-      <section class="help-links">
-        <h2 class="a11y-hidden">계정 관련 도움말</h2>
-        <a class="find" href="/src/pages/login/findUserId.html">아이디 찾기</a>
-        <a class="find" href="/src/pages/login/findUserPw.html">비밀번호 찾기</a>
-        <a class="sign-up" href="/src/pages/sign-up/index.html">회원가입</a>
-      </section>
+        </section>
+        <section class="help-links">
+          <h2 class="a11y-hidden">계정 관련 도움말</h2>
+          <a class="find" href="/src/pages/login/findUserId.html">아이디 찾기</a>
+          <a class="find" href="/src/pages/login/findUserPw.html">비밀번호 찾기</a>
+          <a class="sign-up" href="/src/pages/sign-up/index.html">회원가입</a>
+        </section>
+      </main>
     `;
   }
 }
