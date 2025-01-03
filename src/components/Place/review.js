@@ -99,7 +99,7 @@ class Review extends LitElement {
               <li>
                 <div class="review-content">
                   <p class="content-text">${item.content}</p>
-                  ${item.image
+                  ${item.image && item.image.length > 0
                     ? html`<figure class="content-image">
                         <img src="${getPbImageURL(item)}" alt="" />
                         <figcaption class="a11y-hidden">리뷰 사진</figcaption>
