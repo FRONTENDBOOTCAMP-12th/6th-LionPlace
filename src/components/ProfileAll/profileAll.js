@@ -98,13 +98,13 @@ class ProfileAll extends LitElement {
                   <li>
                     <a href="/src/pages/follow/">
                       <span>팔로잉</span>
-                      <span>0</span>
+                      <span>${this.pocketData.follow ? this.pocketData.follow.length : 0}</span>
                     </a>
                   </li>
                   <li>
                     <a href="/src/pages/follow/">
                       <span>팔로워</span>
-                      <span>${this.pocketData.follow ? this.pocketData.follow.length : 0}</span>
+                      <span>0</span>
                     </a>
                   </li>
                 </ul>
